@@ -274,7 +274,7 @@ export default function BeyondTheLab() {
               )}
               {item.id === "msmiles-stem-curriculum" && (
                 <Image
-                  src="/images/beyond-the-lab/msmiles.jpg"
+                  src="/images/beyond-the-lab/msmiles-cover.jpg"
                   alt={item.title}
                   fill
                   style={{ objectFit: "cover" }}

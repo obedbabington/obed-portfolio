@@ -55,7 +55,7 @@ export default function BetterHiringAIHiringManagement() {
           aspectRatio="16 / 9"
           radius="m"
           alt="BetterHiring AI Hiring Management System"
-          src="/images/research/betterhiring-cover.png"
+          src="/images/research/non-major/govindha-cover.jpg"
         />
       </Column>
 
@@ -158,6 +158,62 @@ export default function BetterHiringAIHiringManagement() {
             </Text>
           </Column>
         </Card>
+      </Column>
+
+      {/* Image Gallery */}
+      <Column marginTop="xl" paddingX="l" gap="l">
+        <Heading variant="heading-strong-l">Gallery</Heading>
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+          gap: "1.5rem"
+        }}>
+          <div style={{ 
+            position: "relative", 
+            width: "100%", 
+            height: "250px",
+            borderRadius: "12px",
+            overflow: "hidden",
+            boxShadow: "0 4px 16px rgba(0, 0, 0, 0.1)"
+          }}>
+            <Image
+              src="/images/research/non-major/govindha-cover.jpg"
+              alt="BetterHiring - Cover"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+          <div style={{ 
+            position: "relative", 
+            width: "100%", 
+            height: "250px",
+            borderRadius: "12px",
+            overflow: "hidden",
+            boxShadow: "0 4px 16px rgba(0, 0, 0, 0.1)"
+          }}>
+            <Image
+              src="/images/research/non-major/govindha-2.jpg"
+              alt="BetterHiring - Activity 2"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+          <div style={{ 
+            position: "relative", 
+            width: "100%", 
+            height: "250px",
+            borderRadius: "12px",
+            overflow: "hidden",
+            boxShadow: "0 4px 16px rgba(0, 0, 0, 0.1)"
+          }}>
+            <Image
+              src="/images/research/non-major/govindha-3.jpg"
+              alt="BetterHiring - Activity 3"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+        </div>
       </Column>
     </Column>
   );

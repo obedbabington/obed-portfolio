@@ -169,7 +169,7 @@ export default function NonMajorResearch() {
               case 'prey-predator-mathematical-model':
                 return '/images/research/prey-predator-mathematical-model_cover.png';
               case 'betterhiring-ai-hiring-management':
-                return '/images/research/betterhiring-cover.png';
+                return '/images/research/non-major/govindha-cover.jpg';
               default:
                 return `/images/research/${projectId}_cover.png`;
             }
