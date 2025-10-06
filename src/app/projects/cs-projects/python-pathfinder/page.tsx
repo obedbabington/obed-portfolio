@@ -69,7 +69,7 @@ export default function PythonPathfinder() {
           boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)"
         }}>
           <Image
-            src="/images/projects/pathfinding.jpg"
+            src="/images/projects/pathfinding.png"
             alt="Python Pathfinder Algorithm Visualization"
             fill
             style={{ objectFit: "cover" }}

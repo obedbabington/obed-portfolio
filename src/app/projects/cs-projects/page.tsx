@@ -156,12 +156,30 @@ export default function CSProjects() {
               height: "250px",
               backgroundColor: "#f5f5f5"
             }}>
-              <Image
-                src="/images/projects/speech-recognition.jpg"
-                alt={project.title}
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {project.id === "automatic-speech-recognition-asante-twi" && (
+                <Image
+                  src="/images/projects/speech-recognition.jpg"
+                  alt={project.title}
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
+              {project.id === "gender-recognition-audio-signals" && (
+                <Image
+                  src="/images/projects/image-recognition.png"
+                  alt={project.title}
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
+              {project.id === "python-pathfinder" && (
+                <Image
+                  src="/images/projects/pathfinding.png"
+                  alt={project.title}
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
             
             {/* Content below image */}

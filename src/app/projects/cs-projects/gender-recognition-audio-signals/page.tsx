@@ -69,7 +69,7 @@ export default function GenderRecognitionAudioSignals() {
           boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)"
         }}>
           <Image
-            src="/images/projects/signal-processing.jpg"
+            src="/images/projects/image-recognition.png"
             alt="Gender Recognition from Audio Signals"
             fill
             style={{ objectFit: "cover" }}
