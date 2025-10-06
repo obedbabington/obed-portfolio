@@ -1,6 +1,7 @@
 import { Column, Heading, Meta, Schema, Text, Card } from "@once-ui-system/core";
 import { baseURL, about, person } from "@/resources";
 import { BackButton } from "@/components";
+import Image from "next/image";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -41,6 +42,27 @@ export default function AssistiveTechnologyMakerspace() {
         <Text variant="body-default-xs" onBackground="neutral-weak" style={{ textTransform: "uppercase", fontWeight: "600" }}>
           Fellowship • Aug - Sep 2019
         </Text>
+      </Column>
+
+      {/* Project Image */}
+      <Column marginBottom="xl" align="center">
+        <div style={{ 
+          position: "relative", 
+          width: "100%", 
+          maxWidth: "600px", 
+          height: "400px",
+          borderRadius: "12px",
+          overflow: "hidden",
+          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)"
+        }}>
+          <Image
+            src="/images/beyond-the-lab/makerspace-cover.jpg"
+            alt="Assistive Technology Makerspace Fellowship"
+            fill
+            style={{ objectFit: "cover" }}
+            priority
+          />
+        </div>
       </Column>
 
       {/* Content */}
@@ -85,6 +107,47 @@ export default function AssistiveTechnologyMakerspace() {
             </Text>
           </Column>
         </Card>
+      </Column>
+
+      {/* Image Gallery */}
+      <Column marginTop="xl" paddingX="l" gap="l">
+        <Heading variant="heading-strong-l">Gallery</Heading>
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+          gap: "1.5rem"
+        }}>
+          <div style={{ 
+            position: "relative", 
+            width: "100%", 
+            height: "250px",
+            borderRadius: "12px",
+            overflow: "hidden",
+            boxShadow: "0 4px 16px rgba(0, 0, 0, 0.1)"
+          }}>
+            <Image
+              src="/images/beyond-the-lab/makerspace-cover.jpg"
+              alt="Makerspace - Cover"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+          <div style={{ 
+            position: "relative", 
+            width: "100%", 
+            height: "250px",
+            borderRadius: "12px",
+            overflow: "hidden",
+            boxShadow: "0 4px 16px rgba(0, 0, 0, 0.1)"
+          }}>
+            <Image
+              src="/images/beyond-the-lab/makerspace.jpg"
+              alt="Makerspace - Activity"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+        </div>
       </Column>
 
       <style dangerouslySetInnerHTML={{

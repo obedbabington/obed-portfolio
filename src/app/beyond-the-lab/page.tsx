@@ -288,7 +288,57 @@ export default function BeyondTheLab() {
                   style={{ objectFit: "cover" }}
                 />
               )}
-              {!["tedx-ashesi-speaker", "army-students-club-curator", "aftgonosia-service-learning", "msmiles-stem-curriculum", "ashesi-research-club-president", "assistive-technology-makerspace", "flir-c5-video-manual", "pan-africanism-skit", "7ma-show-podcast"].includes(item.id) && (
+              {item.id === "assistive-technology-makerspace" && (
+                <Image
+                  src="/images/beyond-the-lab/makerspace-cover.jpg"
+                  alt={item.title}
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
+              {item.id === "7ma-show-podcast" && (
+                <Image
+                  src="/images/beyond-the-lab/7MA.jpg"
+                  alt={item.title}
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
+              {item.id === "flir-c5-video-manual" && (
+                <div style={{ 
+                  position: "relative",
+                  width: "100%",
+                  height: "100%",
+                  backgroundColor: "#1a1a1a",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: "white"
+                }}>
+                  <div style={{ textAlign: "center" }}>
+                    <div style={{ fontSize: "48px", marginBottom: "8px" }}>🎥</div>
+                    <div style={{ fontSize: "14px", fontWeight: "600" }}>FLIR C5 Video</div>
+                  </div>
+                </div>
+              )}
+              {item.id === "pan-africanism-skit" && (
+                <div style={{ 
+                  position: "relative",
+                  width: "100%",
+                  height: "100%",
+                  backgroundColor: "#1a1a1a",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: "white"
+                }}>
+                  <div style={{ textAlign: "center" }}>
+                    <div style={{ fontSize: "48px", marginBottom: "8px" }}>🎭</div>
+                    <div style={{ fontSize: "14px", fontWeight: "600" }}>Pan-Africanism Skit</div>
+                  </div>
+                </div>
+              )}
+              {!["tedx-ashesi-speaker", "army-students-club-curator", "aftgonosia-service-learning", "msmiles-stem-curriculum", "ashesi-research-club-president", "assistive-technology-makerspace", "7ma-show-podcast", "flir-c5-video-manual", "pan-africanism-skit"].includes(item.id) && (
                 <Image
                   src="/images/beyond-the-lab/default.jpg"
                   alt={item.title}

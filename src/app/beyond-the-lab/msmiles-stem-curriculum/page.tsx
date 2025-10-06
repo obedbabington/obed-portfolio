@@ -69,7 +69,7 @@ export default function MSmilesSTEMCurriculum() {
           boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)"
         }}>
           <Image
-            src="/images/beyond-the-lab/msmiles.jpg"
+            src="/images/beyond-the-lab/msmiles-cover.jpg"
             alt="MSmiles - STEM Curriculum Design"
             fill
             style={{ objectFit: "cover" }}
@@ -87,6 +87,47 @@ export default function MSmilesSTEMCurriculum() {
         <Text variant="body-default-l">
           Notably, I designed the STEM curriculum for the Smiles Launch at Christ Faith Foster Home in Accra, Ghana, where I guided students through a hands-on design challenge to introduce them to design thinking. This experience not only strengthened my skills in curriculum design, research, and facilitation, but also deepened my commitment to using STEM education as a tool for empowerment and social change.
         </Text>
+      </Column>
+
+      {/* Image Gallery */}
+      <Column marginTop="xl" paddingX="l" gap="l">
+        <Heading variant="heading-strong-l">Gallery</Heading>
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+          gap: "1.5rem"
+        }}>
+          <div style={{ 
+            position: "relative", 
+            width: "100%", 
+            height: "250px",
+            borderRadius: "12px",
+            overflow: "hidden",
+            boxShadow: "0 4px 16px rgba(0, 0, 0, 0.1)"
+          }}>
+            <Image
+              src="/images/beyond-the-lab/msmiles-cover.jpg"
+              alt="MSmiles - Cover"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+          <div style={{ 
+            position: "relative", 
+            width: "100%", 
+            height: "250px",
+            borderRadius: "12px",
+            overflow: "hidden",
+            boxShadow: "0 4px 16px rgba(0, 0, 0, 0.1)"
+          }}>
+            <Image
+              src="/images/beyond-the-lab/msmiles-2.jpg"
+              alt="MSmiles - Activity 2"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+        </div>
       </Column>
 
       <style dangerouslySetInnerHTML={{
