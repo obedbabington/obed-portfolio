@@ -69,7 +69,7 @@ export default function AshesiResearchClubPresident() {
           boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)"
         }}>
           <Image
-            src="/images/beyond-the-lab/default.jpg"
+            src="/images/beyond-the-lab/research-club-cover.jpg"
             alt="President, Ashesi Research Club"
             fill
             style={{ objectFit: "cover" }}
@@ -91,6 +91,62 @@ export default function AshesiResearchClubPresident() {
         <Text variant="body-default-l">
           Directed the development of workshops, championed research-driven projects, and supported student-led research proposals, resulting in enhanced academic engagement and increased research output on campus.
         </Text>
+      </Column>
+
+      {/* Image Gallery */}
+      <Column marginTop="xl" paddingX="l" gap="l">
+        <Heading variant="heading-strong-l">Gallery</Heading>
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+          gap: "1.5rem"
+        }}>
+          <div style={{ 
+            position: "relative", 
+            width: "100%", 
+            height: "250px",
+            borderRadius: "12px",
+            overflow: "hidden",
+            boxShadow: "0 4px 16px rgba(0, 0, 0, 0.1)"
+          }}>
+            <Image
+              src="/images/beyond-the-lab/research-club-cover.jpg"
+              alt="Ashesi Research Club - Cover"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+          <div style={{ 
+            position: "relative", 
+            width: "100%", 
+            height: "250px",
+            borderRadius: "12px",
+            overflow: "hidden",
+            boxShadow: "0 4px 16px rgba(0, 0, 0, 0.1)"
+          }}>
+            <Image
+              src="/images/beyond-the-lab/research-club-2.jpg"
+              alt="Ashesi Research Club - Activity 2"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+          <div style={{ 
+            position: "relative", 
+            width: "100%", 
+            height: "250px",
+            borderRadius: "12px",
+            overflow: "hidden",
+            boxShadow: "0 4px 16px rgba(0, 0, 0, 0.1)"
+          }}>
+            <Image
+              src="/images/beyond-the-lab/research-club-3.jpg"
+              alt="Ashesi Research Club - Activity 3"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+        </div>
       </Column>
 
       <style dangerouslySetInnerHTML={{

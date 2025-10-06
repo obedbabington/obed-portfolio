@@ -280,7 +280,15 @@ export default function BeyondTheLab() {
                   style={{ objectFit: "cover" }}
                 />
               )}
-              {!["tedx-ashesi-speaker", "army-students-club-curator", "aftgonosia-service-learning", "msmiles-stem-curriculum", "assistive-technology-makerspace", "flir-c5-video-manual", "pan-africanism-skit", "7ma-show-podcast"].includes(item.id) && (
+              {item.id === "ashesi-research-club-president" && (
+                <Image
+                  src="/images/beyond-the-lab/research-club-cover.jpg"
+                  alt={item.title}
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
+              {!["tedx-ashesi-speaker", "army-students-club-curator", "aftgonosia-service-learning", "msmiles-stem-curriculum", "ashesi-research-club-president", "assistive-technology-makerspace", "flir-c5-video-manual", "pan-africanism-skit", "7ma-show-podcast"].includes(item.id) && (
                 <Image
                   src="/images/beyond-the-lab/default.jpg"
                   alt={item.title}
