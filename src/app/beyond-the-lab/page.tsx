@@ -266,7 +266,7 @@ export default function BeyondTheLab() {
               )}
               {item.id === "aftgonosia-service-learning" && (
                 <Image
-                  src="/images/beyond-the-lab/aftgonosia.jpg"
+                  src="/images/beyond-the-lab/aftognosia-cover.jpg"
                   alt={item.title}
                   fill
                   style={{ objectFit: "cover" }}

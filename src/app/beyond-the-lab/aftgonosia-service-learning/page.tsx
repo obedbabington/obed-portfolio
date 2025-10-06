@@ -69,7 +69,7 @@ export default function AftgonosiaServiceLearning() {
           boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)"
         }}>
           <Image
-            src="/images/beyond-the-lab/aftgonosia.jpg"
+            src="/images/beyond-the-lab/aftognosia-cover.jpg"
             alt="Aftgonosia - Career Development Initiative"
             fill
             style={{ objectFit: "cover" }}
@@ -99,6 +99,47 @@ export default function AftgonosiaServiceLearning() {
         <Text variant="body-default-l">
           Through this experience, I strengthened my skills in active listening, facilitation, and stakeholder engagement, while deepening my appreciation of how targeted interventions can empower young people to make more informed, fulfilling decisions about their futures.
         </Text>
+      </Column>
+
+      {/* Image Gallery */}
+      <Column marginTop="xl" paddingX="l" gap="l">
+        <Heading variant="heading-strong-l">Gallery</Heading>
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+          gap: "1.5rem"
+        }}>
+          <div style={{ 
+            position: "relative", 
+            width: "100%", 
+            height: "250px",
+            borderRadius: "12px",
+            overflow: "hidden",
+            boxShadow: "0 4px 16px rgba(0, 0, 0, 0.1)"
+          }}>
+            <Image
+              src="/images/beyond-the-lab/aftognosia-cover.jpg"
+              alt="Aftgonosia - Cover"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+          <div style={{ 
+            position: "relative", 
+            width: "100%", 
+            height: "250px",
+            borderRadius: "12px",
+            overflow: "hidden",
+            boxShadow: "0 4px 16px rgba(0, 0, 0, 0.1)"
+          }}>
+            <Image
+              src="/images/beyond-the-lab/aftognosia-2.jpg"
+              alt="Aftgonosia - Activity 2"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+        </div>
       </Column>
 
       <style dangerouslySetInnerHTML={{
