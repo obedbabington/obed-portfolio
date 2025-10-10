@@ -16,6 +16,13 @@ export async function generateMetadata() {
 export default function NonMajorResearch() {
   const projects = [
     {
+      id: "betterhiring-ai-hiring-management",
+      title: "BetterHiring: Automating Your Hiring Management",
+      date: "Jan - May 2024",
+      summary: "Designed and evaluated an AI-driven hiring management solution for Ashesi University's Computer Science and Information Systems (CSIS) department, specifically targeting the recruitment of National Service Personnel (NSP).",
+      image: "betterhiring-cover.png"
+    },
+    {
       id: "solar-panel-soiling",
       title: "Estimating the Impact of Soiling on Solar Panels",
       date: "Jan 2023 - May 2023",
@@ -42,13 +49,6 @@ export default function NonMajorResearch() {
       date: "Nov 2022 - Dec 2022",
       summary: "Collaborated on a project exploring stage-structured predator–prey systems using mathematical modeling techniques.",
       image: "Image 25-08-2025 at 10.33 PM.jpeg"
-    },
-    {
-      id: "betterhiring-ai-hiring-management",
-      title: "BetterHiring: Automating Your Hiring Management",
-      date: "2024",
-      summary: "Designed and evaluated an AI-driven hiring management solution for Ashesi University's Computer Science and Information Systems (CSIS) department, specifically targeting the recruitment of National Service Personnel (NSP).",
-      image: "betterhiring-cover.png"
     }
   ];
 

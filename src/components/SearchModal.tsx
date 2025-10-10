@@ -100,7 +100,7 @@ const searchData: SearchItem[] = [
     section: "Research",
     href: "/research/non-major/betterhiring-ai-hiring-management",
     category: "Non-Major Research",
-    date: "2024"
+    date: "Jan - May 2024"
   },
   // Beyond The Lab
   {

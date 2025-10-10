@@ -170,9 +170,9 @@ const about: About = {
         logo: "/images/ashesi_logo.png",
         description: (
           <>
-            <span style={{ color: '#10b981' }}>B.Sc. (Hons) Computer Engineering</span><br />
-            <span style={{ color: '#10b981' }}>Cumulative GPA: 3.84/4.0</span><br />
-            <span style={{ color: '#10b981' }}>2021–2025</span><br /><br />
+            <span style={{ color: 'var(--brand-medium)' }}>B.Sc. (Hons) Computer Engineering</span><br />
+            <span style={{ color: 'var(--brand-medium)' }}>Cumulative GPA: 3.84/4.0</span><br />
+            <span style={{ color: 'var(--brand-medium)' }}>2021–2025</span><br /><br />
             <strong>Relevant Courses:</strong> Embedded Systems, Digital System Design, Internet of Things (IoT), Deep Learning, Circuits and Electronics, Data Structures and Algorithms, Object-Oriented Programming
           </>
         ),
