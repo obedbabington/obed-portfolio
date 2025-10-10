@@ -175,9 +175,22 @@ export default function About() {
               <Column fillWidth gap="l" marginBottom="40">
                 {about.studies.institutions.map((institution, index) => (
                   <Column key={`${institution.name}-${index}`} fillWidth gap="4">
-                    <Text id={institution.name} variant="heading-strong-l">
-                      {institution.name}
-                    </Text>
+                    <Row align="center" gap="m">
+                      {institution.logo && (
+                        <img 
+                          src={institution.logo} 
+                          alt={`${institution.name} logo`}
+                          style={{ 
+                            height: '32px', 
+                            width: 'auto',
+                            objectFit: 'contain'
+                          }}
+                        />
+                      )}
+                      <Text id={institution.name} variant="heading-strong-l">
+                        {institution.name}
+                      </Text>
+                    </Row>
                     <Text variant="heading-default-xs" onBackground="neutral-weak">
                       {institution.description}
                     </Text>

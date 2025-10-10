@@ -167,6 +167,7 @@ const about: About = {
     institutions: [
       {
         name: "Ashesi University",
+        logo: "/images/ashesi_logo.png",
         description: (
           <>
             B.Sc. (Hons) Computer Engineering<br />
