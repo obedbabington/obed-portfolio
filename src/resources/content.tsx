@@ -94,13 +94,13 @@ const about: About = {
         role: "Research Assistant",
         achievements: [
           <>
-            Conducting research on embedded machine learning (TinyML) solutions for deploying AI models on resource-constrained microcontrollers and SoC for local applications.
+            Conducting research on <strong>embedded machine learning (TinyML)</strong> solutions for deploying AI models on <strong>resource-constrained microcontrollers and SoC</strong> for local applications.
           </>,
           <>
-            Designing and implementing hardware acceleration strategies for neural network inference using FPGAs (Xilinx Artix-7, ZYNQ-7000) with custom accelerators and co-design methodologies involving softcore processors (MicroBlaze).
+            Designing and implementing <strong>hardware acceleration strategies</strong> for neural network inference using <strong>FPGAs (Xilinx Artix-7, ZYNQ-7000)</strong> with custom accelerators and <strong>co-design methodologies</strong> involving softcore processors (<strong>MicroBlaze</strong>).
           </>,
           <>
-            Benchmarking performance across microcontrollers and FPGA-based accelerators, analyzing latency and energy efficiency trade-offs.
+            Benchmarking performance across microcontrollers and FPGA-based accelerators, analyzing <strong>latency</strong> and <strong>energy efficiency trade-offs</strong>.
           </>,
         ],
         images: [],
@@ -111,13 +111,13 @@ const about: About = {
         role: "Research Consultant (Intern)",
         achievements: [
           <>
-            Through the AMRE Program at the College of Wooster, collaborated with a research team to design and prototype an Energy Management Co-Pilot using large language models (LLMs) and autonomous agent architectures.
+            Through the AMRE Program at the College of Wooster, collaborated with a research team to design and prototype an <strong>Energy Management Co-Pilot</strong> using <strong>large language models (LLMs)</strong> and <strong>autonomous agent architectures</strong>.
           </>,
           <>
-            Developed an evaluation pipeline leveraging LlamaIndex's CorrectnessEvaluator to assess agent responses against ground-truth datasets across multiple query categories.
+            Developed an evaluation pipeline leveraging LlamaIndex's <strong>CorrectnessEvaluator</strong> to assess agent responses against ground-truth datasets across multiple query categories.
           </>,
           <>
-            Delivered a 35-minute final presentation to Schneider Electric's Sustainability Business team and co-authored a 66-page technical report documenting research findings, methodologies, and recommendations.
+            Delivered a <strong>35-minute final presentation</strong> to Schneider Electric's Sustainability Business team and co-authored a <strong>66-page technical report</strong> documenting research findings, methodologies, and recommendations.
           </>,
         ],
         images: [],
@@ -128,13 +128,13 @@ const about: About = {
         role: "Undergraduate Research Assistant",
         achievements: [
           <>
-            Investigated hardware acceleration of neural network inference using a Xilinx Basys 3 Artix-7 FPGA in parallel communication with microcontroller units (MCUs).
+            Investigated hardware acceleration of <strong>neural network inference</strong> using a Xilinx Basys 3 Artix-7 FPGA in parallel communication with microcontroller units (MCUs).
           </>,
           <>
-            Interfaced the FPGA with both an 8-bit Arduino Uno and a 32-bit Freedom KL25Z MCU, analyzing the effect of MCU bit-width architecture on inference latency.
+            Interfaced the FPGA with both an 8-bit Arduino Uno and a 32-bit Freedom KL25Z MCU, analyzing the effect of MCU <strong>bit-width architecture</strong> on inference latency.
           </>,
           <>
-            Demonstrated up to 86% performance improvement in inference execution time across both MCU platforms through FPGA-based acceleration.
+            Demonstrated up to <strong>86% performance improvement</strong> in inference execution time across both MCU platforms through FPGA-based acceleration.
           </>,
         ],
         images: [],
@@ -145,10 +145,10 @@ const about: About = {
         role: "Telematics Engineer (Intern)",
         achievements: [
           <>
-            Contributed to the launch of Fleet360, a fleet management platform designed to optimize vehicle operations in Ghana.
+            Contributed to the launch of <strong>Fleet360</strong>, a fleet management platform designed to optimize vehicle operations in Ghana.
           </>,
           <>
-            Configured and synchronized telematics devices with company servers and APIs, ensuring reliable real-time data streaming.
+            Configured and synchronized telematics devices with company servers and APIs, ensuring reliable <strong>real-time data streaming</strong>.
           </>,
           <>
             Maintained and managed a ledger of SIM cards for device connectivity, supporting data integration with Swoove360's API endpoints.
