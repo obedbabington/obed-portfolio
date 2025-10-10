@@ -78,20 +78,20 @@ export default function AshesiResearchClubPresident() {
         </div>
       </Column>
 
-      {/* Content */}
-      <Column paddingX="l" gap="l">
-        <Text variant="body-default-l">
-          Served as the first active president of the Ashesi Research Club to expand students' understanding of the research landscape and build their research skills to provide groundbreaking insights for developing innovative, industry-leading solutions for the continent.
-        </Text>
+       {/* Content */}
+       <Column paddingX="l" gap="l" maxWidth="l" style={{ margin: "0 auto" }}>
+         <Text variant="body-default-l" style={{ maxWidth: "100%", lineHeight: "1.6" }}>
+           Served as the first active president of the Ashesi Research Club to expand students' understanding of the research landscape and build their research skills to provide groundbreaking insights for developing innovative, industry-leading solutions for the continent.
+         </Text>
 
-        <Text variant="body-default-l">
-          Under the auspices of the provost's office, I co-oversaw the curation of the first-ever campus-wide research festival under the theme, "Exploring New Horizons" to celebrate student scholarship and innovation and ignite their passions for research and the opportunities it offers.
-        </Text>
+         <Text variant="body-default-l" style={{ maxWidth: "100%", lineHeight: "1.6" }}>
+           Under the auspices of the provost's office, I co-oversaw the curation of the first-ever campus-wide research festival under the theme, "Exploring New Horizons" to celebrate student scholarship and innovation and ignite their passions for research and the opportunities it offers.
+         </Text>
 
-        <Text variant="body-default-l">
-          Directed the development of workshops, championed research-driven projects, and supported student-led research proposals, resulting in enhanced academic engagement and increased research output on campus.
-        </Text>
-      </Column>
+         <Text variant="body-default-l" style={{ maxWidth: "100%", lineHeight: "1.6" }}>
+           Directed the development of workshops, championed research-driven projects, and supported student-led research proposals, resulting in enhanced academic engagement and increased research output on campus.
+         </Text>
+       </Column>
 
       {/* Image Gallery */}
       <Column marginTop="xl" paddingX="l" gap="l">

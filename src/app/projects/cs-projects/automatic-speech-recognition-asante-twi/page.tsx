@@ -35,14 +35,6 @@ export default function AutomaticSpeechRecognitionAsanteTwi() {
       {/* Back Button */}
       <Row marginBottom="l" align="center" gap="s">
         <Icon name="arrowRight" style={{ transform: "rotate(180deg)" }} />
-        <Text 
-          as="a" 
-          href="/projects/cs-projects" 
-          variant="body-default-s"
-          style={{ textDecoration: "none", color: "var(--neutral-weak)" }}
-        >
-          Back to CS Projects
-        </Text>
       </Row>
 
       {/* Page Title */}

@@ -39,7 +39,7 @@ export default function MorseCodeDecoder() {
           variant="body-default-s"
           style={{ textDecoration: "none", color: "var(--neutral-weak)" }}
         >
-          ← Back to Engineering Projects
+          ←
         </Text>
       </Column>
 

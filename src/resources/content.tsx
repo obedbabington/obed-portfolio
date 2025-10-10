@@ -185,7 +185,7 @@ const about: About = {
       {
         title: "Hardware",
         description: (
-          <>ARM Cortex-M (STM32), FPGA (Xilinx Artix-7, ZYNQ-7000), Arduino, ESP32, Oscilloscopes, Signal Generators</>
+          <>ARM Cortex-M (STM32), FPGA (Xilinx Artix-7, ZYNQ-7000), Arduino, ESP32, Raspberry Pi, Oscilloscopes, Signal Generators</>
         ),
       },
       {

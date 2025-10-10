@@ -154,7 +154,10 @@ export default function CSProjects() {
               position: "relative",
               width: "100%",
               height: "250px",
-              backgroundColor: "#f5f5f5"
+              backgroundColor: "#f5f5f5",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
             }}>
               {project.id === "automatic-speech-recognition-asante-twi" && (
                 <Image
@@ -169,7 +172,7 @@ export default function CSProjects() {
                   src="/images/projects/image-recognition.png"
                   alt={project.title}
                   fill
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: "contain" }}
                 />
               )}
               {project.id === "python-pathfinder" && (
@@ -177,7 +180,7 @@ export default function CSProjects() {
                   src="/images/projects/pathfinding.png"
                   alt={project.title}
                   fill
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: "contain" }}
                 />
               )}
             </div>

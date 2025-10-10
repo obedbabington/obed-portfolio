@@ -35,14 +35,6 @@ export default function PythonPathfinder() {
       {/* Back Button */}
       <Row marginBottom="l" align="center" gap="s">
         <Icon name="arrowRight" style={{ transform: "rotate(180deg)" }} />
-        <Text 
-          as="a" 
-          href="/projects/cs-projects" 
-          variant="body-default-s"
-          style={{ textDecoration: "none", color: "var(--neutral-weak)" }}
-        >
-          Back to CS Projects
-        </Text>
       </Row>
 
       {/* Page Title */}
@@ -79,29 +71,29 @@ export default function PythonPathfinder() {
       </Column>
 
       {/* Content */}
-      <Column paddingX="l" gap="l">
-        <Text variant="body-default-l">
+      <Column paddingX="l" gap="l" maxWidth="l" style={{ margin: "0 auto" }}>
+        <Text variant="body-default-l" style={{ maxWidth: "100%", lineHeight: "1.6" }}>
           In a three-member team, I co-developed Python PathFinder, a program that computes the shortest path between two points while navigating obstacles. We implemented the A* search algorithm, combining g-scores (path cost) and h-scores (Manhattan distance heuristic), and optimized traversal using priority queues.
         </Text>
 
-        <Text variant="body-default-l">
+        <Text variant="body-default-l" style={{ maxWidth: "100%", lineHeight: "1.6" }}>
           For visualization, I designed an interactive grid-based interface in Pygame, where users could define start/end nodes and dynamically place obstacles. This not only showcased the efficiency of the algorithm but also provided a clear visual demonstration of path exploration and selection.
         </Text>
 
         {/* Algorithm Implementation */}
         <Card padding="l" radius="m" shadow="m">
-          <Column gap="m">
+          <Column gap="m" maxWidth="l" style={{ margin: "0 auto" }}>
             <Heading variant="heading-strong-l">Algorithm Implementation</Heading>
-            <Text variant="body-default-m">
+            <Text variant="body-default-m" style={{ maxWidth: "100%", lineHeight: "1.6" }}>
               <strong>A* Search Algorithm:</strong> Implemented the A* pathfinding algorithm combining g-scores (actual path cost from start) and h-scores (heuristic estimate to goal using Manhattan distance).
             </Text>
-            <Text variant="body-default-m">
+            <Text variant="body-default-m" style={{ maxWidth: "100%", lineHeight: "1.6" }}>
               <strong>Priority Queue Optimization:</strong> Used priority queues to efficiently manage and traverse nodes based on their f-scores (g + h) for optimal pathfinding performance.
             </Text>
-            <Text variant="body-default-m">
+            <Text variant="body-default-m" style={{ maxWidth: "100%", lineHeight: "1.6" }}>
               <strong>Heuristic Function:</strong> Manhattan distance heuristic to estimate the cost from any node to the goal, ensuring efficient path exploration.
             </Text>
-            <Text variant="body-default-m">
+            <Text variant="body-default-m" style={{ maxWidth: "100%", lineHeight: "1.6" }}>
               <strong>Obstacle Navigation:</strong> Dynamic obstacle placement and avoidance system allowing users to create complex pathfinding scenarios.
             </Text>
           </Column>

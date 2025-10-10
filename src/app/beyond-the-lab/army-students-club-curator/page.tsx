@@ -35,14 +35,6 @@ export default function ArmyStudentsClubCurator() {
       {/* Back Button */}
       <Row marginBottom="l" align="center" gap="s">
         <Icon name="arrowRight" style={{ transform: "rotate(180deg)" }} />
-        <Text 
-          as="a" 
-          href="/beyond-the-lab" 
-          variant="body-default-s"
-          style={{ textDecoration: "none", color: "var(--neutral-weak)" }}
-        >
-          Back to Beyond The Lab
-        </Text>
       </Row>
 
       {/* Page Header */}

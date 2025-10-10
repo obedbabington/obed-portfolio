@@ -35,14 +35,6 @@ export default function GenderRecognitionAudioSignals() {
       {/* Back Button */}
       <Row marginBottom="l" align="center" gap="s">
         <Icon name="arrowRight" style={{ transform: "rotate(180deg)" }} />
-        <Text 
-          as="a" 
-          href="/projects/cs-projects" 
-          variant="body-default-s"
-          style={{ textDecoration: "none", color: "var(--neutral-weak)" }}
-        >
-          Back to CS Projects
-        </Text>
       </Row>
 
       {/* Page Title */}
@@ -79,29 +71,29 @@ export default function GenderRecognitionAudioSignals() {
       </Column>
 
       {/* Content */}
-      <Column paddingX="l" gap="l">
-        <Text variant="body-default-l">
+      <Column paddingX="l" gap="l" maxWidth="l" style={{ margin: "0 auto" }}>
+        <Text variant="body-default-l" style={{ maxWidth: "100%", lineHeight: "1.6" }}>
           As part of a team project in Signals and Systems, we developed a gender recognition system from audio signals using MATLAB and digital signal processing techniques. Together, we designed a pipeline that began with audio acquisition and filtering using a Butterworth filter, followed by feature extraction through FFT to isolate fundamental frequencies for classification.
         </Text>
 
-        <Text variant="body-default-l">
+        <Text variant="body-default-l" style={{ maxWidth: "100%", lineHeight: "1.6" }}>
           We implemented both a user-defined threshold-based classifier (165 Hz cutoff) and MATLAB's in-built pitch function, allowing us to compare optimization strategies. To make the system interactive, we collaborated on building a MATLAB App Designer GUI, integrating modules for audio upload, playback, waveform visualization, FFT spectrum plotting, and real-time gender classification output.
         </Text>
 
         {/* Technical Approach */}
         <Card padding="l" radius="m" shadow="m">
-          <Column gap="m">
+          <Column gap="m" maxWidth="l" style={{ margin: "0 auto" }}>
             <Heading variant="heading-strong-l">Technical Implementation</Heading>
-            <Text variant="body-default-m">
+            <Text variant="body-default-m" style={{ maxWidth: "100%", lineHeight: "1.6" }}>
               <strong>Signal Processing Pipeline:</strong> Audio acquisition and filtering using Butterworth filter for noise reduction and signal conditioning.
             </Text>
-            <Text variant="body-default-m">
+            <Text variant="body-default-m" style={{ maxWidth: "100%", lineHeight: "1.6" }}>
               <strong>Feature Extraction:</strong> FFT-based feature extraction to isolate fundamental frequencies for gender classification.
             </Text>
-            <Text variant="body-default-m">
+            <Text variant="body-default-m" style={{ maxWidth: "100%", lineHeight: "1.6" }}>
               <strong>Dual Classification Approaches:</strong> Implemented both threshold-based classifier (165 Hz cutoff) and MATLAB's in-built pitch function for comparison.
             </Text>
-            <Text variant="body-default-m">
+            <Text variant="body-default-m" style={{ maxWidth: "100%", lineHeight: "1.6" }}>
               <strong>Interactive GUI:</strong> MATLAB App Designer interface with audio upload, playback, and real-time visualization capabilities.
             </Text>
           </Column>
@@ -109,9 +101,9 @@ export default function GenderRecognitionAudioSignals() {
 
         {/* GUI Features */}
         <Card padding="l" radius="m" shadow="m">
-          <Column gap="m">
+          <Column gap="m" maxWidth="l" style={{ margin: "0 auto" }}>
             <Heading variant="heading-strong-l">GUI Development</Heading>
-            <Text variant="body-default-m">
+            <Text variant="body-default-m" style={{ maxWidth: "100%", lineHeight: "1.6" }}>
               The MATLAB App Designer GUI included comprehensive modules for:
             </Text>
             <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
@@ -137,12 +129,12 @@ export default function GenderRecognitionAudioSignals() {
 
         {/* Key Achievements */}
         <Card padding="l" radius="m" shadow="m">
-          <Column gap="m">
+          <Column gap="m" maxWidth="l" style={{ margin: "0 auto" }}>
             <Heading variant="heading-strong-l">Key Achievements</Heading>
-            <Text variant="body-default-m">
+            <Text variant="body-default-m" style={{ maxWidth: "100%", lineHeight: "1.6" }}>
               The project not only deepened our collective grasp of signal processing in speech recognition, but also highlighted practical challenges such as sensitivity to pitch variations and background noise—sparking discussions on potential improvements like MFCC-based feature extraction or dataset-driven machine learning models.
             </Text>
-            <Text variant="body-default-m">
+            <Text variant="body-default-m" style={{ maxWidth: "100%", lineHeight: "1.6" }}>
               This division of work allowed each team member to contribute across DSP implementation, GUI design, and testing, while reinforcing our understanding of concepts like filtering, sampling, and feature extraction.
             </Text>
             <Text variant="body-default-m">
@@ -156,9 +148,9 @@ export default function GenderRecognitionAudioSignals() {
 
         {/* Technologies & Report */}
         <Card padding="l" radius="m" shadow="m">
-          <Column gap="m">
+          <Column gap="m" maxWidth="l" style={{ margin: "0 auto" }}>
             <Heading variant="heading-strong-l">Technologies & Report</Heading>
-            <Text variant="body-default-m">
+            <Text variant="body-default-m" style={{ maxWidth: "100%", lineHeight: "1.6" }}>
               <strong>Tools & Technologies:</strong> MATLAB, App Designer, FFT, Butterworth Filter, Signal Processing, GUI Development
             </Text>
           </Column>
