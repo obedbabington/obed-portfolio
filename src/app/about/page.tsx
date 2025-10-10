@@ -181,7 +181,7 @@ export default function About() {
                           src={institution.logo} 
                           alt={`${institution.name} logo`}
                           style={{ 
-                            height: '32px', 
+                            height: '40px', 
                             width: 'auto',
                             objectFit: 'contain'
                           }}
