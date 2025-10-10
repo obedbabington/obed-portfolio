@@ -34,7 +34,7 @@ export default function FPGANeuralNetworks() {
       />
       
       {/* Project Header */}
-      <Column marginBottom="xl" paddingX="l" align="center">
+      <Column marginBottom="xl" paddingX="l" align="center" marginTop="l">
         <Heading marginBottom="l" variant="heading-strong-xl" align="center">
           Accelerating Embedded Neural Network Inference on FPGA Softcore Processors
         </Heading>

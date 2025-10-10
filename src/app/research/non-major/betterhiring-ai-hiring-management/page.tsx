@@ -34,7 +34,7 @@ export default function BetterHiringAIHiringManagement() {
       />
       
       {/* Project Header */}
-      <Column marginBottom="xl" paddingX="l" align="center">
+      <Column marginBottom="xl" paddingX="l" align="center" marginTop="l">
         <Heading marginBottom="l" variant="heading-strong-xl" align="center">
           BetterHiring: Automating Your Hiring Management
         </Heading>

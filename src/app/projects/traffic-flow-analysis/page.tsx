@@ -32,7 +32,7 @@ export default function TrafficFlowAnalysis() {
       />
       
       {/* Project Header */}
-      <Column marginBottom="xl" paddingX="l" align="center">
+      <Column marginBottom="xl" paddingX="l" align="center" marginTop="l">
         <Heading marginBottom="l" variant="heading-strong-xl" align="center">
           Modelling & Analyzing the Traffic Flow Network of Ashesi University's Canteen with Linear Algebra
         </Heading>

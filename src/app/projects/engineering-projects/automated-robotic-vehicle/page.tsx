@@ -31,19 +31,8 @@ export default function AutomatedRoboticVehicle() {
         }}
       />
 
-      {/* Back Button */}
-      <Column marginBottom="l" paddingX="l">
-        <Text 
-          as="a" 
-          href="/projects/engineering-projects" 
-          variant="body-default-s"
-          style={{ textDecoration: "none", color: "var(--neutral-weak)" }}
-        >
-          ←
-        </Text>
-      </Column>
-
-      <Column marginBottom="xl" paddingX="l" align="center">
+      {/* Project Header */}
+      <Column marginBottom="xl" paddingX="l" align="center" marginTop="l">
         <Heading marginBottom="l" variant="heading-strong-xl" align="center">
           Automated Robotic Vehicle
         </Heading>
@@ -61,7 +50,7 @@ export default function AutomatedRoboticVehicle() {
           aspectRatio="16 / 9" 
           radius="m" 
           alt="Automated Robotic Vehicle" 
-          src="/images/projects/robot.jpeg" 
+          src="/images/robot.jpeg" 
         />
       </Column>
 

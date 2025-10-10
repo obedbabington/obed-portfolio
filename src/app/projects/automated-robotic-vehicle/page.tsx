@@ -31,7 +31,7 @@ export default function AutomatedRoboticVehicle() {
         }}
       />
 
-      <Column marginBottom="xl" paddingX="l" align="center">
+      <Column marginBottom="xl" paddingX="l" align="center" marginTop="l">
         <Heading marginBottom="l" variant="heading-strong-xl" align="center">
           Automated Robotic Vehicle
         </Heading>
@@ -49,7 +49,7 @@ export default function AutomatedRoboticVehicle() {
           aspectRatio="16 / 9" 
           radius="m" 
           alt="Automated Robotic Vehicle" 
-          src="/images/projects/robot.jpeg" 
+          src="/images/robot.jpeg" 
         />
       </Column>
 

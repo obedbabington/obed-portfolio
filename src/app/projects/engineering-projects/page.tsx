@@ -152,7 +152,7 @@ export default function EngineeringProjects() {
           // Map project images based on project ID
           const imageMap = {
             'morse-code-decoder': '/images/projects/morsecode.jpg',
-            'automated-robotic-vehicle': '/images/projects/robot.jpeg',
+            'automated-robotic-vehicle': '/images/robot.jpeg',
             'tennis-scoreboard': '/images/projects/tennis.jpeg',
             '16-bit-cpu': '/images/projects/logism.jpeg',
             '32-bit-mips-processor': '/images/projects/mips.png',
