@@ -142,7 +142,7 @@ export default function Projects() {
       {/* Project Description */}
       <Column marginBottom="xl" paddingX="l" align="center">
         <Text variant="body-default-l" align="center">
-          In my first year of undergraduate studies, I switched from electrical to computer engineering. This was attributed to a newfound fascination for the interplay of both hardware and software tools towards engineering innovation. Thus, I have amassed several project experiences in both the engineering, and computer sciences.
+          Switching majors from Electrical/Electronics Engineering to Computer Engineering was one of the best decisions I ever made. In taking both engineering and CS classes, my passion for hardware-software co-design only grew.
         </Text>
       </Column>
       
