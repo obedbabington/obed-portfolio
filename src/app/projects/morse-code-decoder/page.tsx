@@ -1,4 +1,4 @@
-import { Column, Heading, Meta, Schema, Text, Card, SmartLink, Media } from "@once-ui-system/core";
+import { Column, Heading, Meta, Schema, Text, Card, SmartLink, Media, Button } from "@once-ui-system/core";
 import { baseURL, about, person } from "@/resources";
 import { BackButton } from "@/components";
 
