@@ -22,8 +22,8 @@ export default function ArmEngageLeadership() {
         as="webPage"
         baseURL={baseURL}
         path="/beyond-the-lab/arm-engage-leadership"
-        title="ARM E(3)NGAGE Leadership - Beyond The Lab"
-        description="Research & Innovation Lead at Arm(E³)NGAGE Ashesi Student Club (2023-2024)"
+        title="Research & Innovation Lead, Arm (E³)NGAGE Ashesi Student Club - Beyond The Lab"
+        description="Research & Innovation Lead at Arm (E³)NGAGE Ashesi Student Club (2023-2024), leading engineering projects, fostering research culture, and curating student research articles."
         image={`/api/og/generate?title=${encodeURIComponent("ARM E(3)NGAGE Leadership")}`}
         author={{
           name: person.name,
@@ -57,6 +57,9 @@ export default function ArmEngageLeadership() {
         <Text variant="body-default-l" marginBottom="l">
           The Arm(E³)NGAGE Ashesi Student Club, a collaboration between ARM and Ashesi University, is responsible for educating Ashesi students on the world of IoT, Embedded systems, and their uses on ARM technology. In doing so, it hopes to foster innovation, entrepreneurship, and research using ARM products.
         </Text>
+        <Text variant="body-default-l" marginBottom="l">
+          As part of this role, I also took on the responsibility of curating and managing a network of student-developed research articles, developing editorial skills and content management strategies to support the academic research community within the university.
+        </Text>
       </Column>
 
       {/* Key Achievements */}
@@ -66,6 +69,9 @@ export default function ArmEngageLeadership() {
         </Text>
         <Text variant="body-default-l" marginBottom="m">
           Crafted a vibrant network of student researchers in engineering and computer science, leading to the production of five diverse research articles, and pioneering a research culture within the ARM E(3)NGAGE student club.
+        </Text>
+        <Text variant="body-default-l" marginBottom="m">
+          Reviewed and selected high-quality student research articles for publication, ensuring academic rigor and relevance while developing strong editorial and content management skills. Developed content strategies and presentation approaches to enhance research dissemination within the university community.
         </Text>
       </Column>
 

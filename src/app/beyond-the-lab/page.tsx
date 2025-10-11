@@ -30,28 +30,16 @@ export default function BeyondTheLab() {
     },
     {
       id: "arm-engage-leadership",
-      title: "Research & Innovation Lead, Arm(E³)NGAGE Ashesi Student Club",
+      title: "Research & Innovation Lead, Arm (E³)NGAGE Ashesi Student Club",
       date: "2023 - 2024",
       category: "Leadership",
-      summary: "Led club engineering projects and fostered a research culture, producing five diverse research articles and conducting Arduino C coding workshops.",
-      description: "The Arm(E³)NGAGE Ashesi Student Club, a collaboration between ARM and Ashesi University, is responsible for educating Ashesi students on the world of IoT, Embedded systems, and their uses on ARM technology. In doing so, it hopes to foster innovation, entrepreneurship, and research using ARM products.",
+      summary: "Led club engineering projects and fostered a research culture, producing five diverse research articles and conducting Arduino C coding workshops. Additionally, curated and managed a network of student-developed research articles, developing content management and editorial skills.",
+      description: "The Arm(E³)NGAGE Ashesi Student Club, a collaboration between ARM and Ashesi University, is responsible for educating Ashesi students on the world of IoT, Embedded systems, and their uses on ARM technology. In doing so, it hopes to foster innovation, entrepreneurship, and research using ARM products. As part of this role, I also took on the responsibility of curating and managing a network of student-developed research articles, developing editorial skills and content management strategies.",
       achievements: [
         "Led club engineering projects, notably an automated parking system. Responsibilities included conducting Arduino C coding workshops, introducing participants to GitHub for collaborative project development, and fostering algorithmic problem-solving skills. Additionally, I authored project documentation and problem design outlines.",
-        "Crafted a vibrant network of student researchers in engineering and computer science, leading to the production of five diverse research articles, and pioneering a research culture within the ARM E(3)NGAGE student club."
-      ]
-    },
-    {
-      id: "army-students-club-curator",
-      title: "Curating a Network of Student-Developed Research Articles (ARM-y Students' Club)",
-      date: "2023",
-      category: "Creative Management",
-      summary: "Led the curation and editing of student research articles for the ARM-y Students' Club, developing content management and editorial skills while supporting academic research dissemination.",
-      description: "As part of the ARM-y Students' Club, I took on the role of curating and managing a network of student-developed research articles. This project involved developing editorial skills, content management strategies, and supporting the academic research community within the university.",
-      achievements: [
-        "Reviewed and selected high-quality student research articles for publication, ensuring academic rigor and relevance.",
-        "Edited and refined articles to meet publication standards, developing strong editorial and content management skills.",
-        "Developed content strategies and presentation approaches to enhance research dissemination within the university community.",
-        "Fostered collaboration among student researchers, building a supportive academic network."
+        "Crafted a vibrant network of student researchers in engineering and computer science, leading to the production of five diverse research articles, and pioneering a research culture within the ARM E(3)NGAGE student club.",
+        "Reviewed and selected high-quality student research articles for publication, ensuring academic rigor and relevance while developing strong editorial and content management skills.",
+        "Developed content strategies and presentation approaches to enhance research dissemination within the university community, fostering collaboration among student researchers and building a supportive academic network."
       ]
     },
     {

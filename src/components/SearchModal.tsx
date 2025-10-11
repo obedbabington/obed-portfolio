@@ -114,21 +114,12 @@ const searchData: SearchItem[] = [
   },
   {
     id: "arm-engage-leadership",
-    title: "Research & Innovation Lead, Arm(E³)NGAGE Ashesi Student Club",
-    description: "Led club engineering projects and fostered a research culture, producing five diverse research articles and conducting Arduino C coding workshops.",
+    title: "Research & Innovation Lead, Arm (E³)NGAGE Ashesi Student Club",
+    description: "Led club engineering projects and fostered a research culture, producing five diverse research articles and conducting Arduino C coding workshops. Additionally, curated and managed a network of student-developed research articles, developing content management and editorial skills.",
     section: "Beyond The Lab",
     href: "/beyond-the-lab/arm-engage-leadership",
     category: "Leadership",
     date: "2023 - 2024"
-  },
-  {
-    id: "army-students-club-curator",
-    title: "Curating a Network of Student-Developed Research Articles (ARM-y Students' Club)",
-    description: "Led the curation and editing of student research articles for the ARM-y Students' Club, developing content management and editorial skills.",
-    section: "Beyond The Lab",
-    href: "/beyond-the-lab/army-students-club-curator",
-    category: "Creative Management",
-    date: "2023"
   },
   {
     id: "ashesi-research-club-president",
