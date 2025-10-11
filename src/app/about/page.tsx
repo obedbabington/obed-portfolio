@@ -47,7 +47,7 @@ export default function About() {
   ];
   return (
     <Column maxWidth="m" className="fixed-header-spacing page-fade-in" style={{ position: "relative" }}>
-      {/* Background Video - Full Width */}
+      {/* Background Video - Full Page Coverage */}
       <div 
         className="about-video-background"
         style={{
@@ -65,12 +65,23 @@ export default function About() {
           loop
           muted
           playsInline
+          preload="auto"
           style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            opacity: 0.12,
+            opacity: 0.08,
             filter: "blur(1px)"
+          }}
+          onLoadedData={(e) => {
+            e.currentTarget.play();
+          }}
+          onEnded={(e) => {
+            e.currentTarget.currentTime = 0;
+            e.currentTarget.play();
           }}
         >
           <source src="/videos/binary.mp4" type="video/mp4" />

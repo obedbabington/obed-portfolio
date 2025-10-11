@@ -42,10 +42,13 @@ main, [role="main"], .main-content {
 }
 
 .about-video-background video {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.12;
+  opacity: 0.08;
   filter: blur(1px);
   transition: opacity 0.3s ease;
 }
@@ -59,9 +62,18 @@ main, [role="main"], .main-content {
 /* Mobile adjustments for video background */
 @media (max-width: 768px) {
   .about-video-background video {
-    opacity: 0.08;
+    opacity: 0.06;
     filter: blur(2px);
   }
+}
+
+/* Ensure video plays continuously */
+.about-video-background video::-webkit-media-controls {
+  display: none !important;
+}
+
+.about-video-background video::-webkit-media-controls-panel {
+  display: none !important;
 }
 
 /* Reduce motion for accessibility */
@@ -119,23 +131,30 @@ main, [role="main"], .main-content {
   padding-top: 80px;
 }
 
-/* Back button spacing adjustments */
-.fixed-header-spacing:has(.back-button) {
-  padding-top: 120px;
+/* Back button styling */
+.back-button {
+  position: fixed !important;
+  top: 100px !important;
+  left: 24px !important;
+  z-index: 1000 !important;
+  width: 40px !important;
+  height: 40px !important;
+  padding: 8px !important;
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+.back-button:hover {
+  background-color: rgba(0, 0, 0, 0.9) !important;
+  transform: scale(1.05) !important;
 }
 
 @media (max-width: 768px) {
-  .fixed-header-spacing {
-    padding-top: 80px;
-  }
-  
-  .fixed-header-spacing:has(.back-button) {
-    padding-top: 100px;
-  }
-  
-  /* Additional mobile spacing for back button */
   .back-button {
-    top: 16px !important;
+    top: 90px !important;
     left: 16px !important;
     width: 36px !important;
     height: 36px !important;
@@ -143,14 +162,13 @@ main, [role="main"], .main-content {
   }
 }
 
-/* Fallback for browsers without :has() support - add class manually */
-.fixed-header-spacing.with-back-button {
-  padding-top: 120px;
-}
-
-@media (max-width: 768px) {
-  .fixed-header-spacing.with-back-button {
-    padding-top: 100px;
+@media (max-width: 480px) {
+  .back-button {
+    top: 85px !important;
+    left: 12px !important;
+    width: 32px !important;
+    height: 32px !important;
+    padding: 4px !important;
   }
 }
 

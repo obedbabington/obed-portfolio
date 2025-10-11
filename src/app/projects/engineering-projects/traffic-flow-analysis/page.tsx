@@ -31,18 +31,6 @@ export default function TrafficFlowAnalysis() {
         }}
       />
 
-      {/* Back Button */}
-      <Column marginBottom="l" paddingX="l">
-        <Text 
-          as="a" 
-          href="/projects/engineering-projects" 
-          variant="body-default-s"
-          style={{ textDecoration: "none", color: "var(--neutral-weak)" }}
-        >
-          ←
-        </Text>
-      </Column>
-
       <Column marginBottom="xl" paddingX="l" align="center" marginTop="l">
         <Heading marginBottom="l" variant="heading-strong-xl" align="center">
           Modelling & Analyzing the Traffic Flow Network of Ashesi University's Canteen with Linear Algebra
