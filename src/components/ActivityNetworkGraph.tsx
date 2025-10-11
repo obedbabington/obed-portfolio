@@ -68,16 +68,16 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
     { source: '7ma-show-podcast', target: 'arm-engage-leadership', strength: 0.3, type: 'timeline' },
   ];
 
-  // Category colors - all green shades
+  // Category colors - distinct colors for better accessibility
   const categoryColors: Record<string, string> = {
-    'Leadership': '#10B981',
-    'Public Speaking': '#059669',
-    'Community Service': '#047857',
-    'Education & Mentorship': '#065F46',
-    'Fellowship': '#064E3B',
-    'Videography': '#22C55E',
-    'Performance': '#16A34A',
-    'Podcast': '#15803D'
+    'Leadership': '#3B82F6',      // Dark blue
+    'Public Speaking': '#10B981',  // Green
+    'Community Service': '#FFFFFF', // White
+    'Education & Mentorship': '#1F2937', // Black
+    'Fellowship': '#EF4444',       // Red
+    'Videography': '#06B6D4',      // Cyan
+    'Performance': '#EC4899',      // Pink
+    'Podcast': '#F59E0B'           // Orange
   };
 
   // Connection type colors - green shades
@@ -112,10 +112,10 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
     const centerX = width / 2;
     const centerY = height / 2;
 
-    // Create nodes with initial positions
+    // Create nodes with initial positions - spread them out more
     const nodes: ActivityNode[] = activities.map((activity, index) => {
       const angle = (index / activities.length) * 2 * Math.PI;
-      const radius = Math.min(width, height) * 0.3;
+      const radius = Math.min(width, height) * 0.4; // Increased from 0.3 to 0.4
       return {
         ...activity,
         x: centerX + Math.cos(angle) * radius,
@@ -154,7 +154,11 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
       const radius = 18 + (node.title.length / 6);
       nodeEl.setAttribute('r', radius.toString());
       nodeEl.setAttribute('fill', categoryColors[node.category] || '#10B981');
-      nodeEl.setAttribute('stroke', '#ffffff');
+      
+      // Use different stroke colors for white and black nodes for better visibility
+      const strokeColor = node.category === 'Community Service' ? '#000000' : 
+                         node.category === 'Education & Mentorship' ? '#ffffff' : '#ffffff';
+      nodeEl.setAttribute('stroke', strokeColor);
       nodeEl.setAttribute('stroke-width', '4');
       nodeEl.setAttribute('class', 'node');
       nodeEl.setAttribute('cursor', 'pointer');
@@ -178,7 +182,11 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
       labelEl.setAttribute('text-anchor', 'middle');
       labelEl.setAttribute('dy', '0.35em');
       labelEl.setAttribute('font-size', '12');
-      labelEl.setAttribute('fill', '#ffffff');
+      
+      // Use contrasting text colors based on node background
+      const textColor = node.category === 'Community Service' ? '#000000' : 
+                       node.category === 'Education & Mentorship' ? '#ffffff' : '#ffffff';
+      labelEl.setAttribute('fill', textColor);
       labelEl.setAttribute('font-weight', '700');
       labelEl.setAttribute('filter', 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8))');
       labelEl.textContent = node.title.length > 20 ? node.title.substring(0, 20) + '...' : node.title;
@@ -216,14 +224,14 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
       // Simple force simulation
       nodes.forEach(node => {
         if (node.fx === null && node.fy === null) {
-          // Apply repulsion from other nodes
+          // Apply repulsion from other nodes - stronger repulsion for better spacing
           nodes.forEach(other => {
             if (other !== node) {
               const dx = node.x! - other.x!;
               const dy = node.y! - other.y!;
               const distance = Math.sqrt(dx * dx + dy * dy);
-              if (distance > 0 && distance < 100) {
-                const force = 100 / (distance * distance);
+              if (distance > 0 && distance < 150) { // Increased from 100 to 150
+                const force = 200 / (distance * distance); // Increased from 100 to 200
                 node.vx! += (dx / distance) * force;
                 node.vy! += (dy / distance) * force;
               }
@@ -332,9 +340,6 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
           border: '1px solid rgba(16, 185, 129, 0.2)',
           padding: '20px'
         }}>
-          <Heading variant="heading-strong-s" style={{ color: '#ffffff', marginBottom: '16px' }}>
-            Activity Categories
-          </Heading>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {categories.map(category => (
               <div 
@@ -380,14 +385,6 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
           border: '1px solid rgba(16, 185, 129, 0.2)',
           padding: '20px'
         }}>
-          <Text variant="body-default-s" style={{ 
-            color: '#ffffff', 
-            fontWeight: '600', 
-            marginBottom: '16px',
-            display: 'block'
-          }}>
-            Connection Types
-          </Text>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {Object.entries(connectionColors).map(([type, color]) => (
               <div key={type} style={{ 

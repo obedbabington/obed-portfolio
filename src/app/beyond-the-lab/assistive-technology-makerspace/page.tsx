@@ -45,7 +45,7 @@ export default function AssistiveTechnologyMakerspace() {
       </Column>
 
       {/* Project Image */}
-      <Column marginBottom="xl" align="center">
+      <Column marginBottom="xl" align="center" style={{ width: "100%" }}>
         <div style={{ 
           position: "relative", 
           width: "100%", 
@@ -53,7 +53,8 @@ export default function AssistiveTechnologyMakerspace() {
           height: "400px",
           borderRadius: "12px",
           overflow: "hidden",
-          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)"
+          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+          margin: "0 auto"
         }}>
           <Image
             src="/images/beyond-the-lab/makerspace-cover.jpg"
