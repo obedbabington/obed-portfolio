@@ -1,6 +1,6 @@
 import { Column, Heading, Meta, Schema, Text } from "@once-ui-system/core";
 import { baseURL, about, person } from "@/resources";
-import { BackButton } from "@/components";
+import { BackButton, VideoPlayer } from "@/components";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -54,7 +54,7 @@ export default function PanAfricanismSkit() {
           <Text variant="body-default-m">
             Watch the Pan-Africanism skit performance:
           </Text>
-          <video
+          <VideoPlayer
             width="100%"
             height="400"
             controls
@@ -65,9 +65,6 @@ export default function PanAfricanismSkit() {
               backgroundColor: "#000",
               maxWidth: "100%"
             }}
-            onError={(e) => {
-              console.error('Video error:', e);
-            }}
           >
             <source src="/videos/pan-africanism.mp4" type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" />
             <source src="/videos/pan-africanism.webm" type="video/webm" />
@@ -75,7 +72,7 @@ export default function PanAfricanismSkit() {
               Your browser doesn't support HTML5 video. 
               <a href="/videos/pan-africanism.mp4" download>Download the video</a> instead.
             </p>
-          </video>
+          </VideoPlayer>
           <Text variant="body-default-s" onBackground="neutral-weak" style={{ fontStyle: "italic", textAlign: "center" }}>
             If the video appears black, try refreshing the page or use a different browser. 
             <a href="/videos/pan-africanism.mp4" target="_blank" rel="noopener noreferrer" style={{ color: "var(--primary-medium)", textDecoration: "underline" }}>

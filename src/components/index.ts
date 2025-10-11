@@ -12,3 +12,4 @@ export { BlogDropdown } from "@/components/BlogDropdown";
 export { ProjectsDropdown } from "@/components/ProjectsDropdown";
 export { BackButton } from "@/components/BackButton";
 export { SearchModal } from "@/components/SearchModal";
+export { VideoPlayer } from "@/components/VideoPlayer";
