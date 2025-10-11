@@ -114,7 +114,7 @@ export default function News() {
                 fill
                 style={{ 
                   objectFit: "cover",
-                  objectPosition: "top"
+                  objectPosition: "center"
                 }}
               />
             </div>

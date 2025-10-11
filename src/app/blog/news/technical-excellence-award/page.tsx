@@ -71,7 +71,7 @@ export default function TechnicalExcellenceAward() {
           radius="m"
           alt="Technical Excellence Award announcement"
           src="/images/research/capstone_award.png"
-          style={{ objectPosition: "top" }}
+          style={{ objectPosition: "center" }}
         />
         <Row gap="m">
           <Media
