@@ -39,32 +39,34 @@ const protectedRoutes: ProtectedRoutesConfig = {
 };
 
 // Import and set font for each variant
-import { Manrope } from "next/font/google";
-import { JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 
-const heading = Manrope({
-  variable: "--font-heading",
-  subsets: ["latin"],
+const dinFont = localFont({
+  src: [
+    {
+      path: "../../public/fonts/d-din/D-DIN.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/d-din/D-DIN-Italic.otf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../../public/fonts/d-din/D-DIN-Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-din",
   display: "swap",
 });
 
-const body = Manrope({
-  variable: "--font-body",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const label = Manrope({
-  variable: "--font-label",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const code = JetBrains_Mono({
-  variable: "--font-code",
-  subsets: ["latin"],
-  display: "swap",
-});
+const heading = dinFont;
+const body = dinFont;
+const label = dinFont;
+const code = dinFont;
 
 const fonts: FontsConfig = {
   heading: heading,
