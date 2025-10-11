@@ -30,23 +30,22 @@ main, [role="main"], .main-content {
   animation: fadeIn 0.8s ease-out;
 }
 
-/* About page video background */
+/* About page video background - Full page coverage */
 .about-video-background {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
   overflow: hidden;
-  border-radius: 12px;
 }
 
 .about-video-background video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.15;
+  opacity: 0.12;
   filter: blur(1px);
   transition: opacity 0.3s ease;
 }
@@ -59,12 +58,8 @@ main, [role="main"], .main-content {
 
 /* Mobile adjustments for video background */
 @media (max-width: 768px) {
-  .about-video-background {
-    border-radius: 8px;
-  }
-  
   .about-video-background video {
-    opacity: 0.1;
+    opacity: 0.08;
     filter: blur(2px);
   }
 }

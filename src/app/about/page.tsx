@@ -47,18 +47,17 @@ export default function About() {
   ];
   return (
     <Column maxWidth="m" className="fixed-header-spacing page-fade-in" style={{ position: "relative" }}>
-      {/* Background Video */}
+      {/* Background Video - Full Width */}
       <div 
         className="about-video-background"
         style={{
-          position: "absolute",
+          position: "fixed",
           top: 0,
           left: 0,
-          width: "100%",
-          height: "100%",
-          zIndex: -1,
-          overflow: "hidden",
-          borderRadius: "12px"
+          width: "100vw",
+          height: "100vh",
+          zIndex: -2,
+          overflow: "hidden"
         }}
       >
         <video
@@ -70,7 +69,7 @@ export default function About() {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            opacity: 0.15,
+            opacity: 0.12,
             filter: "blur(1px)"
           }}
         >

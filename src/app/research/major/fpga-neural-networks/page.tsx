@@ -8,14 +8,14 @@ export async function generateMetadata() {
     title: "Accelerating Embedded Neural Network Inference on FPGA Softcore Processors",
     description: "Designed a fully on-chip hardware-software co-design framework using FPGA-based softcore processor and custom VHDL acceleration modules. Achieved 420× speedup over baseline execution.",
     baseURL: baseURL,
-    image: `/api/og/generate?title=${encodeURIComponent("Accelerating Embedded Neural Network Inference on FPGA Softcore Processors")}`,
+    image: "/images/research/Vivado_Block_Design.png",
     path: "/research/major/fpga-neural-networks",
   });
 }
 
 export default function FPGANeuralNetworks() {
   return (
-    <Column maxWidth="m" paddingTop="24" style={{ animation: "fadeIn 1s ease-out" }}>
+    <Column maxWidth="m" paddingTop="24" className="page-fade-in">
       {/* Back Button */}
       <BackButton href="/research/major" label="Back to Major Research" />
       
@@ -25,7 +25,7 @@ export default function FPGANeuralNetworks() {
         path="/research/major/fpga-neural-networks"
         title={`Accelerating Embedded Neural Network Inference on FPGA Softcore Processors – ${person.name}`}
         description="Designed a fully on-chip hardware-software co-design framework using FPGA-based softcore processor and custom VHDL acceleration modules. Achieved 420× speedup over baseline execution."
-        image={`/api/og/generate?title=${encodeURIComponent("Accelerating Embedded Neural Network Inference on FPGA Softcore Processors")}`}
+        image="/images/research/Vivado_Block_Design.png"
         author={{
           name: person.name,
           url: `${baseURL}${about.path}`,
