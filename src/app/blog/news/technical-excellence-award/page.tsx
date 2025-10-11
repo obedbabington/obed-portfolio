@@ -1,4 +1,4 @@
-import { Column, Heading, Meta, Schema, Text, Card, Media, Row, SmartLink } from "@once-ui-system/core";
+import { Column, Heading, Meta, Schema, Text, Card, Media, Row, SmartLink, Button } from "@once-ui-system/core";
 import { baseURL, about, person } from "@/resources";
 import { BackButton } from "@/components";
 import Image from "next/image";
@@ -48,22 +48,18 @@ export default function TechnicalExcellenceAward() {
           Honored to receive the prestigious Technical Excellence Award in Computer Engineering for my capstone project on 'Hardware Accelerated Machine Learning with a Softcore Processor'.
         </Text>
         
-        {/* Thesis Defense Link */}
+        {/* Thesis Defense Button */}
         <Column align="center" gap="s" marginBottom="l">
-          <Text variant="body-default-s" onBackground="neutral-weak" align="center">
-            <strong>Link:</strong> <SmartLink 
-              href="https://youtu.be/J5wRpPMIeQA" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              style={{ 
-                color: "var(--primary-medium)",
-                textDecoration: "underline",
-                fontWeight: "500"
-              }}
-            >
-              Watch My Thesis Defense
-            </SmartLink>
-          </Text>
+          <Button
+            href="https://youtu.be/J5wRpPMIeQA"
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="primary"
+            size="m"
+            prefixIcon="openLink"
+          >
+            Watch My Thesis Defense
+          </Button>
         </Column>
       </Column>
 
