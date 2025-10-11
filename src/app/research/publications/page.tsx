@@ -155,7 +155,7 @@ export default function Publications() {
       </Column>
 
       {/* Category Filter */}
-      <Row gap="s" wrap="wrap" horizontal="center">
+      <Row gap="s" wrap horizontal="center">
         {categories.map((category) => (
           <Button
             key={category}
@@ -228,7 +228,7 @@ export default function Publications() {
               </Text>
 
               {/* Keywords */}
-              <Row gap="xs" wrap="wrap">
+              <Row gap="xs" wrap>
                 {publication.keywords.slice(0, 3).map((keyword) => (
                   <Tag key={keyword} variant="secondary" size="s">
                     {keyword}
@@ -279,7 +279,7 @@ export default function Publications() {
               </Row>
 
               {/* Publication Details */}
-              <Row gap="l" wrap="wrap">
+              <Row gap="l" wrap>
                 <Column gap="s" minWidth="200">
                   <Text variant="heading-strong-xs">Journal</Text>
                   <Text variant="body-default-s">{selectedPublication.journal}</Text>
@@ -309,7 +309,7 @@ export default function Publications() {
               {/* Keywords */}
               <Column gap="s">
                 <Text variant="heading-strong-xs">Keywords</Text>
-                <Row gap="xs" wrap="wrap">
+                <Row gap="xs" wrap>
                   {selectedPublication.keywords.map((keyword) => (
                     <Tag key={keyword} variant="secondary" size="s">
                       {keyword}
