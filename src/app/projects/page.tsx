@@ -111,7 +111,7 @@ export default function Projects() {
       </Column>
 
       {/* Alfred Whitehead Quote */}
-      <Column paddingX="l" gap="l" marginBottom="l" align="center" style={{ marginTop: "30px" }}>
+      <Column paddingX="l" gap="l" marginBottom="l" align="center" style={{ marginTop: "10px" }}>
         <Row gap="l" vertical="center" align="center" maxWidth="l">
           <div
             style={{
