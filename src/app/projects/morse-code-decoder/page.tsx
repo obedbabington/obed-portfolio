@@ -53,6 +53,32 @@ export default function MorseCodeDecoder() {
         />
       </Column>
 
+      {/* Demo Video Buttons */}
+      <Column align="center" gap="m" marginBottom="xl" paddingX="l">
+        <Button
+          href="https://www.dropbox.com/scl/fi/jy6d3g7wvqblsr62rylzw/Morse-Code-Model-Demo.mp4?rlkey=qqfbo2bhwr0kg2b1pc1jhthp4&st=0d2bvrbg&dl=0"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="primary"
+          size="m"
+          prefixIcon="openLink"
+          style={{ margin: "0 auto" }}
+        >
+          Watch Morse Code Model Demo Video
+        </Button>
+        <Button
+          href="https://www.dropbox.com/scl/fi/gp4ec76gab5hhbgfup6qq/Morse-code-decoder-on-FPGA.mp4?rlkey=3hlk6m87zxfovbpueej2qeifm&st=99pvtwn6&dl=0"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="secondary"
+          size="m"
+          prefixIcon="openLink"
+          style={{ margin: "0 auto" }}
+        >
+          Watch Morse Code Decoder on FPGA Video
+        </Button>
+      </Column>
+
       <Column paddingX="l" gap="xl">
         <Card padding="l" radius="m" shadow="m">
           <Column gap="m">

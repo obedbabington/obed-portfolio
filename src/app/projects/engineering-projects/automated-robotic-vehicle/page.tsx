@@ -54,6 +54,21 @@ export default function AutomatedRoboticVehicle() {
         />
       </Column>
 
+      {/* Demo Video Button */}
+      <Column align="center" gap="s" marginBottom="xl" paddingX="l">
+        <Button
+          href="https://www.dropbox.com/scl/fi/yz6qvzpxmh57tgqqfznmu/Robot-Vehicle-Demo-Video.mp4?rlkey=2152kbos454fsmg6dyuwq0jyf&st=ofsl5eod&dl=0"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="primary"
+          size="m"
+          prefixIcon="openLink"
+          style={{ margin: "0 auto" }}
+        >
+          Watch Robot Vehicle Demo Video
+        </Button>
+      </Column>
+
       <Column paddingX="l" gap="xl">
         <Card padding="l" radius="m" shadow="m">
           <Column gap="m">

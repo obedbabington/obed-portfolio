@@ -54,6 +54,21 @@ export default function ElectronicPiano() {
         />
       </Column>
 
+      {/* Demo Video Button */}
+      <Column align="center" gap="s" marginBottom="xl" paddingX="l">
+        <Button
+          href="https://www.dropbox.com/scl/fi/q615alm84qexk3cfan84k/Physics-II-Final-Project-Demo-Mini-Electric-Piano.mov?rlkey=5byov503d1ixub7qk78s5i33g&st=7p7kdqu2&dl=0"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="primary"
+          size="m"
+          prefixIcon="openLink"
+          style={{ margin: "0 auto" }}
+        >
+          Watch Electric Piano Demo Video
+        </Button>
+      </Column>
+
       <Column paddingX="l" gap="xl">
         <Card padding="l" radius="m" shadow="m">
           <Column gap="m">
