@@ -42,10 +42,11 @@ export default function Publications() {
   };
 
   return (
-    <div style={{ 
+    <div className="fixed-header-spacing" style={{ 
       maxWidth: "1200px", 
       margin: "0 auto", 
-      padding: "2rem"
+      padding: "2rem",
+      position: "relative"
     }}>
       {/* Back Button */}
       <BackButton href="/research" label="Back to Research" />
