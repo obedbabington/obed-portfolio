@@ -7,7 +7,6 @@ import Image from "next/image";
 import { useState } from "react";
 
 export default function BeyondTheLab() {
-  const [viewMode, setViewMode] = useState<'grid' | 'graph'>('grid');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const leadershipList = [
     {
@@ -16,6 +15,7 @@ export default function BeyondTheLab() {
       date: "2022",
       category: "Public Speaking",
       summary: "Delivered a TEDx talk on quantum physics and the role of wandering in the realm of the unknown, exploring the importance of self-expression in society.",
+      imagePath: "/images/beyond-the-lab/tedx-ashesi-cover.jpg",
       description: "Quantum Physics has always intrigued Obed and the exploration of the world beyond what meets the eye is something he is extremely passionate about. As an Electrical/Electronic Engineering student of Ashesi University, he believes that when the suppression of the willful expression of the self leads to the degradation of society. He loves to use every opportunity he can get to create meaning in people's lives through self-expression.",
       achievements: [
         "Delivered an inspiring TEDx talk that explored the intersection of quantum physics and personal expression, demonstrating the power of curiosity and intellectual wandering.",
@@ -30,6 +30,7 @@ export default function BeyondTheLab() {
       date: "2023 - 2024",
       category: "Leadership",
       summary: "Led club engineering projects and fostered a research culture, producing five diverse research articles and conducting Arduino C coding workshops. Additionally, curated and managed a network of student-developed research articles, developing content management and editorial skills.",
+      imagePath: "/images/projects/arm-y.jpg",
       description: "The Arm(E³)NGAGE Ashesi Student Club, a collaboration between ARM and Ashesi University, is responsible for educating Ashesi students on the world of IoT, Embedded systems, and their uses on ARM technology. In doing so, it hopes to foster innovation, entrepreneurship, and research using ARM products. As part of this role, I also took on the responsibility of curating and managing a network of student-developed research articles, developing editorial skills and content management strategies.",
       achievements: [
         "Led club engineering projects, notably an automated parking system. Responsibilities included conducting Arduino C coding workshops, introducing participants to GitHub for collaborative project development, and fostering algorithmic problem-solving skills. Additionally, I authored project documentation and problem design outlines.",
@@ -44,6 +45,7 @@ export default function BeyondTheLab() {
       date: "2023 - 2024",
       category: "Leadership",
       summary: "Served as the first active president of the Ashesi Research Club to expand students' understanding of the research landscape and build their research skills.",
+      imagePath: "/images/beyond-the-lab/research-club-cover.jpg",
       description: "Served as the first active president of the Ashesi Research Club to expand students' understanding of the research landscape and build their research skills to provide groundbreaking insights for developing innovative, industry-leading solutions for the continent.",
       achievements: [
         "Under the auspices of the provost's office, I co-oversaw the curation of the first-ever campus-wide research festival under the theme, \"Exploring New Horizons\" to celebrate student scholarship and innovation and ignite their passions for research and the opportunities it offers.",
@@ -56,6 +58,7 @@ export default function BeyondTheLab() {
       date: "2024",
       category: "Community Service",
       summary: "Designed and implemented a service-learning project addressing career-related anxieties and identity challenges faced by Ghanaian adolescents through self-discovery and career development workshops.",
+      imagePath: "/images/beyond-the-lab/aftognosia-cover.jpg",
       description: "As part of a service–learning initiative, my team and I designed and implemented a project aimed at addressing the career-related anxieties and identity challenges faced by Ghanaian adolescents. Grounded in Erik Erikson's theory of psychosocial development, we recognized adolescence as a pivotal stage where identity formation intersects with career decision-making, often creating stress and uncertainty.",
       achievements: [
         "Created a two-phased intervention model: self-discovery through personality assessments and career development alignment",
@@ -70,6 +73,7 @@ export default function BeyondTheLab() {
       date: "2022",
       category: "Education & Mentorship",
       summary: "Contributed to creating and implementing an engaging, research-driven STEM curriculum tailored for orphaned children as a STEM Curriculum Design Associate with Smiles non-profit.",
+      imagePath: "/images/beyond-the-lab/msmiles-cover.jpg",
       description: "As a STEM Curriculum Design Associate with Smiles, a non-profit dedicated to the holistic development of orphans, I contributed to creating and implementing an engaging, research-driven STEM curriculum tailored for orphaned children. My role involved researching relevant topics, structuring lesson plans, and iteratively testing and refining content to ensure accessibility and long-term retention.",
       achievements: [
         "Designed the STEM curriculum for the Smiles Launch at Christ Faith Foster Home in Accra, Ghana",
@@ -84,6 +88,7 @@ export default function BeyondTheLab() {
       date: "Aug - Sep 2019",
       category: "Fellowship",
       summary: "As a Fellow at the Assistive Technology Makerspace, contributed to advancing accessible, low-cost assistive technologies for persons with disabilities in Ghana through hands-on training and team-based design challenges.",
+      imagePath: "/images/beyond-the-lab/makerspace-cover.jpg",
       description: "As a Fellow at the Assistive Technology (AT) Makerspace, a program launched by Tech Era in partnership with Dextra (Canada) and the Ashesi D-Lab, I contributed to advancing accessible, low-cost assistive technologies for persons with disabilities in Ghana. Over an intensive two-week fellowship, I gained hands-on training in 3D modeling and printing, Arduino programming, electronics, and lean research methods, and applied these skills in a team-based design challenge.",
       achievements: [
         "Co-designed and prototyped a Braille scientific calculator aimed at empowering visually impaired students to independently access STEM education",
@@ -98,6 +103,7 @@ export default function BeyondTheLab() {
       date: "Mar 2024",
       category: "Videography",
       summary: "Co-curated a comprehensive video manual demonstrating how the Flir C5 thermal imaging camera works, including theoretical background and practical features.",
+      imagePath: "/images/beyond-the-lab/flir_c5.png",
       description: "It's fun to use technology – until you have to explain how it works. I had the pleasure of working with a friend to curate a video manual of how Flir C5, a compact thermal imaging camera, works including the theoretical background of thermal imaging and the very cool features of the camera!",
       achievements: [
         "Co-created a comprehensive video manual explaining the Flir C5 thermal imaging camera functionality",
@@ -112,6 +118,7 @@ export default function BeyondTheLab() {
       date: "May 2025",
       category: "Performance",
       summary: "Acted as Dr. Kwame Nkrumah, Ghana's first prime minister and president, in a skit exploring the evolution of Pan-Africanism and his role in political unification.",
+      imagePath: "/images/beyond-the-lab/pan-africanism.png",
       description: "To answer the question: \"How did Pan-Africanism evolve from a response to racialised exclusion to an opposition to colonial domination, and what roles had Blyden, Du Bois, Williams and Nkrumah play in reinterpreting it to meet the political and cultural needs of their time?\" I act as Dr. Kwame Nkrumah, Ghana's first prime minister and president, to represent his work on political unification.",
       achievements: [
         "Portrayed Dr. Kwame Nkrumah in an educational skit about Pan-Africanism's historical evolution",
@@ -126,6 +133,7 @@ export default function BeyondTheLab() {
       date: "March 2023",
       category: "Podcast",
       summary: "Co-hosted a season of the 7MA Show podcast exploring career preparedness and growth through the lens of Ashesi University, offering insights relevant to broader audiences.",
+      imagePath: "/images/beyond-the-lab/7MA.jpg",
       description: "Co-hosted a season of the 7MA Show podcast alongside three colleagues, exploring themes of career preparedness and growth through the lens of Ashesi while offering insights relevant to broader audiences. I also hosted another episode with one of Ashesi University's Career Service staff to enlighten students about an upcoming career fair. I enjoyed the process of on-the-spot articulation of thoughts, alongside the camaraderie I experienced in the friendly exchange of insights and experiences.",
       achievements: [
         "Co-hosted multiple episodes of the 7MA Show podcast focusing on career development themes",
@@ -179,23 +187,6 @@ export default function BeyondTheLab() {
           Here lies a more holistic representation of my world. Take a dive.
         </Text>
         
-        {/* View Toggle */}
-        <Row gap="m" marginTop="l" align="center">
-          <Button
-            variant={viewMode === 'grid' ? 'primary' : 'secondary'}
-            size="s"
-            onClick={() => setViewMode('grid')}
-          >
-            Grid View
-          </Button>
-          <Button
-            variant={viewMode === 'graph' ? 'primary' : 'secondary'}
-            size="s"
-            onClick={() => setViewMode('graph')}
-          >
-            Network Graph
-          </Button>
-        </Row>
       </Column>
 
       <style dangerouslySetInnerHTML={{
@@ -224,161 +215,17 @@ export default function BeyondTheLab() {
         `
       }} />
 
-      {/* Content based on view mode */}
-      {viewMode === 'graph' ? (
-        <Column paddingX="l">
-          <ActivityNetworkGraph
-            activities={leadershipList}
-            onNodeClick={(activityId) => {
-              window.location.href = `/beyond-the-lab/${activityId}`;
-            }}
-            selectedCategory={selectedCategory || undefined}
-            onCategoryFilter={(category) => setSelectedCategory(category || null)}
-          />
-        </Column>
-      ) : (
-        <div className="grid-container mobile-grid" style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
-          gap: "1.5rem",
-          padding: "0 1.5rem"
-        }}>
-          {leadershipList
-            .filter(item => !selectedCategory || item.category === selectedCategory)
-            .map((item, index) => (
-          <Card
-            key={index}
-            as="a"
-            href={`/beyond-the-lab/${item.id}`}
-            padding="0" 
-            radius="m" 
-            shadow="m"
-            style={{ 
-              cursor: "pointer",
-              transition: "all 0.3s ease",
-              textDecoration: "none",
-              overflow: "hidden",
-              display: "flex",
-              flexDirection: "column"
-            }}
-          >
-            {/* Square Image */}
-            <div style={{ 
-              position: "relative",
-              width: "100%",
-              height: "250px",
-              backgroundColor: "#f5f5f5",
-              overflow: "hidden"
-            }}>
-              {item.id === "tedx-ashesi-speaker" && (
-                <Image
-                  src="/images/beyond-the-lab/tedx-ashesi-cover.jpg"
-                  alt={item.title}
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
-              )}
-              {item.id === "arm-engage-leadership" && (
-                <Image
-                  src="/images/projects/arm-y.jpg"
-                  alt={item.title}
-                  fill
-                  style={{ 
-                    objectFit: "cover",
-                    zIndex: 10,
-                    position: "relative"
-                  }}
-                />
-              )}
-              {item.id === "aftgonosia-service-learning" && (
-                <Image
-                  src="/images/beyond-the-lab/aftognosia-cover.jpg"
-                  alt={item.title}
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
-              )}
-              {item.id === "msmiles-stem-curriculum" && (
-                <Image
-                  src="/images/beyond-the-lab/msmiles-cover.jpg"
-                  alt={item.title}
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
-              )}
-              {item.id === "ashesi-research-club-president" && (
-                <Image
-                  src="/images/beyond-the-lab/research-club-cover.jpg"
-                  alt={item.title}
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
-              )}
-              {item.id === "assistive-technology-makerspace" && (
-                <Image
-                  src="/images/beyond-the-lab/makerspace-cover.jpg"
-                  alt={item.title}
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
-              )}
-              {item.id === "7ma-show-podcast" && (
-                <Image
-                  src="/images/beyond-the-lab/7MA.jpg"
-                  alt={item.title}
-                  fill
-                  style={{ objectFit: "cover", objectPosition: "top" }}
-                />
-              )}
-              {item.id === "flir-c5-video-manual" && (
-                <Image
-                  src="/images/beyond-the-lab/flir_c5.png"
-                  alt={item.title}
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
-              )}
-              {item.id === "pan-africanism-skit" && (
-                <Image
-                  src="/images/beyond-the-lab/pan-africanism.png"
-                  alt={item.title}
-                  fill
-                  style={{ 
-                    objectFit: "cover",
-                    objectPosition: "top",
-                    zIndex: 10,
-                    position: "relative"
-                  }}
-                />
-              )}
-              {!["tedx-ashesi-speaker", "army-students-club-curator", "aftgonosia-service-learning", "msmiles-stem-curriculum", "ashesi-research-club-president", "assistive-technology-makerspace", "7ma-show-podcast", "flir-c5-video-manual"].includes(item.id) && (
-                <Image
-                  src="/images/beyond-the-lab/default.jpg"
-                  alt={item.title}
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
-              )}
-            </div>
-            
-            {/* Content below image */}
-            <Column gap="s" padding="l">
-              <Text variant="body-default-xs" onBackground="neutral-weak" style={{ textTransform: "uppercase", fontWeight: "600" }} className="category-tag">
-                {item.category}
-              </Text>
-              <Heading variant="heading-strong-m" className="text-single-line">{item.title}</Heading>
-              <Text variant="body-default-s" onBackground="neutral-weak">
-                <strong>Duration:</strong> {item.date}
-              </Text>
-              <Text variant="body-default-s" marginTop="s">{item.summary}</Text>
-              <Text variant="body-default-xs" onBackground="neutral-weak" marginTop="s" style={{ fontStyle: "italic" }}>
-                Click to read more →
-              </Text>
-            </Column>
-          </Card>
-            ))}
-        </div>
-      )}
+      {/* Network Graph */}
+      <Column paddingX="l">
+        <ActivityNetworkGraph
+          activities={leadershipList}
+          onNodeClick={(activityId) => {
+            window.location.href = `/beyond-the-lab/${activityId}`;
+          }}
+          selectedCategory={selectedCategory || undefined}
+          onCategoryFilter={(category) => setSelectedCategory(category || null)}
+        />
+      </Column>
     </Column>
   );
 }
