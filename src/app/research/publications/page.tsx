@@ -1,17 +1,6 @@
 "use client";
 
-import { 
-  Column, 
-  Heading, 
-  Text, 
-  Row, 
-  Button, 
-  Tag, 
-  Badge,
-  Icon,
-  Card,
-  Flex
-} from "@once-ui-system/core";
+// Removed Once UI imports - using raw HTML instead
 import { BackButton } from "@/components";
 import { useState, useEffect } from "react";
 import styles from "./publications.module.scss";
@@ -138,48 +127,80 @@ export default function Publications() {
   };
 
   return (
-    <Column maxWidth="l" className="fixed-header-spacing neural-particles" gap="l" style={{ animation: "fadeIn 0.6s ease-out", position: "relative" }}>
+    <div className="fixed-header-spacing neural-particles" style={{ 
+      maxWidth: "1200px", 
+      margin: "0 auto", 
+      padding: "2rem", 
+      animation: "fadeIn 0.6s ease-out", 
+      position: "relative" 
+    }}>
       {/* Back Button */}
       <BackButton href="/research" label="Back to Research" />
       
       {/* Header */}
-      <Column gap="m" align="center" horizontal="center">
-        <Heading as="h1" variant="display-strong-s" align="center">
+      <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+        <h1 style={{ 
+          fontSize: "2.5rem", 
+          fontWeight: "700", 
+          marginBottom: "1rem",
+          color: "#10b981"
+        }}>
           Publications
-        </Heading>
-        <Column maxWidth="s" horizontal="center">
-          <Text onBackground="neutral-weak" align="center">
-            Research contributions across multiple domains of engineering and applied sciences
-          </Text>
-        </Column>
-      </Column>
+        </h1>
+        <p style={{ 
+          color: "#6b7280", 
+          fontSize: "1.1rem",
+          maxWidth: "600px",
+          margin: "0 auto"
+        }}>
+          Research contributions across multiple domains of engineering and applied sciences
+        </p>
+      </div>
 
       {/* Category Filter */}
-      <Row gap="s" wrap horizontal="center">
+      <div style={{ 
+        display: "flex", 
+        gap: "0.5rem", 
+        flexWrap: "wrap", 
+        justifyContent: "center",
+        marginBottom: "2rem"
+      }}>
         {categories.map((category) => (
-          <Button
+          <button
             key={category}
-            variant={selectedCategory === category ? "primary" : "secondary"}
-            size="s"
-            label={category}
             onClick={() => setSelectedCategory(category)}
             style={{
+              padding: "0.5rem 1rem",
+              borderRadius: "0.5rem",
+              border: "1px solid #10b981",
+              background: selectedCategory === category ? "#10b981" : "transparent",
+              color: selectedCategory === category ? "white" : "#10b981",
+              cursor: "pointer",
               transition: "all 0.3s ease",
-              transform: selectedCategory === category ? "scale(1.05)" : "scale(1)"
+              transform: selectedCategory === category ? "scale(1.05)" : "scale(1)",
+              fontSize: "0.9rem"
             }}
-          />
+          >
+            {category}
+          </button>
         ))}
-      </Row>
+      </div>
 
       {/* Publications Grid */}
       <div className={styles.publicationsGrid}>
         {filteredPublications.map((publication, index) => (
-          <Card
+          <div
             key={publication.id}
             className={styles.publicationCard}
             style={{
               animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
-              cursor: "pointer"
+              cursor: "pointer",
+              background: "white",
+              borderRadius: "0.75rem",
+              padding: "1.5rem",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+              border: "1px solid #e5e7eb",
+              transition: "all 0.3s ease"
             }}
             onClick={() => setSelectedPublication(publication)}
             onMouseEnter={(e) => {
@@ -191,151 +212,271 @@ export default function Publications() {
               e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
             }}
           >
-            <Column gap="m" fillWidth>
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem", width: "100%" }}>
               {/* Header */}
-              <Row horizontal="between" align="start" gap="m">
-                <Column flex={1} gap="s">
-                  <Text variant="heading-strong-s" className={styles.publicationTitle}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "1rem" }}>
+                <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                  <h3 style={{ 
+                    fontSize: "1.25rem", 
+                    fontWeight: "600", 
+                    margin: 0,
+                    color: "#1f2937",
+                    lineHeight: "1.4"
+                  }}>
                     {publication.title}
-                  </Text>
-                  <Text variant="body-default-s" onBackground="neutral-weak">
+                  </h3>
+                  <p style={{ 
+                    color: "#6b7280", 
+                    fontSize: "0.9rem",
+                    margin: 0
+                  }}>
                     {publication.authors.join(", ")}
-                  </Text>
-                </Column>
-                <Column align="end" gap="s">
-                  <Badge variant={getStatusColor(publication.status)} size="s">
+                  </p>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "0.5rem" }}>
+                  <span style={{
+                    padding: "0.25rem 0.75rem",
+                    borderRadius: "1rem",
+                    fontSize: "0.75rem",
+                    fontWeight: "500",
+                    background: getStatusColor(publication.status) === "success" ? "#10b981" : 
+                               getStatusColor(publication.status) === "warning" ? "#f59e0b" : "#6b7280",
+                    color: "white"
+                  }}>
                     {publication.status}
-                  </Badge>
-                  <Badge variant={getImpactColor(publication.impact)} size="s">
+                  </span>
+                  <span style={{
+                    padding: "0.25rem 0.75rem",
+                    borderRadius: "1rem",
+                    fontSize: "0.75rem",
+                    fontWeight: "500",
+                    background: getImpactColor(publication.impact) === "brand" ? "#10b981" : 
+                               getImpactColor(publication.impact) === "warning" ? "#f59e0b" : "#6b7280",
+                    color: "white"
+                  }}>
                     {publication.impact} Impact
-                  </Badge>
-                </Column>
-              </Row>
+                  </span>
+                </div>
+              </div>
 
               {/* Journal and Year */}
-              <Row horizontal="between" align="center">
-                <Text variant="body-default-xs" onBackground="neutral-weak">
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <p style={{ 
+                  color: "#6b7280", 
+                  fontSize: "0.8rem",
+                  margin: 0
+                }}>
                   {publication.journal}
-                </Text>
-                <Text variant="body-strong-xs">
+                </p>
+                <p style={{ 
+                  fontSize: "0.8rem",
+                  fontWeight: "600",
+                  margin: 0,
+                  color: "#1f2937"
+                }}>
                   {publication.year}
-                </Text>
-              </Row>
+                </p>
+              </div>
 
               {/* Abstract Preview */}
-              <Text variant="body-default-s" className={styles.abstractPreview}>
+              <p style={{ 
+                fontSize: "0.9rem",
+                color: "#4b5563",
+                lineHeight: "1.5",
+                margin: 0
+              }}>
                 {publication.abstract.substring(0, 150)}...
-              </Text>
+              </p>
 
               {/* Keywords */}
-              <Row gap="xs" wrap>
+              <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
                 {publication.keywords.slice(0, 3).map((keyword) => (
-                  <Tag key={keyword} variant="secondary" size="s">
+                  <span key={keyword} style={{
+                    padding: "0.25rem 0.5rem",
+                    background: "#f3f4f6",
+                    color: "#374151",
+                    borderRadius: "0.375rem",
+                    fontSize: "0.75rem",
+                    border: "1px solid #d1d5db"
+                  }}>
                     {keyword}
-                  </Tag>
+                  </span>
                 ))}
                 {publication.keywords.length > 3 && (
-                  <Tag variant="neutral" size="s">
+                  <span style={{
+                    padding: "0.25rem 0.5rem",
+                    background: "#e5e7eb",
+                    color: "#6b7280",
+                    borderRadius: "0.375rem",
+                    fontSize: "0.75rem"
+                  }}>
                     +{publication.keywords.length - 3} more
-                  </Tag>
+                  </span>
                 )}
-              </Row>
+              </div>
 
               {/* Footer */}
-              <Row horizontal="between" align="center">
-                <Text variant="body-default-xs" onBackground="neutral-weak">
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <p style={{ 
+                  color: "#6b7280", 
+                  fontSize: "0.8rem",
+                  margin: 0
+                }}>
                   {publication.citations} citations
-                </Text>
-                <Row gap="xs" align="center">
-                  <Icon name="external-link" size="s" />
-                  <Text variant="body-default-xs">View Details</Text>
-                </Row>
-              </Row>
-            </Column>
-          </Card>
+                </p>
+                <div style={{ display: "flex", gap: "0.25rem", alignItems: "center" }}>
+                  <span style={{ fontSize: "0.8rem", color: "#10b981" }}>↗</span>
+                  <span style={{ fontSize: "0.8rem", color: "#10b981" }}>View Details</span>
+                </div>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
 
       {/* Publication Detail Modal */}
       {selectedPublication && (
-        <div className={styles.modalOverlay} onClick={() => setSelectedPublication(null)}>
-          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-            <Column gap="l" fillWidth>
+        <div 
+          className={styles.modalOverlay} 
+          onClick={() => setSelectedPublication(null)}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: "rgba(0,0,0,0.5)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 1000
+          }}
+        >
+          <div 
+            className={styles.modalContent} 
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              background: "white",
+              borderRadius: "0.75rem",
+              padding: "2rem",
+              maxWidth: "800px",
+              maxHeight: "90vh",
+              overflow: "auto",
+              margin: "1rem"
+            }}
+          >
+            <div style={{ display: "flex", flexDirection: "column", gap: "2rem", width: "100%" }}>
               {/* Modal Header */}
-              <Row horizontal="between" align="start">
-                <Column flex={1} gap="s">
-                  <Heading as="h2" variant="display-strong-s">
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+                <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                  <h2 style={{ 
+                    fontSize: "2rem", 
+                    fontWeight: "700", 
+                    margin: 0,
+                    color: "#1f2937"
+                  }}>
                     {selectedPublication.title}
-                  </Heading>
-                  <Text variant="body-default-m" onBackground="neutral-weak">
+                  </h2>
+                  <p style={{ 
+                    color: "#6b7280", 
+                    fontSize: "1.1rem",
+                    margin: 0
+                  }}>
                     {selectedPublication.authors.join(", ")}
-                  </Text>
-                </Column>
-                <Button
-                  variant="secondary"
-                  icon="x"
+                  </p>
+                </div>
+                <button
                   onClick={() => setSelectedPublication(null)}
-                />
-              </Row>
+                  style={{
+                    background: "transparent",
+                    border: "none",
+                    fontSize: "1.5rem",
+                    cursor: "pointer",
+                    color: "#6b7280",
+                    padding: "0.5rem"
+                  }}
+                >
+                  ×
+                </button>
+              </div>
 
               {/* Publication Details */}
-              <Row gap="l" wrap>
-                <Column gap="s" minWidth="200">
-                  <Text variant="heading-strong-xs">Journal</Text>
-                  <Text variant="body-default-s">{selectedPublication.journal}</Text>
-                </Column>
-                <Column gap="s" minWidth="200">
-                  <Text variant="heading-strong-xs">Year</Text>
-                  <Text variant="body-default-s">{selectedPublication.year}</Text>
-                </Column>
-                <Column gap="s" minWidth="200">
-                  <Text variant="heading-strong-xs">DOI</Text>
-                  <Text variant="body-default-s" className={styles.doi}>
-                    {selectedPublication.doi}
-                  </Text>
-                </Column>
-                <Column gap="s" minWidth="200">
-                  <Text variant="heading-strong-xs">Citations</Text>
-                  <Text variant="body-default-s">{selectedPublication.citations}</Text>
-                </Column>
-              </Row>
+              <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap" }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", minWidth: "200px" }}>
+                  <h4 style={{ fontSize: "0.9rem", fontWeight: "600", margin: 0, color: "#374151" }}>Journal</h4>
+                  <p style={{ fontSize: "0.9rem", margin: 0, color: "#1f2937" }}>{selectedPublication.journal}</p>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", minWidth: "200px" }}>
+                  <h4 style={{ fontSize: "0.9rem", fontWeight: "600", margin: 0, color: "#374151" }}>Year</h4>
+                  <p style={{ fontSize: "0.9rem", margin: 0, color: "#1f2937" }}>{selectedPublication.year}</p>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", minWidth: "200px" }}>
+                  <h4 style={{ fontSize: "0.9rem", fontWeight: "600", margin: 0, color: "#374151" }}>DOI</h4>
+                  <p style={{ fontSize: "0.9rem", margin: 0, color: "#1f2937", fontFamily: "monospace" }}>{selectedPublication.doi}</p>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", minWidth: "200px" }}>
+                  <h4 style={{ fontSize: "0.9rem", fontWeight: "600", margin: 0, color: "#374151" }}>Citations</h4>
+                  <p style={{ fontSize: "0.9rem", margin: 0, color: "#1f2937" }}>{selectedPublication.citations}</p>
+                </div>
+              </div>
 
               {/* Abstract */}
-              <Column gap="s">
-                <Text variant="heading-strong-xs">Abstract</Text>
-                <Text variant="body-default-s">{selectedPublication.abstract}</Text>
-              </Column>
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                <h4 style={{ fontSize: "0.9rem", fontWeight: "600", margin: 0, color: "#374151" }}>Abstract</h4>
+                <p style={{ fontSize: "0.9rem", margin: 0, color: "#1f2937", lineHeight: "1.6" }}>{selectedPublication.abstract}</p>
+              </div>
 
               {/* Keywords */}
-              <Column gap="s">
-                <Text variant="heading-strong-xs">Keywords</Text>
-                <Row gap="xs" wrap>
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                <h4 style={{ fontSize: "0.9rem", fontWeight: "600", margin: 0, color: "#374151" }}>Keywords</h4>
+                <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
                   {selectedPublication.keywords.map((keyword) => (
-                    <Tag key={keyword} variant="secondary" size="s">
+                    <span key={keyword} style={{
+                      padding: "0.25rem 0.5rem",
+                      background: "#f3f4f6",
+                      color: "#374151",
+                      borderRadius: "0.375rem",
+                      fontSize: "0.75rem",
+                      border: "1px solid #d1d5db"
+                    }}>
                       {keyword}
-                    </Tag>
+                    </span>
                   ))}
-                </Row>
-              </Column>
+                </div>
+              </div>
 
               {/* Action Buttons */}
-              <Row gap="m" horizontal="end">
-                <Button
-                  variant="secondary"
-                  label="Download PDF"
-                  prefixIcon="download"
-                />
-                <Button
-                  variant="primary"
-                  label="View Online"
-                  prefixIcon="external-link"
-                />
-              </Row>
-            </Column>
+              <div style={{ display: "flex", gap: "1rem", justifyContent: "flex-end" }}>
+                <button style={{
+                  padding: "0.75rem 1.5rem",
+                  borderRadius: "0.5rem",
+                  border: "1px solid #d1d5db",
+                  background: "white",
+                  color: "#374151",
+                  cursor: "pointer",
+                  fontSize: "0.9rem",
+                  fontWeight: "500"
+                }}>
+                  Download PDF
+                </button>
+                <button style={{
+                  padding: "0.75rem 1.5rem",
+                  borderRadius: "0.5rem",
+                  border: "none",
+                  background: "#10b981",
+                  color: "white",
+                  cursor: "pointer",
+                  fontSize: "0.9rem",
+                  fontWeight: "500"
+                }}>
+                  View Online
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}
-    </Column>
+    </div>
   );
 }
 
