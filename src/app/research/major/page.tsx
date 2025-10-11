@@ -158,7 +158,7 @@ export default function MajorResearch() {
           const getCoverImage = (projectId: string) => {
             switch (projectId) {
               case 'fpga-neural-networks':
-                return '/images/research/fpga_cover.jpg';
+                return '/images/research/Vivado_Block_Design.png';
               case 'fpga-acceleration-comparison':
                 return '/images/research/fpga-acceleration-comparison_cover.png';
               case 'wearable-technology-study':
