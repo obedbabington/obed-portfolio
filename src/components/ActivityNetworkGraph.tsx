@@ -72,7 +72,7 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
   // Category colors - distinct shades of green, black, dark blue, grey, and white
   const categoryColors: Record<string, string> = {
     'Leadership': '#10B981',       // Bright green
-    'Public Speaking': '#1E40AF',  // Dark blue
+    'Public Speaking': '#1e3a8a',  // Darker blue (matching page theme)
     'Community Service': '#6B7280', // Medium grey
     'Education & Mentorship': '#000000', // Pure black
     'Fellowship': '#059669',       // Dark green
@@ -93,7 +93,9 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
     const handleResize = () => {
       if (svgRef.current?.parentElement) {
         const rect = svgRef.current.parentElement.getBoundingClientRect();
-        setDimensions({ width: rect.width, height: Math.max(400, rect.height) });
+        const newWidth = Math.max(300, rect.width); // Minimum width for mobile
+        const newHeight = isMobile ? Math.max(400, rect.height) : Math.max(600, rect.height);
+        setDimensions({ width: newWidth, height: newHeight });
         setIsMobile(window.innerWidth < 768);
       }
     };
@@ -101,7 +103,7 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
     if (!svgRef.current || activities.length === 0) return;
@@ -114,10 +116,10 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
     const centerX = width / 2;
     const centerY = height / 2;
 
-    // Create nodes with initial positions - spread them out more
+    // Create nodes with initial positions - responsive spacing
     const nodes: ActivityNode[] = activities.map((activity, index) => {
       const angle = (index / activities.length) * 2 * Math.PI;
-      const radius = Math.min(width, height) * 0.4; // Increased from 0.3 to 0.4
+      const radius = Math.min(width, height) * (isMobile ? 0.35 : 0.4); // Responsive radius
       return {
         ...activity,
         x: centerX + Math.cos(angle) * radius,
@@ -224,7 +226,7 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
         element.setAttribute('y', (data.y! + 20).toString());
       });
 
-      // Continuous force simulation with strong spacing
+      // Continuous force simulation with responsive spacing
       nodes.forEach(node => {
         if (node.fx === null && node.fy === null) {
           // Apply strong repulsion from other nodes for better spacing
@@ -233,8 +235,10 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
               const dx = node.x! - other.x!;
               const dy = node.y! - other.y!;
               const distance = Math.sqrt(dx * dx + dy * dy);
-              if (distance > 0 && distance < 200) { // Increased range
-                const force = 500 / (distance * distance); // Much stronger repulsion
+              const repulsionRange = isMobile ? 120 : 200; // Smaller range on mobile
+              const repulsionForce = isMobile ? 300 : 500; // Adjusted force for mobile
+              if (distance > 0 && distance < repulsionRange) {
+                const force = repulsionForce / (distance * distance);
                 node.vx! += (dx / distance) * force;
                 node.vy! += (dy / distance) * force;
               }
@@ -250,7 +254,7 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
                 const dy = target.y! - node.y!;
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 if (distance > 0) {
-                  const force = link.strength * 0.05; // Reduced attraction
+                  const force = link.strength * (isMobile ? 0.03 : 0.05); // Reduced attraction on mobile
                   node.vx! += (dx / distance) * force;
                   node.vy! += (dy / distance) * force;
                 }
@@ -258,16 +262,17 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
             }
           });
 
-          // Apply damping
-          node.vx! *= 0.85; // Slightly less damping for more movement
-          node.vy! *= 0.85;
+          // Apply damping - more damping on mobile for stability
+          const damping = isMobile ? 0.9 : 0.85;
+          node.vx! *= damping;
+          node.vy! *= damping;
 
           // Update position
           node.x! += node.vx!;
           node.y! += node.vy!;
 
-          // Keep nodes within bounds with larger margins
-          const margin = 80; // Increased margin
+          // Keep nodes within bounds with responsive margins
+          const margin = isMobile ? 60 : 80;
           if (node.x! < margin) { node.x = margin; node.vx = 0; }
           if (node.x! > width - margin) { node.x = width - margin; node.vx = 0; }
           if (node.y! < margin) { node.y = margin; node.vy = 0; }

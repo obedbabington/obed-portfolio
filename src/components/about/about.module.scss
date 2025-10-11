@@ -17,6 +17,10 @@
 @media (max-width: breakpoints.$s) {
     .avatar {
         top: auto;
+        align-items: center !important;
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
     }
 
     .textAlign {

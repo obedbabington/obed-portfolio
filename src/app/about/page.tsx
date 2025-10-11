@@ -64,13 +64,26 @@ export default function About() {
       {/* Back Button */}
       <BackButton href="/" label="Back to Home" />
       
-      <Row fillWidth s={{ direction: "column" }} horizontal="center" vertical="center" style={{ minHeight: "60vh", alignItems: "flex-start" }}>
+      <Row 
+        fillWidth 
+        s={{ 
+          direction: "column", 
+          alignItems: "center",
+          horizontal: "center"
+        }} 
+        horizontal="center" 
+        vertical="center" 
+        style={{ 
+          minHeight: "60vh", 
+          alignItems: "flex-start"
+        }}
+      >
         {about.avatar.display && (
           <Column
             className={styles.avatar}
             position="sticky"
             top="24"
-            s={{ position: "relative" }}
+            s={{ position: "relative", alignItems: "center" }}
             minWidth="160"
             paddingX="l"
             paddingBottom="xl"

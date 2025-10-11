@@ -6,6 +6,8 @@
   flex-wrap: nowrap;
   gap: 3rem;
   padding-left: 2rem; /* Align with the green line (mainBranch) */
+  overflow-x: auto; /* Allow horizontal scrolling on mobile */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 .competencyItem {
@@ -99,11 +101,18 @@
   .competenciesContainer {
     gap: 2rem;
     padding-left: 1.5rem; /* Adjust for smaller screens */
+    padding-right: 1.5rem; /* Add right padding for better scrolling */
+    justify-content: flex-start; /* Keep left alignment */
   }
   
   .competencyCircle {
     width: 100px;
     height: 100px;
+  }
+  
+  .competencyItem {
+    min-width: 100px; /* Ensure minimum width for touch targets */
+    max-width: 120px;
   }
 }
 
@@ -112,10 +121,16 @@
     padding: 1rem 0;
     gap: 1.5rem;
     padding-left: 1rem; /* Further adjust for mobile */
+    padding-right: 1rem; /* Add right padding */
   }
 
   .competencyCircle {
     width: 80px;
     height: 80px;
+  }
+  
+  .competencyItem {
+    min-width: 80px;
+    max-width: 100px;
   }
 }
