@@ -13,3 +13,4 @@ export { ProjectsDropdown } from "@/components/ProjectsDropdown";
 export { BackButton } from "@/components/BackButton";
 export { SearchModal } from "@/components/SearchModal";
 export { VideoPlayer } from "@/components/VideoPlayer";
+export { default as ActivityNetworkGraph } from "@/components/ActivityNetworkGraph";

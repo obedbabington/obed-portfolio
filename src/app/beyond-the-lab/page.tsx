@@ -1,18 +1,14 @@
-import { Column, Heading, Meta, Schema, Text, Card, Row } from "@once-ui-system/core";
-import { baseURL, about, person, beyondTheLab } from "@/resources";
-import { BackButton } from "@/components";
-import Image from "next/image";
+'use client';
 
-export async function generateMetadata() {
-  return Meta.generate({
-    title: beyondTheLab.title,
-    description: beyondTheLab.description,
-    path: beyondTheLab.path,
-    baseURL,
-  });
-}
+import { Column, Heading, Schema, Text, Card, Row, Button } from "@once-ui-system/core";
+import { baseURL, about, person, beyondTheLab } from "@/resources";
+import { BackButton, ActivityNetworkGraph } from "@/components";
+import Image from "next/image";
+import { useState } from "react";
 
 export default function BeyondTheLab() {
+  const [viewMode, setViewMode] = useState<'grid' | 'graph'>('grid');
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const leadershipList = [
     {
       id: "tedx-ashesi-speaker",
@@ -182,6 +178,24 @@ export default function BeyondTheLab() {
         <Text variant="body-default-l" align="center" marginTop="m">
           Here lies a more holistic representation of my world. Take a dive.
         </Text>
+        
+        {/* View Toggle */}
+        <Row gap="m" marginTop="l" align="center">
+          <Button
+            variant={viewMode === 'grid' ? 'primary' : 'secondary'}
+            size="s"
+            onClick={() => setViewMode('grid')}
+          >
+            Grid View
+          </Button>
+          <Button
+            variant={viewMode === 'graph' ? 'primary' : 'secondary'}
+            size="s"
+            onClick={() => setViewMode('graph')}
+          >
+            Network Graph
+          </Button>
+        </Row>
       </Column>
 
       <style dangerouslySetInnerHTML={{
@@ -210,14 +224,28 @@ export default function BeyondTheLab() {
         `
       }} />
 
-      {/* Leadership Section - Grid Layout */}
-      <div className="grid-container mobile-grid" style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(2, 1fr)",
-        gap: "1.5rem",
-        padding: "0 1.5rem"
-      }}>
-        {leadershipList.map((item, index) => (
+      {/* Content based on view mode */}
+      {viewMode === 'graph' ? (
+        <Column paddingX="l">
+          <ActivityNetworkGraph
+            activities={leadershipList}
+            onNodeClick={(activityId) => {
+              window.location.href = `/beyond-the-lab/${activityId}`;
+            }}
+            selectedCategory={selectedCategory || undefined}
+            onCategoryFilter={(category) => setSelectedCategory(category || null)}
+          />
+        </Column>
+      ) : (
+        <div className="grid-container mobile-grid" style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(2, 1fr)",
+          gap: "1.5rem",
+          padding: "0 1.5rem"
+        }}>
+          {leadershipList
+            .filter(item => !selectedCategory || item.category === selectedCategory)
+            .map((item, index) => (
           <Card
             key={index}
             as="a"
@@ -348,8 +376,9 @@ export default function BeyondTheLab() {
               </Text>
             </Column>
           </Card>
-        ))}
-      </div>
+            ))}
+        </div>
+      )}
     </Column>
   );
 }
