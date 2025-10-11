@@ -193,7 +193,7 @@ export default function Publications() {
           >
             <Column gap="m" fillWidth>
               {/* Header */}
-              <Row justify="space-between" align="flex-start" gap="m">
+              <Row justify="space-between" align="start" gap="m">
                 <Column flex={1} gap="s">
                   <Text variant="heading-strong-s" className={styles.publicationTitle}>
                     {publication.title}
@@ -202,7 +202,7 @@ export default function Publications() {
                     {publication.authors.join(", ")}
                   </Text>
                 </Column>
-                <Column align="flex-end" gap="s">
+                <Column align="end" gap="s">
                   <Badge variant={getStatusColor(publication.status)} size="s">
                     {publication.status}
                   </Badge>
@@ -262,7 +262,7 @@ export default function Publications() {
           <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
             <Column gap="l" fillWidth>
               {/* Modal Header */}
-              <Row justify="space-between" align="flex-start">
+              <Row justify="space-between" align="start">
                 <Column flex={1} gap="s">
                   <Heading as="h2" variant="display-strong-s">
                     {selectedPublication.title}
@@ -319,7 +319,7 @@ export default function Publications() {
               </Column>
 
               {/* Action Buttons */}
-              <Row gap="m" justify="flex-end">
+              <Row gap="m" justify="end">
                 <Button
                   variant="secondary"
                   label="Download PDF"
