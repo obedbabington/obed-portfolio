@@ -49,35 +49,22 @@ export default function TechnicalExcellenceAward() {
         </Text>
         
         {/* Thesis Defense Link */}
-        <Card padding="l" radius="m" shadow="m" style={{ backgroundColor: "var(--primary-weak)", border: "2px solid var(--primary-medium)" }}>
-          <Column gap="m" align="center">
-            <Heading variant="heading-strong-m" align="center">
-              🎓 Watch My Thesis Defense
-            </Heading>
-            <Text variant="body-default-m" align="center" marginBottom="s">
-              See the project in action and learn about the technical implementation
-            </Text>
-            <SmartLink 
+        <Column align="center" gap="s" marginBottom="l">
+          <Text variant="body-default-s" onBackground="neutral-weak" align="center">
+            <strong>Link:</strong> <SmartLink 
               href="https://youtu.be/J5wRpPMIeQA" 
               target="_blank" 
               rel="noopener noreferrer"
               style={{ 
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                padding: "12px 24px",
-                backgroundColor: "var(--primary-medium)",
-                color: "white",
-                borderRadius: "8px",
-                textDecoration: "none",
-                fontWeight: "600",
-                transition: "all 0.2s ease"
+                color: "var(--primary-medium)",
+                textDecoration: "underline",
+                fontWeight: "500"
               }}
             >
-              ▶️ Watch on YouTube
+              Watch My Thesis Defense
             </SmartLink>
-          </Column>
-        </Card>
+          </Text>
+        </Column>
       </Column>
 
       {/* Project Images */}
