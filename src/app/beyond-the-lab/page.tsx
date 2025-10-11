@@ -293,21 +293,12 @@ export default function BeyondTheLab() {
                 />
               )}
               {item.id === "flir-c5-video-manual" && (
-                <div style={{ 
-                  position: "relative",
-                  width: "100%",
-                  height: "100%",
-                  backgroundColor: "#1a1a1a",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "white"
-                }}>
-                  <div style={{ textAlign: "center" }}>
-                    <div style={{ fontSize: "48px", marginBottom: "8px" }}>🎥</div>
-                    <div style={{ fontSize: "14px", fontWeight: "600" }}>FLIR C5 Video</div>
-                  </div>
-                </div>
+                <Image
+                  src="/images/beyond-the-lab/flir_c5.png"
+                  alt={item.title}
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
               )}
               {item.id === "pan-africanism-skit" && (
                 <div style={{ 

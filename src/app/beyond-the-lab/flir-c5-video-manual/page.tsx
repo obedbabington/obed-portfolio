@@ -1,4 +1,4 @@
-import { Column, Heading, Meta, Schema, Text, Card } from "@once-ui-system/core";
+import { Column, Heading, Meta, Schema, Text, Card, Media } from "@once-ui-system/core";
 import { baseURL, about, person } from "@/resources";
 import { BackButton } from "@/components";
 
@@ -41,6 +41,16 @@ export default function FlirC5VideoManual() {
         <Text variant="body-default-xs" onBackground="neutral-weak" style={{ textTransform: "uppercase", fontWeight: "600" }}>
           Videography • Mar 2024
         </Text>
+      </Column>
+
+      {/* Project Image */}
+      <Column marginBottom="xl" paddingX="l">
+        <Media
+          aspectRatio="16 / 9"
+          radius="m"
+          alt="FLIR C5 Thermal Imaging Camera"
+          src="/images/beyond-the-lab/flir_c5.png"
+        />
       </Column>
 
       {/* Content */}

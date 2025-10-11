@@ -58,11 +58,30 @@ export default function PanAfricanismSkit() {
             width="100%"
             height="400"
             controls
-            style={{ borderRadius: "8px" }}
+            preload="metadata"
+            playsInline
+            style={{ 
+              borderRadius: "8px",
+              backgroundColor: "#000",
+              maxWidth: "100%"
+            }}
+            onError={(e) => {
+              console.error('Video error:', e);
+            }}
           >
-            <source src="/videos/pan-africanism.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
+            <source src="/videos/pan-africanism.mp4" type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" />
+            <source src="/videos/pan-africanism.webm" type="video/webm" />
+            <p>
+              Your browser doesn't support HTML5 video. 
+              <a href="/videos/pan-africanism.mp4" download>Download the video</a> instead.
+            </p>
           </video>
+          <Text variant="body-default-s" onBackground="neutral-weak" style={{ fontStyle: "italic", textAlign: "center" }}>
+            If the video appears black, try refreshing the page or use a different browser. 
+            <a href="/videos/pan-africanism.mp4" target="_blank" rel="noopener noreferrer" style={{ color: "var(--primary-medium)", textDecoration: "underline" }}>
+              Direct video link
+            </a>
+          </Text>
         </Column>
       </Column>
 
