@@ -47,6 +47,37 @@ export default function About() {
   ];
   return (
     <Column maxWidth="m" className="fixed-header-spacing page-fade-in" style={{ position: "relative" }}>
+      {/* Background Video */}
+      <div 
+        className="about-video-background"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: -1,
+          overflow: "hidden",
+          borderRadius: "12px"
+        }}
+      >
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            opacity: 0.15,
+            filter: "blur(1px)"
+          }}
+        >
+          <source src="/videos/binary.mp4" type="video/mp4" />
+        </video>
+      </div>
+
       <Schema
         as="webPage"
         baseURL={baseURL}
