@@ -41,6 +41,8 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
   const svgRef = useRef<SVGSVGElement>(null);
   const [dimensions, setDimensions] = useState({ width: 800, height: 600 });
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
+  const [isAnimating, setIsAnimating] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
   // Define connections between activities
   const links: ActivityLink[] = [
@@ -68,16 +70,28 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
     { source: '7ma-show-podcast', target: 'arm-engage-leadership', strength: 0.3, type: 'timeline' },
   ];
 
-  // Category colors - distinct colors for better accessibility
+  // Category colors - green, grey, black with texture differentiation
   const categoryColors: Record<string, string> = {
-    'Leadership': '#3B82F6',      // Dark blue
-    'Public Speaking': '#10B981',  // Green
-    'Community Service': '#FFFFFF', // White
-    'Education & Mentorship': '#1F2937', // Black
-    'Fellowship': '#EF4444',       // Red
-    'Videography': '#06B6D4',      // Cyan
-    'Performance': '#EC4899',      // Pink
-    'Podcast': '#F59E0B'           // Orange
+    'Leadership': '#10B981',       // Plain green
+    'Public Speaking': '#10B981',  // Plain green (will use pattern)
+    'Community Service': '#6B7280', // Plain grey
+    'Education & Mentorship': '#6B7280', // Plain grey (will use pattern)
+    'Fellowship': '#1F2937',       // Plain black
+    'Videography': '#1F2937',      // Plain black (will use pattern)
+    'Performance': '#10B981',      // Plain green (will use pattern)
+    'Podcast': '#6B7280'           // Plain grey (will use pattern)
+  };
+
+  // Pattern types for texture differentiation
+  const categoryPatterns: Record<string, string> = {
+    'Leadership': 'solid',
+    'Public Speaking': 'dots',
+    'Community Service': 'solid',
+    'Education & Mentorship': 'dots',
+    'Fellowship': 'solid',
+    'Videography': 'dots',
+    'Performance': 'dots',
+    'Podcast': 'dots'
   };
 
   // Connection type colors - green shades
@@ -93,6 +107,7 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
       if (svgRef.current?.parentElement) {
         const rect = svgRef.current.parentElement.getBoundingClientRect();
         setDimensions({ width: rect.width, height: Math.max(400, rect.height) });
+        setIsMobile(window.innerWidth < 768);
       }
     };
 
@@ -134,6 +149,41 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
     );
 
     // Create SVG elements
+    const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+    svg.appendChild(defs);
+
+    // Create pattern definitions for texture differentiation
+    const patterns = ['solid', 'dots'];
+    const colors = ['#10B981', '#6B7280', '#1F2937'];
+    
+    patterns.forEach(pattern => {
+      colors.forEach(color => {
+        const patternEl = document.createElementNS('http://www.w3.org/2000/svg', 'pattern');
+        const patternId = `${pattern}-${color.replace('#', '')}`;
+        patternEl.setAttribute('id', patternId);
+        patternEl.setAttribute('width', '20');
+        patternEl.setAttribute('height', '20');
+        patternEl.setAttribute('patternUnits', 'userSpaceOnUse');
+        
+        if (pattern === 'dots') {
+          const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          circle.setAttribute('cx', '10');
+          circle.setAttribute('cy', '10');
+          circle.setAttribute('r', '3');
+          circle.setAttribute('fill', color);
+          patternEl.appendChild(circle);
+        } else {
+          const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+          rect.setAttribute('width', '20');
+          rect.setAttribute('height', '20');
+          rect.setAttribute('fill', color);
+          patternEl.appendChild(rect);
+        }
+        
+        defs.appendChild(patternEl);
+      });
+    });
+
     const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
     svg.appendChild(g);
 
@@ -153,13 +203,15 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
       const nodeEl = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
       const radius = 18 + (node.title.length / 6);
       nodeEl.setAttribute('r', radius.toString());
-      nodeEl.setAttribute('fill', categoryColors[node.category] || '#10B981');
       
-      // Use different stroke colors for white and black nodes for better visibility
-      const strokeColor = node.category === 'Community Service' ? '#000000' : 
-                         node.category === 'Education & Mentorship' ? '#ffffff' : '#ffffff';
-      nodeEl.setAttribute('stroke', strokeColor);
-      nodeEl.setAttribute('stroke-width', '4');
+      // Use pattern for texture differentiation
+      const color = categoryColors[node.category] || '#10B981';
+      const pattern = categoryPatterns[node.category] || 'solid';
+      const patternId = `${pattern}-${color.replace('#', '')}`;
+      nodeEl.setAttribute('fill', `url(#${patternId})`);
+      
+      nodeEl.setAttribute('stroke', '#ffffff');
+      nodeEl.setAttribute('stroke-width', '3');
       nodeEl.setAttribute('class', 'node');
       nodeEl.setAttribute('cursor', 'pointer');
       nodeEl.setAttribute('data-id', node.id);
@@ -183,10 +235,8 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
       labelEl.setAttribute('dy', '0.35em');
       labelEl.setAttribute('font-size', '12');
       
-      // Use contrasting text colors based on node background
-      const textColor = node.category === 'Community Service' ? '#000000' : 
-                       node.category === 'Education & Mentorship' ? '#ffffff' : '#ffffff';
-      labelEl.setAttribute('fill', textColor);
+      // All text is white for consistency
+      labelEl.setAttribute('fill', '#ffffff');
       labelEl.setAttribute('font-weight', '700');
       labelEl.setAttribute('filter', 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8))');
       labelEl.textContent = node.title.length > 20 ? node.title.substring(0, 20) + '...' : node.title;
@@ -194,9 +244,14 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
       return { element: labelEl, data: node };
     });
 
-    // Simple force simulation
+    // Simple force simulation with 3-second animation limit
     let animationId: number;
+    let startTime = Date.now();
+    const animationDuration = 3000; // 3 seconds
+    
     const tick = () => {
+      const elapsed = Date.now() - startTime;
+      
       // Update link positions
       linkElements.forEach(({ element, data }) => {
         const sourceNode = nodes.find(n => n.id === data.source);
@@ -221,56 +276,75 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
         element.setAttribute('y', (data.y! + 20).toString());
       });
 
-      // Simple force simulation
-      nodes.forEach(node => {
-        if (node.fx === null && node.fy === null) {
-          // Apply repulsion from other nodes - stronger repulsion for better spacing
-          nodes.forEach(other => {
-            if (other !== node) {
-              const dx = node.x! - other.x!;
-              const dy = node.y! - other.y!;
-              const distance = Math.sqrt(dx * dx + dy * dy);
-              if (distance > 0 && distance < 150) { // Increased from 100 to 150
-                const force = 200 / (distance * distance); // Increased from 100 to 200
-                node.vx! += (dx / distance) * force;
-                node.vy! += (dy / distance) * force;
-              }
-            }
-          });
-
-          // Apply attraction from connected nodes
-          validLinks.forEach(link => {
-            if (link.source === node.id) {
-              const target = nodes.find(n => n.id === link.target);
-              if (target) {
-                const dx = target.x! - node.x!;
-                const dy = target.y! - node.y!;
+      // Only apply forces during animation period
+      if (isAnimating && elapsed < animationDuration) {
+        nodes.forEach(node => {
+          if (node.fx === null && node.fy === null) {
+            // Apply repulsion from other nodes - stronger repulsion for better spacing
+            nodes.forEach(other => {
+              if (other !== node) {
+                const dx = node.x! - other.x!;
+                const dy = node.y! - other.y!;
                 const distance = Math.sqrt(dx * dx + dy * dy);
-                if (distance > 0) {
-                  const force = link.strength * 0.1;
+                if (distance > 0 && distance < 150) {
+                  const force = 200 / (distance * distance);
                   node.vx! += (dx / distance) * force;
                   node.vy! += (dy / distance) * force;
                 }
               }
-            }
-          });
+            });
 
-          // Apply damping
-          node.vx! *= 0.9;
-          node.vy! *= 0.9;
+            // Apply attraction from connected nodes
+            validLinks.forEach(link => {
+              if (link.source === node.id) {
+                const target = nodes.find(n => n.id === link.target);
+                if (target) {
+                  const dx = target.x! - node.x!;
+                  const dy = target.y! - node.y!;
+                  const distance = Math.sqrt(dx * dx + dy * dy);
+                  if (distance > 0) {
+                    const force = link.strength * 0.1;
+                    node.vx! += (dx / distance) * force;
+                    node.vy! += (dy / distance) * force;
+                  }
+                }
+              }
+            });
 
-          // Update position
-          node.x! += node.vx!;
-          node.y! += node.vy!;
+            // Apply damping
+            node.vx! *= 0.9;
+            node.vy! *= 0.9;
 
-          // Keep nodes within bounds
-          const margin = 50;
-          if (node.x! < margin) { node.x = margin; node.vx = 0; }
-          if (node.x! > width - margin) { node.x = width - margin; node.vx = 0; }
-          if (node.y! < margin) { node.y = margin; node.vy = 0; }
-          if (node.y! > height - margin) { node.y = height - margin; node.vy = 0; }
-        }
-      });
+            // Update position
+            node.x! += node.vx!;
+            node.y! += node.vy!;
+
+            // Keep nodes within bounds
+            const margin = 50;
+            if (node.x! < margin) { node.x = margin; node.vx = 0; }
+            if (node.x! > width - margin) { node.x = width - margin; node.vx = 0; }
+            if (node.y! < margin) { node.y = margin; node.vy = 0; }
+            if (node.y! > height - margin) { node.y = height - margin; node.vy = 0; }
+          }
+        });
+      } else if (isAnimating && elapsed >= animationDuration) {
+        // Stop animation after 3 seconds
+        setIsAnimating(false);
+        // Add gentle floating effect
+        nodes.forEach(node => {
+          node.fx = node.x;
+          node.fy = node.y;
+        });
+      } else if (!isAnimating) {
+        // Gentle floating effect
+        nodes.forEach(node => {
+          const time = Date.now() * 0.001;
+          const floatX = Math.sin(time + node.id.charCodeAt(0)) * 2;
+          const floatY = Math.cos(time + node.id.charCodeAt(0)) * 2;
+          node.fx = node.x! + floatX;
+          node.fy = node.y! + floatY;
+        });
+      }
 
       animationId = requestAnimationFrame(tick);
     };
@@ -289,9 +363,10 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
   return (
     <div style={{ 
       display: 'flex', 
-      gap: '24px', 
+      flexDirection: isMobile ? 'column' : 'row',
+      gap: isMobile ? '16px' : '24px', 
       width: '100%',
-      minHeight: '700px'
+      minHeight: isMobile ? 'auto' : '700px'
     }}>
       <style dangerouslySetInnerHTML={{
         __html: `
@@ -310,12 +385,13 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
       
       {/* Graph - Takes most of the space */}
       <div style={{ 
-        flex: '1',
-        height: '700px', 
+        flex: isMobile ? 'none' : '1',
+        height: isMobile ? '500px' : '700px', 
         borderRadius: '12px',
         overflow: 'hidden',
         background: 'transparent',
-        position: 'relative'
+        position: 'relative',
+        width: isMobile ? '100%' : 'auto'
       }}>
         <svg
           ref={svgRef}
@@ -327,10 +403,11 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
 
       {/* Legend - Right side column */}
       <div style={{ 
-        width: '280px',
+        width: isMobile ? '100%' : '280px',
         display: 'flex',
-        flexDirection: 'column',
-        gap: '16px'
+        flexDirection: isMobile ? 'row' : 'column',
+        gap: isMobile ? '12px' : '16px',
+        flexWrap: isMobile ? 'wrap' : 'nowrap'
       }}>
         {/* Activity Categories */}
         <div style={{ 
@@ -338,9 +415,16 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
           backdropFilter: 'blur(10px)',
           borderRadius: '12px',
           border: '1px solid rgba(16, 185, 129, 0.2)',
-          padding: '20px'
+          padding: isMobile ? '16px' : '20px',
+          flex: isMobile ? '1' : 'none',
+          minWidth: isMobile ? '200px' : 'auto'
         }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <div style={{ 
+            display: 'flex', 
+            flexDirection: isMobile ? 'row' : 'column', 
+            gap: isMobile ? '8px' : '12px',
+            flexWrap: isMobile ? 'wrap' : 'nowrap'
+          }}>
             {categories.map(category => (
               <div 
                 key={category}
@@ -383,9 +467,16 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
           backdropFilter: 'blur(10px)',
           borderRadius: '12px',
           border: '1px solid rgba(16, 185, 129, 0.2)',
-          padding: '20px'
+          padding: isMobile ? '16px' : '20px',
+          flex: isMobile ? '1' : 'none',
+          minWidth: isMobile ? '200px' : 'auto'
         }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <div style={{ 
+            display: 'flex', 
+            flexDirection: isMobile ? 'row' : 'column', 
+            gap: isMobile ? '8px' : '12px',
+            flexWrap: isMobile ? 'wrap' : 'nowrap'
+          }}>
             {Object.entries(connectionColors).map(([type, color]) => (
               <div key={type} style={{ 
                 display: 'flex', 
