@@ -306,23 +306,14 @@ export default function BeyondTheLab() {
                 />
               )}
               {item.id === "pan-africanism-skit" && (
-                <div style={{ 
-                  position: "relative",
-                  width: "100%",
-                  height: "100%",
-                  backgroundColor: "#1a1a1a",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "white"
-                }}>
-                  <div style={{ textAlign: "center" }}>
-                    <div style={{ fontSize: "48px", marginBottom: "8px" }}>🎭</div>
-                    <div style={{ fontSize: "14px", fontWeight: "600" }}>Pan-Africanism Skit</div>
-                  </div>
-                </div>
+                <Image
+                  src="/images/beyond-the-lab/pan-africanism.png"
+                  alt={item.title}
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
               )}
-              {!["tedx-ashesi-speaker", "army-students-club-curator", "aftgonosia-service-learning", "msmiles-stem-curriculum", "ashesi-research-club-president", "assistive-technology-makerspace", "7ma-show-podcast", "flir-c5-video-manual", "pan-africanism-skit"].includes(item.id) && (
+              {!["tedx-ashesi-speaker", "army-students-club-curator", "aftgonosia-service-learning", "msmiles-stem-curriculum", "ashesi-research-club-president", "assistive-technology-makerspace", "7ma-show-podcast", "flir-c5-video-manual"].includes(item.id) && (
                 <Image
                   src="/images/beyond-the-lab/default.jpg"
                   alt={item.title}
