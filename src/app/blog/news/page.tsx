@@ -42,7 +42,12 @@ export default function News() {
       />
 
       {/* Back Button */}
-      <BackButton href="/blog/news" label="Back to News & Achievements" />
+      <BackButton href="/blog" label="Back to Blog" />
+
+      {/* Page Title */}
+      <Column marginBottom="l" paddingX="l" align="center">
+        <Heading variant="heading-strong-xl" align="center">News and Achievements</Heading>
+      </Column>
 
       {/* Page Header */}
       <Column marginBottom="l" paddingX="l" align="center">

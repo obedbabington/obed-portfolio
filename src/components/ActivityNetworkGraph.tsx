@@ -69,7 +69,7 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
     { source: '7ma-show-podcast', target: 'arm-engage-leadership', strength: 0.3, type: 'timeline' },
   ];
 
-  // Category colors - distinct shades of green, black, dark blue, grey, and white
+  // Category colors - distinct shades of green, black, dark blue, grey, all dark enough for white text
   const categoryColors: Record<string, string> = {
     'Leadership': '#10B981',       // Bright green
     'Public Speaking': '#1e3a8a',  // Darker blue (matching page theme)
@@ -77,8 +77,8 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
     'Education & Mentorship': '#000000', // Pure black
     'Fellowship': '#059669',       // Dark green
     'Videography': '#1F2937',      // Dark grey
-    'Performance': '#FFFFFF',      // White
-    'Podcast': '#374151'           // Light grey
+    'Performance': '#1E40AF',      // Dark blue (distinct from Public Speaking)
+    'Podcast': '#374151'           // Medium dark grey
   };
 
   // Connection type colors - green shades
@@ -161,19 +161,20 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
       // Use solid colors - no patterns
       nodeEl.setAttribute('fill', categoryColors[node.category] || '#10B981');
       
-      // Use contrasting stroke colors for white and black nodes
-      const strokeColor = node.category === 'Performance' ? '#000000' : '#ffffff';
-      nodeEl.setAttribute('stroke', strokeColor);
+      // All nodes have white stroke for consistency
+      nodeEl.setAttribute('stroke', '#ffffff');
       nodeEl.setAttribute('stroke-width', '3');
       nodeEl.setAttribute('class', 'node');
       nodeEl.setAttribute('cursor', 'pointer');
       nodeEl.setAttribute('data-id', node.id);
       nodeEl.setAttribute('filter', 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25))');
       
-      // Add hover effects
-      nodeEl.addEventListener('mouseenter', () => setHoveredNode(node.id));
-      nodeEl.addEventListener('mouseleave', () => setHoveredNode(null));
-      nodeEl.addEventListener('click', () => onNodeClick?.(node.id));
+              // Add hover effects (desktop only) and click handling
+              if (!isMobile) {
+                nodeEl.addEventListener('mouseenter', () => setHoveredNode(node.id));
+                nodeEl.addEventListener('mouseleave', () => setHoveredNode(null));
+              }
+              nodeEl.addEventListener('click', () => onNodeClick?.(node.id));
       
       g.appendChild(nodeEl);
       return { element: nodeEl, data: node };
@@ -188,9 +189,8 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
       labelEl.setAttribute('dy', '0.35em');
       labelEl.setAttribute('font-size', '12');
       
-      // Use contrasting text colors for white and black nodes
-      const textColor = node.category === 'Performance' ? '#000000' : '#ffffff';
-      labelEl.setAttribute('fill', textColor);
+      // All text is white for consistency
+      labelEl.setAttribute('fill', '#ffffff');
       labelEl.setAttribute('font-weight', '700');
       labelEl.setAttribute('filter', 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8))');
       labelEl.textContent = node.title.length > 20 ? node.title.substring(0, 20) + '...' : node.title;
@@ -397,8 +397,8 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
         
       </div>
 
-      {/* Hover Info */}
-      {hoveredNode && (
+      {/* Hover Info - Desktop only */}
+      {hoveredNode && !isMobile && (
         <div style={{
           position: 'absolute',
           top: '20px',

@@ -33,7 +33,7 @@ export default function PanAfricanismSkit() {
 
       {/* Page Title */}
       <Column marginBottom="l" paddingX="l" align="center">
-        <Heading variant="heading-strong-xl">Starring in a Skit on Pan-Africanism</Heading>
+        <Heading variant="heading-strong-xl" className="responsive-heading">Starring in a Skit on Pan-Africanism</Heading>
       </Column>
 
       {/* Project Info */}
@@ -45,34 +45,48 @@ export default function PanAfricanismSkit() {
 
       {/* Content */}
       <Column paddingX="l" gap="l">
-        <Text variant="body-default-l">
+        <Text variant="body-default-l" className="responsive-text">
           To answer the question: "How did Pan-Africanism evolve from a response to racialised exclusion to an opposition to colonial domination, and what roles had Blyden, Du Bois, Williams and Nkrumah play in reinterpreting it to meet the political and cultural needs of their time?" I act as Dr. Kwame Nkrumah, Ghana's first prime minister and president, to represent his work on political unification.
         </Text>
 
         <Column gap="m" align="center">
-          <Heading variant="heading-strong-l">Performance Video</Heading>
-          <Text variant="body-default-m">
+          <Heading variant="heading-strong-l" className="responsive-heading">Performance Video</Heading>
+          <Text variant="body-default-m" className="responsive-text">
             Watch the Pan-Africanism skit performance:
           </Text>
-          <VideoPlayer
-            width="100%"
-            height="400"
-            controls
-            preload="metadata"
-            playsInline
-            style={{ 
-              borderRadius: "8px",
-              backgroundColor: "#000",
-              maxWidth: "100%"
-            }}
-          >
-            <source src="/videos/pan-africanism.mp4" type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" />
-            <source src="/videos/pan-africanism.webm" type="video/webm" />
-            <p>
-              Your browser doesn't support HTML5 video. 
-              <a href="/videos/pan-africanism.mp4" download>Download the video</a> instead.
-            </p>
-          </VideoPlayer>
+          <div style={{ 
+            position: "relative", 
+            width: "100%", 
+            height: "0", 
+            paddingBottom: "56.25%", // 16:9 aspect ratio
+            borderRadius: "8px",
+            overflow: "hidden",
+            backgroundColor: "#000"
+          }}>
+            <VideoPlayer
+              width="100%"
+              height="100%"
+              controls
+              preload="metadata"
+              playsInline
+              style={{ 
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                borderRadius: "8px",
+                backgroundColor: "#000"
+              }}
+            >
+              <source src="/videos/pan-africanism.mp4" type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" />
+              <source src="/videos/pan-africanism.webm" type="video/webm" />
+              <p>
+                Your browser doesn't support HTML5 video. 
+                <a href="/videos/pan-africanism.mp4" download>Download the video</a> instead.
+              </p>
+            </VideoPlayer>
+          </div>
           <Text variant="body-default-s" onBackground="neutral-weak" style={{ fontStyle: "italic", textAlign: "center" }}>
             If the video appears black, try refreshing the page or use a different browser. 
             <a href="/videos/pan-africanism.mp4" target="_blank" rel="noopener noreferrer" style={{ color: "var(--primary-medium)", textDecoration: "underline" }}>
@@ -90,6 +104,28 @@ export default function PanAfricanismSkit() {
             }
             100% {
               opacity: 1;
+            }
+          }
+          
+          @media (max-width: 768px) {
+            .responsive-text {
+              font-size: 1rem !important;
+              line-height: 1.5 !important;
+            }
+            
+            .responsive-heading {
+              font-size: 1.5rem !important;
+              line-height: 1.3 !important;
+            }
+          }
+          
+          @media (max-width: 480px) {
+            .responsive-text {
+              font-size: 0.9rem !important;
+            }
+            
+            .responsive-heading {
+              font-size: 1.25rem !important;
             }
           }
         `

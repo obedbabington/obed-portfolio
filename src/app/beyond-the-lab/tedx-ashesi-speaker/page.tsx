@@ -35,7 +35,7 @@ export default function TedxAshesiSpeaker() {
 
       {/* Page Title */}
       <Column marginBottom="l" paddingX="l" align="center">
-        <Heading variant="heading-strong-xl">TEDx Ashesi University Speaker</Heading>
+        <Heading variant="heading-strong-xl" className="responsive-heading">TEDx Ashesi University Speaker</Heading>
       </Column>
 
       {/* Project Info */}
@@ -47,7 +47,7 @@ export default function TedxAshesiSpeaker() {
 
       {/* Side by Side Images */}
       <Row marginBottom="xl" gap="l" s={{ direction: "column" }}>
-        <div style={{ 
+        <div className="responsive-image" style={{ 
           position: "relative", 
           flex: 1,
           height: "300px",
@@ -63,7 +63,7 @@ export default function TedxAshesiSpeaker() {
             priority
           />
         </div>
-        <div style={{ 
+        <div className="responsive-image" style={{ 
           position: "relative", 
           flex: 1,
           height: "300px",
@@ -115,11 +115,11 @@ export default function TedxAshesiSpeaker() {
 
       {/* Content */}
       <Column paddingX="l" gap="l">
-        <Text variant="body-default-l">
+        <Text variant="body-default-l" className="responsive-text">
           Quantum Physics has always intrigued me and the exploration of the world beyond what meets the eye is something I am extremely passionate about. In my TEDx talk at Ashesi University, I sought to elucidate the role of wandering in the realm of the unknown.
         </Text>
 
-        <Text variant="body-default-l">
+        <Text variant="body-default-l" className="responsive-text">
           I believe that the suppression of the willful expression of the self leads to the degradation of society. Thus, I love to use every opportunity I can get to create meaning.
         </Text>
       </Column>
@@ -132,6 +132,36 @@ export default function TedxAshesiSpeaker() {
             }
             100% {
               opacity: 1;
+            }
+          }
+          
+          @media (max-width: 768px) {
+            .responsive-text {
+              font-size: 1rem !important;
+              line-height: 1.5 !important;
+            }
+            
+            .responsive-heading {
+              font-size: 1.5rem !important;
+              line-height: 1.3 !important;
+            }
+            
+            .responsive-image {
+              height: 250px !important;
+            }
+          }
+          
+          @media (max-width: 480px) {
+            .responsive-text {
+              font-size: 0.9rem !important;
+            }
+            
+            .responsive-heading {
+              font-size: 1.25rem !important;
+            }
+            
+            .responsive-image {
+              height: 200px !important;
             }
           }
         `

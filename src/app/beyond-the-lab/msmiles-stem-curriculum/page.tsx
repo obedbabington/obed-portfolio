@@ -39,7 +39,7 @@ export default function MSmilesSTEMCurriculum() {
 
       {/* Page Title */}
       <Column marginBottom="l" paddingX="l" align="center">
-        <Heading variant="heading-strong-xl">MSmiles - STEM Curriculum Design</Heading>
+        <Heading variant="heading-strong-xl" className="responsive-heading">MSmiles - STEM Curriculum Design</Heading>
       </Column>
 
       {/* Project Info */}
@@ -130,6 +130,28 @@ export default function MSmilesSTEMCurriculum() {
             }
             100% {
               opacity: 1;
+            }
+          }
+          
+          @media (max-width: 768px) {
+            .responsive-text {
+              font-size: 1rem !important;
+              line-height: 1.5 !important;
+            }
+            
+            .responsive-heading {
+              font-size: 1.5rem !important;
+              line-height: 1.3 !important;
+            }
+          }
+          
+          @media (max-width: 480px) {
+            .responsive-text {
+              font-size: 0.9rem !important;
+            }
+            
+            .responsive-heading {
+              font-size: 1.25rem !important;
             }
           }
         `

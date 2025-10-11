@@ -34,7 +34,7 @@ export default function AssistiveTechnologyMakerspace() {
 
       {/* Page Title */}
       <Column marginBottom="l" paddingX="l" align="center">
-        <Heading variant="heading-strong-xl">Assistive Technology Makerspace Fellowship</Heading>
+        <Heading variant="heading-strong-xl" className="responsive-heading">Assistive Technology Makerspace Fellowship</Heading>
       </Column>
 
       {/* Project Info */}
@@ -68,11 +68,11 @@ export default function AssistiveTechnologyMakerspace() {
 
       {/* Content */}
       <Column paddingX="l" gap="l">
-        <Text variant="body-default-l">
+        <Text variant="body-default-l" className="responsive-text">
           As a Fellow at the Assistive Technology (AT) Makerspace, a program launched by Tech Era in partnership with Dextra (Canada) and the Ashesi D-Lab, I contributed to advancing accessible, low-cost assistive technologies for persons with disabilities in Ghana.
         </Text>
 
-        <Text variant="body-default-l">
+        <Text variant="body-default-l" className="responsive-text">
           Over an intensive two-week fellowship, I gained hands-on training in 3D modeling and printing, Arduino programming, electronics, and lean research methods, and applied these skills in a team-based design challenge.
         </Text>
 
@@ -112,13 +112,13 @@ export default function AssistiveTechnologyMakerspace() {
 
       {/* Image Gallery */}
       <Column marginTop="xl" paddingX="l" gap="l">
-        <Heading variant="heading-strong-l">Gallery</Heading>
-        <div style={{
+        <Heading variant="heading-strong-l" className="responsive-heading">Gallery</Heading>
+        <div className="gallery-grid" style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
           gap: "1.5rem"
         }}>
-          <div style={{ 
+          <div className="gallery-item" style={{ 
             position: "relative", 
             width: "100%", 
             height: "250px",
@@ -133,7 +133,7 @@ export default function AssistiveTechnologyMakerspace() {
               style={{ objectFit: "cover" }}
             />
           </div>
-          <div style={{ 
+          <div className="gallery-item" style={{ 
             position: "relative", 
             width: "100%", 
             height: "250px",
@@ -159,6 +159,41 @@ export default function AssistiveTechnologyMakerspace() {
             }
             100% {
               opacity: 1;
+            }
+          }
+          
+          @media (max-width: 768px) {
+            .responsive-text {
+              font-size: 1rem !important;
+              line-height: 1.5 !important;
+            }
+            
+            .responsive-heading {
+              font-size: 1.5rem !important;
+              line-height: 1.3 !important;
+            }
+            
+            .gallery-grid {
+              grid-template-columns: 1fr !important;
+              gap: 1rem !important;
+            }
+            
+            .gallery-item {
+              height: 200px !important;
+            }
+          }
+          
+          @media (max-width: 480px) {
+            .responsive-text {
+              font-size: 0.9rem !important;
+            }
+            
+            .responsive-heading {
+              font-size: 1.25rem !important;
+            }
+            
+            .gallery-item {
+              height: 180px !important;
             }
           }
         `
