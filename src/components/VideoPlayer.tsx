@@ -3,7 +3,7 @@
 import React from 'react';
 
 interface VideoPlayerProps {
-  src: string;
+  src?: string;
   width?: string;
   height?: string;
   controls?: boolean;
@@ -36,6 +36,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       playsInline={playsInline}
       style={style}
       onError={handleError}
+      {...(src && { src })}
     >
       {children}
     </video>
