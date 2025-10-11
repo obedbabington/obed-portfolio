@@ -44,9 +44,40 @@ export default function TechnicalExcellenceAward() {
         <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="l">
           <strong>Category:</strong> Award
         </Text>
-        <Text variant="body-default-l" align="center">
+        <Text variant="body-default-l" align="center" marginBottom="l">
           Honored to receive the prestigious Technical Excellence Award in Computer Engineering for my capstone project on 'Hardware Accelerated Machine Learning with a Softcore Processor'.
         </Text>
+        
+        {/* Thesis Defense Link */}
+        <Card padding="l" radius="m" shadow="m" style={{ backgroundColor: "var(--primary-weak)", border: "2px solid var(--primary-medium)" }}>
+          <Column gap="m" align="center">
+            <Heading variant="heading-strong-m" align="center">
+              🎓 Watch My Thesis Defense
+            </Heading>
+            <Text variant="body-default-m" align="center" marginBottom="s">
+              See the project in action and learn about the technical implementation
+            </Text>
+            <SmartLink 
+              href="https://youtu.be/J5wRpPMIeQA" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{ 
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "12px 24px",
+                backgroundColor: "var(--primary-medium)",
+                color: "white",
+                borderRadius: "8px",
+                textDecoration: "none",
+                fontWeight: "600",
+                transition: "all 0.2s ease"
+              }}
+            >
+              ▶️ Watch on YouTube
+            </SmartLink>
+          </Column>
+        </Card>
       </Column>
 
       {/* Project Images */}

@@ -55,7 +55,7 @@ export default function FPGANeuralNetworks() {
           aspectRatio="16 / 9"
           radius="m"
           alt="FPGA Neural Networks"
-          src="/images/research/fpga_cover.jpg"
+          src="/images/research/Vivado_Block_Design.png"
         />
       </Column>
 

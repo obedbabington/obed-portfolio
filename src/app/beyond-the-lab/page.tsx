@@ -244,7 +244,7 @@ export default function BeyondTheLab() {
                   style={{ objectFit: "cover" }}
                 />
               )}
-              {item.id === "army-students-club-curator" && (
+              {item.id === "arm-engage-leadership" && (
                 <Image
                   src="/images/projects/arm-y.jpg"
                   alt={item.title}
