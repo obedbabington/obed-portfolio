@@ -106,13 +106,13 @@ export default function Projects() {
       <BackButton href="/" label="Back to Home" />
 
       {/* Projects Heading */}
-      <Column marginBottom="l" paddingX="l" align="center" style={{ marginTop: "30px" }}>
+      <Column marginBottom="l" paddingX="l" align="center" style={{ marginTop: "20px" }}>
         <Heading variant="heading-strong-xl" align="center">Projects</Heading>
       </Column>
 
       {/* Alfred Whitehead Quote */}
-      <Column paddingX="l" gap="xl" marginBottom="xl" align="center" style={{ marginTop: "60px" }}>
-        <Row gap="m" vertical="center" align="center" maxWidth="l">
+      <Column paddingX="l" gap="l" marginBottom="l" align="center" style={{ marginTop: "30px" }}>
+        <Row gap="l" vertical="center" align="center" maxWidth="l">
           <div
             style={{
               position: "relative",
@@ -133,7 +133,7 @@ export default function Projects() {
               }}
             />
           </div>
-          <Column gap="m" align="center" flex={1}>
+          <Column gap="s" align="center" flex={1}>
             <Text variant="body-default-l" align="center" style={{ fontStyle: "italic", lineHeight: "1.6" }}>
               "Civilization advances by extending the number of important operations which we can perform without thinking about them."
             </Text>
@@ -145,7 +145,7 @@ export default function Projects() {
       </Column>
 
       {/* Project Description */}
-      <Column marginBottom="xl" paddingX="l" align="center">
+      <Column marginBottom="l" paddingX="l" align="center">
         <Text variant="body-default-l" align="center">
           Switching majors from Electrical/Electronics Engineering to Computer Engineering was one of the best decisions I ever made. In taking both engineering and CS classes, my passion for hardware-software co-design only grew.
         </Text>

@@ -61,7 +61,7 @@ export default function ArmEngageLeadership() {
           aspectRatio="16 / 9" 
           radius="m" 
           alt="ARM (E³)NGAGE Ashesi Student Club Group Photo" 
-          src="/images/beyond-the-lab/arm-y.jpg" 
+          src="/images/projects/arm-y.jpg" 
         />
         <Text variant="body-default-s" onBackground="neutral-weak" align="center" marginTop="s" style={{ fontStyle: "italic" }}>
           Group photo of ARM (E³)NGAGE Ashesi Student Club members
