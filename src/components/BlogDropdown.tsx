@@ -32,7 +32,7 @@ export const BlogDropdown = () => {
     >
       {/* Main Blog Button */}
       <ToggleButton
-        href="/blog"
+        href="/blog/news"
         label={blog.label}
         selected={pathname.startsWith("/blog")}
         style={{ cursor: "pointer" }}
