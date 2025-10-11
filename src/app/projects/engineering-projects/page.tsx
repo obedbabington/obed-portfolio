@@ -23,10 +23,10 @@ export default function EngineeringProjects() {
     },
     {
       id: "automated-robotic-vehicle",
-      title: "Automated Robotic Vehicle",
+      title: "Low-Level Prototyping of a Robotic Vehicle",
       date: "Sep 2022 - Dec 2022",
       technologies: "Arduino, C/C++, Sensors, Motor Control, Breadboarding",
-      summary: "Developed an autonomous robotic vehicle capable of obstacle detection and avoidance using ultrasonic sensors, implementing pathfinding algorithms and motor control systems for smooth navigation."
+      summary: "Designed and implemented a remotely operated robotic vehicle using dual microcontrollers (STM32 M0 and STM32 M7) in register-level bare-metal C using UART-based communication. The M0 was the powerhouse of the \"remote control station,\" while the M7 actualized controls on the vehicle."
     },
     {
       id: "tennis-scoreboard",

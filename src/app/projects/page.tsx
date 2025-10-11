@@ -23,7 +23,7 @@ export default function Projects() {
     },
     {
       id: "automated-robotic-vehicle",
-      title: "Automated Robotic Vehicle",
+      title: "Low-Level Prototyping of a Robotic Vehicle",
       date: "Dec 2024",
       technologies: "Embedded C, Arm Cortex-M (STM32)",
       summary: "Designed and implemented a remotely operated robotic vehicle using dual microcontrollers (STM32 M0 and STM32 M7) in register-level bare-metal C using UART-based communication. Integrated RTOS on the M7 for real-time task scheduling, ensuring efficient coordination of motion, speed regulation, and system monitoring."

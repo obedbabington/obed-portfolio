@@ -53,6 +53,29 @@ export default function HeartbeatMonitoring() {
         />
       </Column>
 
+      {/* Project Video */}
+      <Column marginBottom="xl" paddingX="l">
+        <Card padding="l" radius="m" shadow="m">
+          <Column gap="m">
+            <Heading variant="heading-strong-l">Project Demonstration</Heading>
+            <Text variant="body-default-m" marginBottom="m">
+              Watch the heartbeat monitoring system in action:
+            </Text>
+            <video
+              controls
+              style={{
+                width: "100%",
+                borderRadius: "8px",
+                boxShadow: "0 4px 16px rgba(0, 0, 0, 0.1)"
+              }}
+            >
+              <source src="/videos/heartbeat-monitoring.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </Column>
+        </Card>
+      </Column>
+
 <Column paddingX="l" gap="xl">
         <Card padding="l" radius="m" shadow="m">
           <Column gap="m">

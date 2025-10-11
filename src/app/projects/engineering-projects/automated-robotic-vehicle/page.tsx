@@ -4,7 +4,7 @@ import { BackButton } from "@/components";
 
 export async function generateMetadata() {
   return Meta.generate({
-    title: "Automated Robotic Vehicle",
+    title: "Low-Level Prototyping of a Robotic Vehicle",
     description: "Designed and implemented a remotely operated robotic vehicle using dual microcontrollers (STM32 M0 and STM32 M7) in register-level bare-metal C using UART-based communication.",
     path: "/projects/engineering-projects/automated-robotic-vehicle",
     baseURL,
@@ -21,9 +21,9 @@ export default function AutomatedRoboticVehicle() {
         as="webPage"
         baseURL={baseURL}
         path="/projects/engineering-projects/automated-robotic-vehicle"
-        title="Automated Robotic Vehicle"
+        title="Low-Level Prototyping of a Robotic Vehicle"
         description="Designed and implemented a remotely operated robotic vehicle using dual microcontrollers (STM32 M0 and STM32 M7) in register-level bare-metal C using UART-based communication."
-        image={`/api/og/generate?title=${encodeURIComponent("Automated Robotic Vehicle")}`}
+        image={`/api/og/generate?title=${encodeURIComponent("Low-Level Prototyping of a Robotic Vehicle")}`}
         author={{
           name: person.name,
           url: `${baseURL}${about.path}`,
@@ -34,7 +34,7 @@ export default function AutomatedRoboticVehicle() {
       {/* Project Header */}
       <Column marginBottom="xl" paddingX="l" align="center" marginTop="l">
         <Heading marginBottom="l" variant="heading-strong-xl" align="center">
-          Automated Robotic Vehicle
+          Low-Level Prototyping of a Robotic Vehicle
         </Heading>
         <Text variant="body-default-l" align="center" onBackground="neutral-weak">
           <strong>Date:</strong> Sep 2022 - Dec 2022
@@ -49,7 +49,7 @@ export default function AutomatedRoboticVehicle() {
         <Media 
           aspectRatio="16 / 9" 
           radius="m" 
-          alt="Automated Robotic Vehicle" 
+          alt="Low-Level Prototyping of a Robotic Vehicle" 
           src="/images/robot.jpeg" 
         />
       </Column>
