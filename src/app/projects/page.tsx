@@ -105,6 +105,11 @@ export default function Projects() {
       {/* Back Button */}
       <BackButton href="/" label="Back to Home" />
 
+      {/* Projects Heading */}
+      <Column marginBottom="l" paddingX="l" align="center" style={{ marginTop: "60px" }}>
+        <Heading variant="heading-strong-xl" align="center">Projects</Heading>
+      </Column>
+
       {/* Alfred Whitehead Quote */}
       <Column paddingX="l" gap="xl" marginBottom="xl" align="center" style={{ marginTop: "60px" }}>
         <Row gap="m" vertical="center" align="center" maxWidth="l">
@@ -220,7 +225,7 @@ export default function Projects() {
             <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="s">
               Hardware, embedded systems, and engineering projects showcasing practical applications of technology.
             </Text>
-            <Text variant="body-default-xs" onBackground="neutral-weak">
+            <Text variant="body-default-xs" style={{ color: "var(--brand-medium)" }}>
               Arduino, VHDL, FPGA, Hardware Design, Embedded Systems
             </Text>
           </Column>
@@ -255,7 +260,7 @@ export default function Projects() {
             <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="s">
               Computer Science and Deep Learning projects exploring AI, machine learning, and natural language processing.
             </Text>
-            <Text variant="body-default-xs" onBackground="neutral-weak">
+            <Text variant="body-default-xs" style={{ color: "var(--brand-medium)" }}>
               Python, TensorFlow, Deep Learning, NLP, AI/ML
             </Text>
           </Column>

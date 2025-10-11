@@ -60,6 +60,11 @@ export default function Research() {
       {/* Back Button */}
       <BackButton href="/" label="Back to Home" />
       
+      {/* Research Heading */}
+      <Column marginBottom="l" paddingX="l" align="center" style={{ marginTop: "60px" }}>
+        <Heading variant="heading-strong-xl" align="center">Research</Heading>
+      </Column>
+      
       {/* Research Experiences Header */}
       <Column marginBottom="l" paddingX="l" align="center">
         <Text variant="body-default-l" align="center" style={{ fontStyle: "italic", fontSize: "1.1em", lineHeight: "1.6" }}>

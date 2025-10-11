@@ -169,6 +169,11 @@ export default function BeyondTheLab() {
       {/* Back Button */}
       <BackButton href="/" label="Back to Home" />
 
+      {/* Beyond the Lab Heading */}
+      <Column marginBottom="l" paddingX="l" align="center" style={{ marginTop: "60px" }}>
+        <Heading variant="heading-strong-xl" align="center">Beyond the Lab</Heading>
+      </Column>
+
       {/* Page Header */}
       <Column marginBottom="l" paddingX="l" align="center">
         <Text variant="body-default-l" align="center" marginTop="m">
