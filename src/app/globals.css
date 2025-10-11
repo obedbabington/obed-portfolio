@@ -30,58 +30,7 @@ main, [role="main"], .main-content {
   animation: fadeIn 0.8s ease-out;
 }
 
-/* About page video background - Full page coverage */
-.about-video-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -2;
-  overflow: hidden;
-}
 
-.about-video-background video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.08;
-  filter: blur(1px);
-  transition: opacity 0.3s ease;
-}
-
-/* Ensure content is above video */
-.about-video-background + * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Mobile adjustments for video background */
-@media (max-width: 768px) {
-  .about-video-background video {
-    opacity: 0.06;
-    filter: blur(2px);
-  }
-}
-
-/* Ensure video plays continuously */
-.about-video-background video::-webkit-media-controls {
-  display: none !important;
-}
-
-.about-video-background video::-webkit-media-controls-panel {
-  display: none !important;
-}
-
-/* Reduce motion for accessibility */
-@media (prefers-reduced-motion: reduce) {
-  .about-video-background video {
-    display: none;
-  }
-}
 
 /* Sliding hero background behind the homepage headline */
 .hero-slider-bg {
@@ -304,6 +253,98 @@ h1, h2, h3, h4, h5, h6,
 
 /* subtle neural grid overlay (disabled per request) */
 .ai-gradient::after { display: none; }
+
+/* Animated Grid Background - Minimalist drawing sequence */
+.animated-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -3;
+  pointer-events: none;
+  opacity: 0.08;
+  animation: gridFadeIn 3s ease-out 2s forwards;
+}
+
+@keyframes gridFadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 0.08; }
+}
+
+.animated-grid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    /* Vertical lines */
+    linear-gradient(90deg, transparent 0%, transparent 49%, rgba(16,185,129,0.3) 50%, transparent 51%),
+    linear-gradient(90deg, transparent 0%, transparent 49%, rgba(16,185,129,0.2) 50%, transparent 51%),
+    linear-gradient(90deg, transparent 0%, transparent 49%, rgba(16,185,129,0.15) 50%, transparent 51%),
+    /* Horizontal lines */
+    linear-gradient(0deg, transparent 0%, transparent 49%, rgba(16,185,129,0.3) 50%, transparent 51%),
+    linear-gradient(0deg, transparent 0%, transparent 49%, rgba(16,185,129,0.2) 50%, transparent 51%),
+    linear-gradient(0deg, transparent 0%, transparent 49%, rgba(16,185,129,0.15) 50%, transparent 51%);
+  background-size: 
+    120px 100%,
+    80px 100%,
+    60px 100%,
+    100% 120px,
+    100% 80px,
+    100% 60px;
+  background-position: 
+    0 0,
+    40px 0,
+    60px 0,
+    0 0,
+    0 40px,
+    0 60px;
+  animation: gridDraw 8s ease-in-out infinite;
+  mask: linear-gradient(90deg, transparent 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 90%, transparent 100%);
+  -webkit-mask: linear-gradient(90deg, transparent 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 90%, transparent 100%);
+}
+
+@keyframes gridDraw {
+  0% {
+    background-position: 
+      -120px 0,
+      -80px 0,
+      -60px 0,
+      0 -120px,
+      0 -80px,
+      0 -60px;
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.3;
+  }
+  50% {
+    background-position: 
+      0 0,
+      40px 0,
+      60px 0,
+      0 0,
+      0 40px,
+      0 60px;
+    opacity: 0.6;
+  }
+  80% {
+    opacity: 0.4;
+  }
+  100% {
+    background-position: 
+      120px 0,
+      80px 0,
+      60px 0,
+      0 120px,
+      0 80px,
+      0 60px;
+    opacity: 0.2;
+  }
+}
 
 /* Neural Network Animation - Interconnected Nodes with Glowing Connections */
 .neural-particles {
