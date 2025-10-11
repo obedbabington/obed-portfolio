@@ -46,7 +46,7 @@ export default function About() {
     },
   ];
   return (
-    <Column maxWidth="m" className="fixed-header-spacing" style={{ animation: "fadeIn 1s ease-out", position: "relative" }}>
+    <Column maxWidth="m" className="fixed-header-spacing neural-particles" style={{ animation: "fadeIn 1s ease-out", position: "relative" }}>
       <Schema
         as="webPage"
         baseURL={baseURL}
