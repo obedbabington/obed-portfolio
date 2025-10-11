@@ -45,7 +45,7 @@ import { JetBrains_Mono } from "next/font/google";
 const heading = Lora({
   variable: "--font-heading",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
   style: "normal",
 });
@@ -53,7 +53,7 @@ const heading = Lora({
 const body = Lora({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
   style: "normal",
 });
@@ -61,7 +61,7 @@ const body = Lora({
 const label = Lora({
   variable: "--font-label",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
   style: "normal",
 });
