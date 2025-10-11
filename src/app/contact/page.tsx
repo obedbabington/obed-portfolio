@@ -7,6 +7,8 @@ import { BackButton } from "@/components";
 export default function Contact() {
   return (
     <Column maxWidth="m" className="fixed-header-spacing page-fade-in" style={{ minHeight: "calc(100vh - 120px)", justifyContent: "center", alignItems: "center", paddingTop: "60px", position: "relative" }}>
+      {/* Animated Grid Background */}
+      <div className="animated-grid" />
       
       {/* Back Button */}
       <BackButton href="/" label="Back to Home" />
