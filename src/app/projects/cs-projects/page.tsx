@@ -187,7 +187,7 @@ export default function CSProjects() {
             
             {/* Content below image */}
             <Column gap="s" padding="l">
-              <Heading variant="heading-strong-m">{project.title}</Heading>
+              <Heading variant="heading-strong-m" className="text-single-line">{project.title}</Heading>
               <Text variant="body-default-xs" onBackground="neutral-weak">
                 <strong>Date:</strong> {project.date}
               </Text>

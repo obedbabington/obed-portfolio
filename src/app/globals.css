@@ -134,6 +134,46 @@ p, span, div {
   font-weight: 300;
 }
 
+/* Ensure single-line text across the site */
+h1, h2, h3, h4, h5, h6, 
+.text-single-line, 
+.company-name, 
+.role-title, 
+.timeframe,
+.category-tag {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Prevent text wrapping in common elements */
+.heading, .title, .subtitle, .label, .tag {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Responsive font sizing for single-line text */
+@media (max-width: 768px) {
+  .text-single-line, .category-tag {
+    font-size: 0.9rem;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 0.95em;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-single-line, .category-tag {
+    font-size: 0.8rem;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 0.9em;
+  }
+}
+
 @media (prefers-color-scheme: light) {
   html, body {
     background:

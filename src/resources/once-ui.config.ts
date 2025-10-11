@@ -39,28 +39,31 @@ const protectedRoutes: ProtectedRoutesConfig = {
 };
 
 // Import and set font for each variant
-import { Merriweather } from "next/font/google";
+import { Lora } from "next/font/google";
 import { JetBrains_Mono } from "next/font/google";
 
-const heading = Merriweather({
+const heading = Lora({
   variable: "--font-heading",
   subsets: ["latin"],
-  weight: ["300", "400", "700", "900"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
+  style: "normal",
 });
 
-const body = Merriweather({
+const body = Lora({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["300", "400", "700", "900"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
+  style: "normal",
 });
 
-const label = Merriweather({
+const label = Lora({
   variable: "--font-label",
   subsets: ["latin"],
-  weight: ["300", "400", "700", "900"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
+  style: "normal",
 });
 
 const code = JetBrains_Mono({

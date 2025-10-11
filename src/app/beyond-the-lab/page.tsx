@@ -329,10 +329,10 @@ export default function BeyondTheLab() {
             
             {/* Content below image */}
             <Column gap="s" padding="l">
-              <Text variant="body-default-xs" onBackground="neutral-weak" style={{ textTransform: "uppercase", fontWeight: "600" }}>
+              <Text variant="body-default-xs" onBackground="neutral-weak" style={{ textTransform: "uppercase", fontWeight: "600" }} className="category-tag">
                 {item.category}
               </Text>
-              <Heading variant="heading-strong-m">{item.title}</Heading>
+              <Heading variant="heading-strong-m" className="text-single-line">{item.title}</Heading>
               <Text variant="body-default-s" onBackground="neutral-weak">
                 <strong>Duration:</strong> {item.date}
               </Text>
