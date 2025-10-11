@@ -139,8 +139,8 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
     const linkElements = validLinks.map(link => {
       const linkEl = document.createElementNS('http://www.w3.org/2000/svg', 'line');
       linkEl.setAttribute('stroke', connectionColors[link.type]);
-      linkEl.setAttribute('stroke-width', link.strength * 3);
-      linkEl.setAttribute('stroke-opacity', 0.6);
+      linkEl.setAttribute('stroke-width', (link.strength * 3).toString());
+      linkEl.setAttribute('stroke-opacity', '0.6');
       linkEl.setAttribute('class', 'link');
       g.appendChild(linkEl);
       return { element: linkEl, data: link };
