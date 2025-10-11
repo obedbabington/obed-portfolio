@@ -20,6 +20,16 @@
   }
 }
 
+/* Global page fade-in effect */
+.page-fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Ensure all main content areas have fade-in */
+main, [role="main"], .main-content {
+  animation: fadeIn 0.8s ease-out;
+}
+
 /* Sliding hero background behind the homepage headline */
 .hero-slider-bg {
   position: absolute;

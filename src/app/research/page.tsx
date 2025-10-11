@@ -15,7 +15,7 @@ export async function generateMetadata() {
 
 export default function Research() {
   return (
-    <Column maxWidth="m" paddingTop="24" className="fixed-header-spacing" style={{ animation: "fadeIn 1s ease-out", position: "relative" }}>
+    <Column maxWidth="m" paddingTop="24" className="fixed-header-spacing page-fade-in" style={{ position: "relative" }}>
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes fadeInPop {

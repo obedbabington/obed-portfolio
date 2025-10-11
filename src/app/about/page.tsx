@@ -46,7 +46,7 @@ export default function About() {
     },
   ];
   return (
-    <Column maxWidth="m" className="fixed-header-spacing" style={{ position: "relative" }}>
+    <Column maxWidth="m" className="fixed-header-spacing page-fade-in" style={{ position: "relative" }}>
       <Schema
         as="webPage"
         baseURL={baseURL}

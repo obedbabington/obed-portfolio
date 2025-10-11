@@ -41,7 +41,7 @@ export default function Publications() {
   };
 
   return (
-    <Column maxWidth="m" paddingTop="24" className="fixed-header-spacing" style={{ position: "relative" }}>
+    <Column maxWidth="m" paddingTop="24" className="fixed-header-spacing page-fade-in" style={{ position: "relative" }}>
       {/* Back Button */}
       <BackButton href="/research" label="Back to Research" />
       
@@ -50,12 +50,6 @@ export default function Publications() {
         <Heading variant="heading-strong-xl" align="center">Publications</Heading>
       </Column>
 
-      {/* Publications Description */}
-      <Column marginBottom="l" paddingX="l" align="center">
-        <Text variant="body-default-l" align="center">
-          Research contributions and academic publications across multiple domains of engineering and applied sciences.
-        </Text>
-      </Column>
 
       {/* Publications Grid - 2 tiles side by side */}
       <div className="grid-container mobile-grid" style={{
@@ -89,18 +83,16 @@ export default function Publications() {
                     {publication.authors.join(", ")}
                   </Text>
                 </Column>
-                <Text 
-                  variant="body-default-xs" 
+                <div 
                   style={{ 
-                    padding: "0.25rem 0.75rem",
-                    borderRadius: "1rem",
+                    width: "12px",
+                    height: "12px",
+                    borderRadius: "50%",
                     background: getStatusColor(publication.status),
-                    color: "white",
-                    fontWeight: "500"
+                    flexShrink: 0
                   }}
-                >
-                  {publication.status}
-                </Text>
+                  title={publication.status}
+                />
               </Row>
 
               <Row horizontal="between" align="center">
@@ -116,23 +108,6 @@ export default function Publications() {
                 {publication.abstract}
               </Text>
 
-              <Row gap="xs" wrap>
-                {publication.keywords.map((keyword) => (
-                  <Text 
-                    key={keyword} 
-                    variant="body-default-xs" 
-                    style={{ 
-                      padding: "0.25rem 0.5rem",
-                      background: "#f3f4f6",
-                      color: "#374151",
-                      borderRadius: "0.375rem",
-                      border: "1px solid #d1d5db"
-                    }}
-                  >
-                    {keyword}
-                  </Text>
-                ))}
-              </Row>
 
               <Row horizontal="end" align="center">
                 <Text variant="body-default-xs" style={{ color: "var(--brand-medium)" }}>
@@ -226,24 +201,6 @@ export default function Publications() {
                 <p style={{ fontSize: "0.9rem", margin: 0, color: "#1f2937", lineHeight: "1.6" }}>{selectedPublication.abstract}</p>
               </div>
 
-              {/* Keywords */}
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                <h4 style={{ fontSize: "0.9rem", fontWeight: "600", margin: 0, color: "#374151" }}>Keywords</h4>
-                <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
-                  {selectedPublication.keywords.map((keyword) => (
-                    <span key={keyword} style={{
-                      padding: "0.25rem 0.5rem",
-                      background: "#f3f4f6",
-                      color: "#374151",
-                      borderRadius: "0.375rem",
-                      fontSize: "0.75rem",
-                      border: "1px solid #d1d5db"
-                    }}>
-                      {keyword}
-                    </span>
-                  ))}
-                </div>
-              </div>
 
               {/* Action Buttons */}
               <div style={{ display: "flex", gap: "1rem", justifyContent: "flex-end" }}>

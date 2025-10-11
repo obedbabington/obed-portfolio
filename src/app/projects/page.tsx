@@ -87,7 +87,7 @@ export default function Projects() {
   ];
 
   return (
-    <Column maxWidth="m" paddingTop="24" className="fixed-header-spacing" style={{ animation: "fadeIn 1s ease-out", position: "relative" }}>
+    <Column maxWidth="m" paddingTop="24" className="fixed-header-spacing page-fade-in" style={{ position: "relative" }}>
       <Schema
         as="webPage"
         baseURL={baseURL}

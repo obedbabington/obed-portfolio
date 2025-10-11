@@ -150,7 +150,7 @@ export default async function RootLayout({
           </RevealFx>
           <Header />
           <Flex fillWidth minHeight="16" s={{ hide: true }} />
-          <Flex zIndex={0} fillWidth padding="l" horizontal="center" flex={1} style={{ paddingTop: "80px" }}>
+          <Flex zIndex={0} fillWidth padding="l" horizontal="center" flex={1} style={{ paddingTop: "80px" }} className="page-fade-in">
             <Flex horizontal="center" fillWidth minHeight="0">
               <RouteGuard>{children}</RouteGuard>
             </Flex>

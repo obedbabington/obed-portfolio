@@ -6,7 +6,7 @@ import { BackButton } from "@/components";
 
 export default function Contact() {
   return (
-    <Column maxWidth="m" className="fixed-header-spacing" style={{ minHeight: "calc(100vh - 120px)", justifyContent: "center", alignItems: "center", paddingTop: "60px", animation: "fadeIn 1s ease-out", position: "relative" }}>
+    <Column maxWidth="m" className="fixed-header-spacing page-fade-in" style={{ minHeight: "calc(100vh - 120px)", justifyContent: "center", alignItems: "center", paddingTop: "60px", position: "relative" }}>
       
       {/* Back Button */}
       <BackButton href="/" label="Back to Home" />
@@ -42,19 +42,28 @@ export default function Contact() {
             alignItems: "center",
             justifyContent: "flex-start"
           }}>
-              <div className="contact-icon" style={{ 
-                background: "var(--neutral-alpha-weak)", 
-                borderRadius: "10px", 
-                padding: "12px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "48px",
-                height: "48px"
-              }}>
+              <a 
+                href="tel:+233540304620" 
+                className="contact-icon" 
+                style={{ 
+                  background: "var(--neutral-alpha-weak)", 
+                  borderRadius: "10px", 
+                  padding: "12px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "48px",
+                  height: "48px",
+                  cursor: "pointer",
+                  textDecoration: "none",
+                  transition: "background-color 0.2s ease"
+                }}
+                onMouseEnter={(e) => (e.target as HTMLElement).style.background = "var(--neutral-alpha-medium)"}
+                onMouseLeave={(e) => (e.target as HTMLElement).style.background = "var(--neutral-alpha-weak)"}
+              >
                 {iconLibrary.phone({ size: 24, color: "var(--neutral-medium)" })}
-              </div>
-              <Column>
+              </a>
+              <Column style={{ minWidth: "200px" }}>
                 <Text variant="body-default-s" onBackground="neutral-weak" style={{ fontWeight: 600 }}>
                   Phone
                 </Text>
@@ -73,19 +82,30 @@ export default function Contact() {
             alignItems: "center",
             justifyContent: "flex-start"
           }}>
-              <div className="contact-icon" style={{ 
-                background: "var(--neutral-alpha-weak)", 
-                borderRadius: "10px", 
-                padding: "12px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "48px",
-                height: "48px"
-              }}>
+              <a 
+                href="https://wa.me/233264741689" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="contact-icon" 
+                style={{ 
+                  background: "var(--neutral-alpha-weak)", 
+                  borderRadius: "10px", 
+                  padding: "12px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "48px",
+                  height: "48px",
+                  cursor: "pointer",
+                  textDecoration: "none",
+                  transition: "background-color 0.2s ease"
+                }}
+                onMouseEnter={(e) => (e.target as HTMLElement).style.background = "var(--neutral-alpha-medium)"}
+                onMouseLeave={(e) => (e.target as HTMLElement).style.background = "var(--neutral-alpha-weak)"}
+              >
                 {iconLibrary.whatsapp({ size: 24, color: "var(--neutral-medium)" })}
-              </div>
-              <Column>
+              </a>
+              <Column style={{ minWidth: "200px" }}>
                 <Text variant="body-default-s" onBackground="neutral-weak" style={{ fontWeight: 600 }}>
                   WhatsApp
                 </Text>
@@ -104,19 +124,28 @@ export default function Contact() {
             alignItems: "center",
             justifyContent: "flex-start"
           }}>
-              <div className="contact-icon" style={{ 
-                background: "var(--neutral-alpha-weak)", 
-                borderRadius: "10px", 
-                padding: "12px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "48px",
-                height: "48px"
-              }}>
+              <a 
+                href="mailto:obed.babington@ashesi.edu.gh" 
+                className="contact-icon" 
+                style={{ 
+                  background: "var(--neutral-alpha-weak)", 
+                  borderRadius: "10px", 
+                  padding: "12px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "48px",
+                  height: "48px",
+                  cursor: "pointer",
+                  textDecoration: "none",
+                  transition: "background-color 0.2s ease"
+                }}
+                onMouseEnter={(e) => (e.target as HTMLElement).style.background = "var(--neutral-alpha-medium)"}
+                onMouseLeave={(e) => (e.target as HTMLElement).style.background = "var(--neutral-alpha-weak)"}
+              >
                 {iconLibrary.email({ size: 24, color: "var(--neutral-medium)" })}
-              </div>
-              <Column>
+              </a>
+              <Column style={{ minWidth: "200px" }}>
                 <Text variant="body-default-s" onBackground="neutral-weak" style={{ fontWeight: 600 }}>
                   Work Email
                 </Text>
@@ -135,19 +164,28 @@ export default function Contact() {
             alignItems: "center",
             justifyContent: "flex-start"
           }}>
-              <div className="contact-icon" style={{ 
-                background: "var(--neutral-alpha-weak)", 
-                borderRadius: "10px", 
-                padding: "12px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "48px",
-                height: "48px"
-              }}>
+              <a 
+                href="mailto:obedalloteyb@gmail.com" 
+                className="contact-icon" 
+                style={{ 
+                  background: "var(--neutral-alpha-weak)", 
+                  borderRadius: "10px", 
+                  padding: "12px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "48px",
+                  height: "48px",
+                  cursor: "pointer",
+                  textDecoration: "none",
+                  transition: "background-color 0.2s ease"
+                }}
+                onMouseEnter={(e) => (e.target as HTMLElement).style.background = "var(--neutral-alpha-medium)"}
+                onMouseLeave={(e) => (e.target as HTMLElement).style.background = "var(--neutral-alpha-weak)"}
+              >
                 {iconLibrary.gmail({ size: 24, color: "var(--neutral-medium)" })}
-              </div>
-              <Column>
+              </a>
+              <Column style={{ minWidth: "200px" }}>
                 <Text variant="body-default-s" onBackground="neutral-weak" style={{ fontWeight: 600 }}>
                   Personal Email
                 </Text>
@@ -198,6 +236,13 @@ export default function Contact() {
             width: 48px;
             height: 48px;
             flex-shrink: 0;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+          }
+
+          .contact-icon:hover {
+            background: var(--neutral-alpha-medium);
           }
 
           .contact-icon svg {
