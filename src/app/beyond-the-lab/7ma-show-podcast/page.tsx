@@ -50,6 +50,7 @@ export default function SevenMAShowPodcast() {
           radius="m"
           alt="7MA Show podcast cover"
           src="/images/beyond-the-lab/7MA.jpg"
+          style={{ objectPosition: "top" }}
         />
       </Column>
 

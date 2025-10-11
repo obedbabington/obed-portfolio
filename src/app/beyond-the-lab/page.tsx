@@ -301,7 +301,7 @@ export default function BeyondTheLab() {
                   src="/images/beyond-the-lab/7MA.jpg"
                   alt={item.title}
                   fill
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: "cover", objectPosition: "top" }}
                 />
               )}
               {item.id === "flir-c5-video-manual" && (
