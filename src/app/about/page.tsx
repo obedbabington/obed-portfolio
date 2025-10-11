@@ -46,7 +46,7 @@ export default function About() {
     },
   ];
   return (
-    <Column maxWidth="m" className="fixed-header-spacing neural-particles" style={{ animation: "fadeIn 1s ease-out", position: "relative" }}>
+    <Column maxWidth="m" className="fixed-header-spacing" style={{ position: "relative" }}>
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -136,7 +136,7 @@ export default function About() {
                 />
               </Row>
             )}
-                  <Heading className={styles.textAlign} variant="display-strong-s" align="center" style={{ animation: "fadeIn 1s ease-out 0.3s both" }}>
+                  <Heading className={styles.textAlign} variant="display-strong-s" align="center">
                     {person.name}
                   </Heading>
             <Row
@@ -175,7 +175,7 @@ export default function About() {
 
           {/* About content without fork visuals */}
           {about.intro.display && (
-            <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl" style={{ animation: "fadeIn 1s ease-out 0.6s both" }}>
+            <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
               {about.intro.description}
             </Column>
           )}

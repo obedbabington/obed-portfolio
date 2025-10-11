@@ -1,9 +1,8 @@
 "use client";
 
-// Removed Once UI imports - using raw HTML instead
+import { Card, Column, Heading, Text, Row } from "@once-ui-system/core";
 import { BackButton } from "@/components";
-import { useState, useEffect } from "react";
-import styles from "./publications.module.scss";
+import { useState } from "react";
 
 // Simple dummy publication data - 2 tiles only
 const publications = [
@@ -42,142 +41,106 @@ export default function Publications() {
   };
 
   return (
-    <div className="fixed-header-spacing" style={{ 
-      maxWidth: "1200px", 
-      margin: "0 auto", 
-      padding: "2rem",
-      position: "relative"
-    }}>
+    <Column maxWidth="m" paddingTop="24" className="fixed-header-spacing" style={{ position: "relative" }}>
       {/* Back Button */}
       <BackButton href="/research" label="Back to Research" />
       
-      {/* Header */}
-      <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-        <h1 style={{ 
-          fontSize: "2.5rem", 
-          fontWeight: "700", 
-          marginBottom: "1rem",
-          color: "#1f2937"
-        }}>
-          Publications
-        </h1>
-        <p style={{ 
-          color: "#6b7280", 
-          fontSize: "1.1rem",
-          maxWidth: "600px",
-          margin: "0 auto"
-        }}>
-          Research contributions and academic publications
-        </p>
-      </div>
+      {/* Publications Heading */}
+      <Column marginBottom="l" paddingX="l" align="center" style={{ marginTop: "20px" }}>
+        <Heading variant="heading-strong-xl" align="center">Publications</Heading>
+      </Column>
+
+      {/* Publications Description */}
+      <Column marginBottom="l" paddingX="l" align="center">
+        <Text variant="body-default-l" align="center">
+          Research contributions and academic publications across multiple domains of engineering and applied sciences.
+        </Text>
+      </Column>
 
       {/* Publications Grid - 2 tiles side by side */}
-      <div style={{ 
-        display: "grid", 
-        gridTemplateColumns: "repeat(auto-fit, minmax(500px, 1fr))", 
-        gap: "2rem",
-        marginBottom: "3rem"
+      <div className="grid-container mobile-grid" style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(2, 1fr)",
+        gap: "1.5rem",
+        padding: "0 1.5rem",
+        marginBottom: "2rem"
       }}>
         {publications.map((publication) => (
-          <div
+          <Card
             key={publication.id}
-            style={{
-              background: "white",
-              borderRadius: "0.75rem",
-              padding: "2rem",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-              border: "1px solid #e5e7eb",
-              cursor: "pointer"
+            padding="0"
+            radius="m"
+            shadow="m"
+            style={{ 
+              display: "flex",
+              flexDirection: "column",
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+              textDecoration: "none",
+              overflow: "hidden"
             }}
             onClick={() => setSelectedPublication(publication)}
           >
-            <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", width: "100%" }}>
-              {/* Header */}
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "1rem" }}>
-                <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                  <h3 style={{ 
-                    fontSize: "1.5rem", 
-                    fontWeight: "600", 
-                    margin: 0,
-                    color: "#1f2937",
-                    lineHeight: "1.3"
-                  }}>
-                    {publication.title}
-                  </h3>
-                  <p style={{ 
-                    color: "#6b7280", 
-                    fontSize: "1rem",
-                    margin: 0
-                  }}>
+            <Column gap="s" padding="l">
+              <Row horizontal="between" align="start" gap="m">
+                <Column flex={1} gap="s">
+                  <Heading variant="heading-strong-m">{publication.title}</Heading>
+                  <Text variant="body-default-s" onBackground="neutral-weak">
                     {publication.authors.join(", ")}
-                  </p>
-                </div>
-                <span style={{
-                  padding: "0.5rem 1rem",
-                  borderRadius: "1rem",
-                  fontSize: "0.8rem",
-                  fontWeight: "500",
-                  background: getStatusColor(publication.status),
-                  color: "white"
-                }}>
+                  </Text>
+                </Column>
+                <Text 
+                  variant="body-default-xs" 
+                  style={{ 
+                    padding: "0.25rem 0.75rem",
+                    borderRadius: "1rem",
+                    background: getStatusColor(publication.status),
+                    color: "white",
+                    fontWeight: "500"
+                  }}
+                >
                   {publication.status}
-                </span>
-              </div>
+                </Text>
+              </Row>
 
-              {/* Journal and Year */}
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <p style={{ 
-                  color: "#6b7280", 
-                  fontSize: "0.9rem",
-                  margin: 0
-                }}>
+              <Row horizontal="between" align="center">
+                <Text variant="body-default-xs" onBackground="neutral-weak">
                   {publication.journal}
-                </p>
-                <p style={{ 
-                  fontSize: "0.9rem",
-                  fontWeight: "600",
-                  margin: 0,
-                  color: "#1f2937"
-                }}>
+                </Text>
+                <Text variant="body-strong-xs">
                   {publication.year}
-                </p>
-              </div>
+                </Text>
+              </Row>
 
-              {/* Abstract */}
-              <p style={{ 
-                fontSize: "1rem",
-                color: "#4b5563",
-                lineHeight: "1.6",
-                margin: 0
-              }}>
+              <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="s">
                 {publication.abstract}
-              </p>
+              </Text>
 
-              {/* Keywords */}
-              <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+              <Row gap="xs" wrap>
                 {publication.keywords.map((keyword) => (
-                  <span key={keyword} style={{
-                    padding: "0.5rem 1rem",
-                    background: "#f3f4f6",
-                    color: "#374151",
-                    borderRadius: "0.5rem",
-                    fontSize: "0.8rem",
-                    border: "1px solid #d1d5db"
-                  }}>
+                  <Text 
+                    key={keyword} 
+                    variant="body-default-xs" 
+                    style={{ 
+                      padding: "0.25rem 0.5rem",
+                      background: "#f3f4f6",
+                      color: "#374151",
+                      borderRadius: "0.375rem",
+                      border: "1px solid #d1d5db"
+                    }}
+                  >
                     {keyword}
-                  </span>
+                  </Text>
                 ))}
-              </div>
+              </Row>
 
-              {/* Footer */}
-              <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center" }}>
-                <div style={{ display: "flex", gap: "0.5rem", alignItems: "center", color: "#10b981" }}>
-                  <span style={{ fontSize: "0.9rem" }}>View Details</span>
-                  <span style={{ fontSize: "0.9rem" }}>→</span>
-                </div>
-              </div>
-            </div>
-          </div>
+              <Row horizontal="end" align="center">
+                <Text variant="body-default-xs" style={{ color: "var(--brand-medium)" }}>
+                  View Details →
+                </Text>
+              </Row>
+            </Column>
+          </Card>
         ))}
       </div>
 
@@ -313,7 +276,7 @@ export default function Publications() {
           </div>
         </div>
       )}
-    </div>
+    </Column>
   );
 }
 
