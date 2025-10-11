@@ -147,9 +147,11 @@ export default function Publications() {
         <Heading as="h1" variant="display-strong-s" align="center">
           Publications
         </Heading>
-        <Text onBackground="neutral-weak" align="center" maxWidth="s">
-          Research contributions across multiple domains of engineering and applied sciences
-        </Text>
+        <Column maxWidth="s" horizontal="center">
+          <Text onBackground="neutral-weak" align="center">
+            Research contributions across multiple domains of engineering and applied sciences
+          </Text>
+        </Column>
       </Column>
 
       {/* Category Filter */}
