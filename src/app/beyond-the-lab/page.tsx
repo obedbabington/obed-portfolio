@@ -317,6 +317,7 @@ export default function BeyondTheLab() {
                   fill
                   style={{ 
                     objectFit: "cover",
+                    objectPosition: "top",
                     zIndex: 10,
                     position: "relative"
                   }}
