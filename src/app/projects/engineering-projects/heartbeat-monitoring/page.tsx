@@ -48,7 +48,7 @@ export default function HeartbeatMonitoring() {
           Heartbeat Monitoring System
         </Heading>
         <Text variant="body-default-l" align="center" onBackground="neutral-weak">
-          <strong>Date:</strong> Jan 2023 - Mar 2023
+          <strong>Date:</strong> Mar 2024 - May 2024
         </Text>
         <Text variant="body-default-l" align="center" onBackground="neutral-weak">
           <strong>Tools & Technologies:</strong> Arduino, C/C++, Heart Rate Sensor, LCD Display, Medical Electronics
