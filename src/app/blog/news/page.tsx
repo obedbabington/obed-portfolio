@@ -112,7 +112,10 @@ export default function News() {
                 src={item.image}
                 alt={item.title}
                 fill
-                style={{ objectFit: "cover" }}
+                style={{ 
+                  objectFit: "cover",
+                  objectPosition: "top"
+                }}
               />
             </div>
             
