@@ -54,8 +54,8 @@ export default function WorkRoadmap({ experiences }: WorkRoadmapProps) {
             >
               <div className={styles.cardContent}>
                 <Row fillWidth horizontal="between" vertical="center" marginBottom="s">
-                  <Heading variant="heading-strong-m" onBackground="brand-medium">{experience.company}</Heading>
-                  <Text variant="body-default-s" onBackground="brand-medium">
+                  <Heading variant="heading-strong-m" onBackground="brand-medium" className={styles.companyName}>{experience.company}</Heading>
+                  <Text variant="body-default-s" onBackground="brand-medium" className={styles.timeframe}>
                     {experience.timeframe}
                   </Text>
                 </Row>

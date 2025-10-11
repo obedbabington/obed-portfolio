@@ -119,6 +119,21 @@ html, body {
     #000000;
 }
 
+/* Make main text lighter and less bold */
+body {
+  font-weight: 300;
+}
+
+/* Override specific text elements to be lighter */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+}
+
+/* Make body text even lighter */
+p, span, div {
+  font-weight: 300;
+}
+
 @media (prefers-color-scheme: light) {
   html, body {
     background:
