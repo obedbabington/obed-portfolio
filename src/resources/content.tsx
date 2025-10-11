@@ -206,7 +206,7 @@ const about: About = {
 };
 
 const blog: Blog = {
-  path: "/blog",
+  path: "/blog/news",
   label: "Updates",
   title: "Updates - Obed Allotey Babington",
   description: `Read what ${person.name} has been up to recently`,

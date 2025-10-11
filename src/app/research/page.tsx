@@ -61,7 +61,7 @@ export default function Research() {
       <BackButton href="/" label="Back to Home" />
       
       {/* Research Heading */}
-      <Column marginBottom="l" paddingX="l" align="center" style={{ marginTop: "60px" }}>
+      <Column marginBottom="l" paddingX="l" align="center" style={{ marginTop: "30px" }}>
         <Heading variant="heading-strong-xl" align="center">Research</Heading>
       </Column>
       

@@ -46,10 +46,10 @@ export default function Home() {
           <div className="hero-slider-bg" aria-hidden="true" />
           <div className="hero-edge-fade" aria-hidden="true" />
           <div className="hero-foreground">
-          <Heading wrap="balance" variant="display-strong-l" style={{ fontWeight: 500, animation: "fadeIn 1s ease-out", lineHeight: "1.2" }}>
+          <Heading wrap="balance" variant="display-strong-l" style={{ fontWeight: 700, animation: "fadeIn 1s ease-out", lineHeight: "1.2" }}>
             {home.headline}
           </Heading>
-          <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl" style={{ fontWeight: 400, animation: "fadeIn 1s ease-out 0.3s both", marginTop: "48px", lineHeight: "1.4" }}>
+          <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl" style={{ fontWeight: 400, animation: "fadeIn 1s ease-out 0.3s both", marginTop: "64px", lineHeight: "1.4" }}>
             {home.subline}
           </Text>
           <div style={{ paddingTop: "16px", animation: "fadeIn 1s ease-out 0.6s both", display: "flex", justifyContent: "center", alignItems: "center" }}>

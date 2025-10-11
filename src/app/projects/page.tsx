@@ -106,7 +106,7 @@ export default function Projects() {
       <BackButton href="/" label="Back to Home" />
 
       {/* Projects Heading */}
-      <Column marginBottom="l" paddingX="l" align="center" style={{ marginTop: "60px" }}>
+      <Column marginBottom="l" paddingX="l" align="center" style={{ marginTop: "30px" }}>
         <Heading variant="heading-strong-xl" align="center">Projects</Heading>
       </Column>
 
