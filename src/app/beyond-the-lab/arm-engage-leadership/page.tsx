@@ -1,4 +1,4 @@
-import { Column, Heading, Meta, Schema, Text, Card, Row } from "@once-ui-system/core";
+import { Column, Heading, Meta, Schema, Text, Card, Row, Media } from "@once-ui-system/core";
 import { baseURL, about, person, beyondTheLab } from "@/resources";
 import { BackButton } from "@/components";
 import Image from "next/image";
@@ -47,8 +47,24 @@ export default function ArmEngageLeadership() {
 
       {/* Header */}
       <Column marginBottom="l" paddingX="l" align="center">
+        <Heading variant="heading-strong-xl" align="center" marginBottom="s">
+          Research & Innovation Lead, Arm (E³)NGAGE Ashesi Student Club
+        </Heading>
         <Text variant="body-default-xs" onBackground="neutral-weak" style={{ textTransform: "uppercase", fontWeight: "600" }} marginBottom="s">
           Leadership • 2023 - 2024
+        </Text>
+      </Column>
+
+      {/* Group Photo */}
+      <Column marginBottom="xl" paddingX="l">
+        <Media 
+          aspectRatio="16 / 9" 
+          radius="m" 
+          alt="ARM (E³)NGAGE Ashesi Student Club Group Photo" 
+          src="/images/beyond-the-lab/arm-engage-group.jpg" 
+        />
+        <Text variant="body-default-s" onBackground="neutral-weak" align="center" marginTop="s" style={{ fontStyle: "italic" }}>
+          Group photo of ARM (E³)NGAGE Ashesi Student Club members
         </Text>
       </Column>
 
