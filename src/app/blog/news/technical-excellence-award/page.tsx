@@ -57,6 +57,7 @@ export default function TechnicalExcellenceAward() {
             variant="primary"
             size="m"
             prefixIcon="openLink"
+            style={{ margin: "0 auto" }}
           >
             Watch My Thesis Defense
           </Button>

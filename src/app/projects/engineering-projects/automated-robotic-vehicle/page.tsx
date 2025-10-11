@@ -40,7 +40,7 @@ export default function AutomatedRoboticVehicle() {
           <strong>Date:</strong> Sep 2022 - Dec 2022
         </Text>
         <Text variant="body-default-l" align="center" onBackground="neutral-weak">
-          <strong>Tools & Technologies:</strong> Arduino, C/C++, Sensors, Motor Control, Breadboarding
+          <strong>Tools & Technologies:</strong> Embedded C, Arm Cortex-M (STM32)
         </Text>
       </Column>
 

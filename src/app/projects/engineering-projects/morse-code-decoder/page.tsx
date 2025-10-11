@@ -51,7 +51,7 @@ export default function MorseCodeDecoder() {
           <strong>Date:</strong> Jan 2023 - Mar 2023
         </Text>
         <Text variant="body-default-l" align="center" onBackground="neutral-weak">
-          <strong>Tools & Technologies:</strong> Arduino, C/C++, Breadboarding, Oscilloscope, Signal Processing
+          <strong>Tools & Technologies:</strong> TensorFlow, STM32F091RC, Xilinx Vivado, Vitis, MicroBlaze softcore processor, Embedded C
         </Text>
       </Column>
 
