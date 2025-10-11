@@ -27,6 +27,7 @@ export const BackButton = ({ href, label }: BackButtonProps) => {
         width: "40px",
         height: "40px"
       }}
+      className="back-button"
       as="a"
       {...({ href } as any)}
     >

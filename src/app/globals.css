@@ -9,6 +9,17 @@
   }
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Sliding hero background behind the homepage headline */
 .hero-slider-bg {
   position: absolute;
@@ -57,9 +68,38 @@
   padding-top: 80px;
 }
 
+/* Back button spacing adjustments */
+.fixed-header-spacing:has(.back-button) {
+  padding-top: 120px;
+}
+
 @media (max-width: 768px) {
   .fixed-header-spacing {
     padding-top: 80px;
+  }
+  
+  .fixed-header-spacing:has(.back-button) {
+    padding-top: 100px;
+  }
+  
+  /* Additional mobile spacing for back button */
+  .back-button {
+    top: 16px !important;
+    left: 16px !important;
+    width: 36px !important;
+    height: 36px !important;
+    padding: 6px !important;
+  }
+}
+
+/* Fallback for browsers without :has() support - add class manually */
+.fixed-header-spacing.with-back-button {
+  padding-top: 120px;
+}
+
+@media (max-width: 768px) {
+  .fixed-header-spacing.with-back-button {
+    padding-top: 100px;
   }
 }
 
@@ -196,12 +236,15 @@ h1, h2, h3, h4, h5, h6,
 /* subtle neural grid overlay (disabled per request) */
 .ai-gradient::after { display: none; }
 
-/* Neural Network Floating Particles Background */
+/* Neural Network Animation - Interconnected Nodes with Glowing Connections */
 .neural-particles {
   position: relative;
   overflow: hidden;
+  opacity: 0;
+  animation: neuralFadeIn 2s ease-out 0.5s forwards;
 }
 
+/* Main neural network layer with glowing nodes */
 .neural-particles::before {
   content: '';
   position: absolute;
@@ -210,31 +253,40 @@ h1, h2, h3, h4, h5, h6,
   width: 100%;
   height: 100%;
   background-image: 
-    radial-gradient(circle at 20% 80%, rgba(16,185,129,0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(16,185,129,0.12) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(16,185,129,0.08) 0%, transparent 50%),
-    radial-gradient(circle at 60% 70%, rgba(16,185,129,0.1) 0%, transparent 50%),
-    radial-gradient(circle at 90% 60%, rgba(16,185,129,0.06) 0%, transparent 50%),
-    radial-gradient(circle at 10% 30%, rgba(16,185,129,0.09) 0%, transparent 50%);
+    /* Primary glowing nodes */
+    radial-gradient(circle at 15% 25%, rgba(16,185,129,0.8) 0%, rgba(16,185,129,0.4) 20%, transparent 60%),
+    radial-gradient(circle at 85% 15%, rgba(16,185,129,0.6) 0%, rgba(16,185,129,0.2) 25%, transparent 55%),
+    radial-gradient(circle at 25% 75%, rgba(16,185,129,0.7) 0%, rgba(16,185,129,0.3) 18%, transparent 50%),
+    radial-gradient(circle at 75% 85%, rgba(16,185,129,0.5) 0%, rgba(16,185,129,0.15) 22%, transparent 45%),
+    radial-gradient(circle at 50% 10%, rgba(16,185,129,0.9) 0%, rgba(16,185,129,0.4) 15%, transparent 40%),
+    radial-gradient(circle at 90% 60%, rgba(16,185,129,0.6) 0%, rgba(16,185,129,0.2) 20%, transparent 50%),
+    radial-gradient(circle at 10% 50%, rgba(16,185,129,0.8) 0%, rgba(16,185,129,0.3) 18%, transparent 45%),
+    radial-gradient(circle at 60% 40%, rgba(16,185,129,0.7) 0%, rgba(16,185,129,0.25) 20%, transparent 55%);
   background-size: 
-    300px 300px,
-    250px 250px,
-    200px 200px,
-    180px 180px,
-    220px 220px,
-    160px 160px;
+    120px 120px,
+    100px 100px,
+    140px 140px,
+    110px 110px,
+    90px 90px,
+    130px 130px,
+    105px 105px,
+    115px 115px;
   background-position:
     0% 0%,
+    100% 0%,
+    0% 100%,
     100% 100%,
-    50% 50%,
-    25% 75%,
-    75% 25%,
-    10% 90%;
-  animation: neuralFloat 12s ease-in-out infinite;
+    50% 0%,
+    100% 50%,
+    0% 50%,
+    50% 50%;
+  animation: neuralPulse 8s ease-in-out infinite;
   pointer-events: none;
   z-index: -1;
+  filter: blur(1px);
 }
 
+/* Secondary layer with smaller nodes and connections */
 .neural-particles::after {
   content: '';
   position: absolute;
@@ -243,54 +295,120 @@ h1, h2, h3, h4, h5, h6,
   width: 100%;
   height: 100%;
   background-image: 
-    radial-gradient(circle at 70% 10%, rgba(16,185,129,0.05) 0%, transparent 40%),
-    radial-gradient(circle at 30% 90%, rgba(16,185,129,0.07) 0%, transparent 40%),
-    radial-gradient(circle at 85% 45%, rgba(16,185,129,0.04) 0%, transparent 40%);
+    /* Connection lines between nodes */
+    linear-gradient(30deg, transparent 45%, rgba(16,185,129,0.3) 47%, rgba(16,185,129,0.3) 49%, transparent 51%),
+    linear-gradient(-30deg, transparent 45%, rgba(16,185,129,0.2) 47%, rgba(16,185,129,0.2) 49%, transparent 51%),
+    linear-gradient(60deg, transparent 48%, rgba(16,185,129,0.25) 49%, rgba(16,185,129,0.25) 51%, transparent 52%),
+    linear-gradient(-60deg, transparent 48%, rgba(16,185,129,0.15) 49%, rgba(16,185,129,0.15) 51%, transparent 52%),
+    /* Smaller floating particles */
+    radial-gradient(circle at 20% 30%, rgba(16,185,129,0.4) 0%, transparent 30%),
+    radial-gradient(circle at 80% 70%, rgba(16,185,129,0.3) 0%, transparent 25%),
+    radial-gradient(circle at 40% 80%, rgba(16,185,129,0.35) 0%, transparent 28%),
+    radial-gradient(circle at 70% 20%, rgba(16,185,129,0.25) 0%, transparent 22%);
   background-size: 
-    150px 150px,
-    120px 120px,
-    100px 100px;
+    200px 200px,
+    180px 180px,
+    160px 160px,
+    140px 140px,
+    40px 40px,
+    35px 35px,
+    45px 45px,
+    30px 30px;
   background-position:
     0% 0%,
     100% 100%,
-    50% 50%;
-  animation: neuralFloat 8s ease-in-out infinite reverse;
+    50% 0%,
+    0% 50%,
+    25% 25%,
+    75% 75%,
+    50% 75%,
+    75% 25%;
+  animation: neuralConnections 12s linear infinite;
   pointer-events: none;
   z-index: -1;
+  filter: blur(0.5px);
 }
 
-@keyframes neuralFloat {
-  0%, 100% { 
-    transform: translateY(0px) rotate(0deg) scale(1);
-    opacity: 0.6;
-  }
-  25% { 
-    transform: translateY(-15px) rotate(90deg) scale(1.1);
-    opacity: 0.8;
-  }
-  50% { 
-    transform: translateY(-25px) rotate(180deg) scale(0.9);
-    opacity: 0.7;
-  }
-  75% { 
-    transform: translateY(-10px) rotate(270deg) scale(1.05);
-    opacity: 0.9;
-  }
-}
-
-/* Subtle connection lines between particles */
+/* Glowing connection network overlay */
 .neural-particles {
   background-image: 
-    linear-gradient(45deg, transparent 48%, rgba(16,185,129,0.02) 49%, rgba(16,185,129,0.02) 51%, transparent 52%),
-    linear-gradient(-45deg, transparent 48%, rgba(16,185,129,0.02) 49%, rgba(16,185,129,0.02) 51%, transparent 52%);
-  background-size: 60px 60px, 60px 60px;
-  background-position: 0 0, 30px 30px;
-  animation: neuralConnections 20s linear infinite;
+    /* Main connection grid */
+    linear-gradient(45deg, transparent 48%, rgba(16,185,129,0.1) 49%, rgba(16,185,129,0.1) 51%, transparent 52%),
+    linear-gradient(-45deg, transparent 48%, rgba(16,185,129,0.08) 49%, rgba(16,185,129,0.08) 51%, transparent 52%),
+    linear-gradient(0deg, transparent 48%, rgba(16,185,129,0.06) 49%, rgba(16,185,129,0.06) 51%, transparent 52%),
+    linear-gradient(90deg, transparent 48%, rgba(16,185,129,0.05) 49%, rgba(16,185,129,0.05) 51%, transparent 52%);
+  background-size: 
+    80px 80px,
+    80px 80px,
+    100px 100px,
+    100px 100px;
+  background-position: 
+    0 0,
+    40px 40px,
+    20px 20px,
+    60px 60px;
+  animation: neuralGrid 15s linear infinite;
+}
+
+/* Animations */
+@keyframes neuralFadeIn {
+  0% { 
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes neuralPulse {
+  0%, 100% { 
+    transform: translateY(0px) scale(1);
+    opacity: 0.7;
+  }
+  25% { 
+    transform: translateY(-10px) scale(1.05);
+    opacity: 0.9;
+  }
+  50% { 
+    transform: translateY(-20px) scale(0.95);
+    opacity: 0.8;
+  }
+  75% { 
+    transform: translateY(-5px) scale(1.02);
+    opacity: 0.85;
+  }
 }
 
 @keyframes neuralConnections {
-  0% { background-position: 0 0, 30px 30px; }
-  100% { background-position: 60px 60px, 90px 90px; }
+  0% { 
+    background-position: 0% 0%, 100% 100%, 50% 0%, 0% 50%, 25% 25%, 75% 75%, 50% 75%, 75% 25%;
+    opacity: 0.6;
+  }
+  50% { 
+    background-position: 50% 50%, 50% 50%, 0% 50%, 50% 0%, 50% 50%, 50% 50%, 25% 25%, 25% 25%;
+    opacity: 0.8;
+  }
+  100% { 
+    background-position: 100% 100%, 0% 0%, 50% 100%, 100% 50%, 75% 75%, 25% 25%, 75% 25%, 75% 75%;
+    opacity: 0.6;
+  }
+}
+
+@keyframes neuralGrid {
+  0% { 
+    background-position: 0 0, 40px 40px, 20px 20px, 60px 60px;
+    opacity: 0.3;
+  }
+  50% { 
+    background-position: 40px 40px, 0 0, 60px 60px, 20px 20px;
+    opacity: 0.6;
+  }
+  100% { 
+    background-position: 80px 80px, 40px 40px, 100px 100px, 60px 60px;
+    opacity: 0.3;
+  }
 }
 
 /* Reduce motion for accessibility */
