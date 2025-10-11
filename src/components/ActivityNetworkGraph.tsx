@@ -68,24 +68,24 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
     { source: '7ma-show-podcast', target: 'arm-engage-leadership', strength: 0.3, type: 'timeline' },
   ];
 
-  // Category colors
+  // Category colors - all green shades
   const categoryColors: Record<string, string> = {
-    'Leadership': '#3B82F6',
-    'Public Speaking': '#10B981',
-    'Community Service': '#F59E0B',
-    'Education & Mentorship': '#8B5CF6',
-    'Fellowship': '#EF4444',
-    'Videography': '#06B6D4',
-    'Performance': '#EC4899',
-    'Podcast': '#84CC16'
+    'Leadership': '#10B981',
+    'Public Speaking': '#059669',
+    'Community Service': '#047857',
+    'Education & Mentorship': '#065F46',
+    'Fellowship': '#064E3B',
+    'Videography': '#22C55E',
+    'Performance': '#16A34A',
+    'Podcast': '#15803D'
   };
 
-  // Connection type colors
+  // Connection type colors - green shades
   const connectionColors: Record<string, string> = {
     'theme': '#6B7280',
-    'skill': '#3B82F6',
-    'timeline': '#10B981',
-    'collaboration': '#F59E0B'
+    'skill': '#10B981',
+    'timeline': '#059669',
+    'collaboration': '#047857'
   };
 
   useEffect(() => {
@@ -141,7 +141,7 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
     const linkElements = validLinks.map(link => {
       const linkEl = document.createElementNS('http://www.w3.org/2000/svg', 'line');
       linkEl.setAttribute('stroke', connectionColors[link.type]);
-      linkEl.setAttribute('stroke-width', (link.strength * 3).toString());
+      linkEl.setAttribute('stroke-width', (link.strength * 5 + 2).toString());
       linkEl.setAttribute('stroke-opacity', '0.6');
       linkEl.setAttribute('class', 'link');
       g.appendChild(linkEl);
@@ -151,15 +151,15 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
     // Create nodes
     const nodeElements = nodes.map(node => {
       const nodeEl = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      const radius = 14 + (node.title.length / 8);
+      const radius = 18 + (node.title.length / 6);
       nodeEl.setAttribute('r', radius.toString());
-      nodeEl.setAttribute('fill', categoryColors[node.category] || '#6B7280');
+      nodeEl.setAttribute('fill', categoryColors[node.category] || '#10B981');
       nodeEl.setAttribute('stroke', '#ffffff');
-      nodeEl.setAttribute('stroke-width', '3');
+      nodeEl.setAttribute('stroke-width', '4');
       nodeEl.setAttribute('class', 'node');
       nodeEl.setAttribute('cursor', 'pointer');
       nodeEl.setAttribute('data-id', node.id);
-      nodeEl.setAttribute('filter', 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15))');
+      nodeEl.setAttribute('filter', 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25))');
       
       // Add hover effects
       nodeEl.addEventListener('mouseenter', () => setHoveredNode(node.id));
@@ -177,10 +177,10 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
       labelEl.setAttribute('data-id', node.id);
       labelEl.setAttribute('text-anchor', 'middle');
       labelEl.setAttribute('dy', '0.35em');
-      labelEl.setAttribute('font-size', '11');
-      labelEl.setAttribute('fill', '#1f2937');
-      labelEl.setAttribute('font-weight', '600');
-      labelEl.setAttribute('filter', 'drop-shadow(0 1px 2px rgba(255, 255, 255, 0.8))');
+      labelEl.setAttribute('font-size', '12');
+      labelEl.setAttribute('fill', '#ffffff');
+      labelEl.setAttribute('font-weight', '700');
+      labelEl.setAttribute('filter', 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8))');
       labelEl.textContent = node.title.length > 20 ? node.title.substring(0, 20) + '...' : node.title;
       g.appendChild(labelEl);
       return { element: labelEl, data: node };
@@ -279,7 +279,12 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
   const categories = Array.from(new Set(activities.map(a => a.category)));
 
   return (
-    <Column gap="l">
+    <div style={{ 
+      display: 'flex', 
+      gap: '24px', 
+      width: '100%',
+      minHeight: '700px'
+    }}>
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes fadeIn {
@@ -294,64 +299,11 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
           }
         `
       }} />
-      {/* Legend */}
-      <Column gap="m" padding="l" style={{ 
-        backgroundColor: 'rgba(248, 250, 252, 0.6)', 
-        backdropFilter: 'blur(10px)',
-        borderRadius: '12px',
-        border: '1px solid rgba(226, 232, 240, 0.3)'
-      }}>
-        <Heading variant="heading-strong-s">Activity Categories</Heading>
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
-          gap: '8px' 
-        }}>
-          {categories.map(category => (
-            <div 
-              key={category}
-              style={{ 
-                display: 'flex', 
-                alignItems: 'center', 
-                gap: '8px',
-                cursor: 'pointer',
-                padding: '4px 8px',
-                borderRadius: '4px',
-                backgroundColor: selectedCategory === category ? '#dbeafe' : 'transparent',
-                transition: 'background-color 0.2s'
-              }}
-              onClick={() => onCategoryFilter?.(selectedCategory === category ? null : category)}
-            >
-              <div 
-                style={{ 
-                  width: '12px', 
-                  height: '12px', 
-                  borderRadius: '50%', 
-                  backgroundColor: categoryColors[category] || '#6B7280' 
-                }} 
-              />
-              <Text variant="body-default-xs">{category}</Text>
-            </div>
-          ))}
-        </div>
-        
-        <div style={{ marginTop: '12px' }}>
-          <Text variant="body-default-xs" style={{ fontWeight: '600', marginBottom: '8px' }}>Connection Types:</Text>
-          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-            {Object.entries(connectionColors).map(([type, color]) => (
-              <div key={type} style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                <div style={{ width: '16px', height: '2px', backgroundColor: color }} />
-                <Text variant="body-default-xs" style={{ textTransform: 'capitalize' }}>{type}</Text>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Column>
-
-      {/* Graph */}
+      
+      {/* Graph - Takes most of the space */}
       <div style={{ 
-        width: '100%', 
-        height: '600px', 
+        flex: '1',
+        height: '700px', 
         borderRadius: '12px',
         overflow: 'hidden',
         background: 'transparent',
@@ -365,21 +317,120 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
         />
       </div>
 
+      {/* Legend - Right side column */}
+      <div style={{ 
+        width: '280px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '16px'
+      }}>
+        {/* Activity Categories */}
+        <div style={{ 
+          backgroundColor: 'rgba(16, 185, 129, 0.1)', 
+          backdropFilter: 'blur(10px)',
+          borderRadius: '12px',
+          border: '1px solid rgba(16, 185, 129, 0.2)',
+          padding: '20px'
+        }}>
+          <Heading variant="heading-strong-s" style={{ color: '#ffffff', marginBottom: '16px' }}>
+            Activity Categories
+          </Heading>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {categories.map(category => (
+              <div 
+                key={category}
+                style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '12px',
+                  cursor: 'pointer',
+                  padding: '8px 12px',
+                  borderRadius: '8px',
+                  backgroundColor: selectedCategory === category ? 'rgba(16, 185, 129, 0.2)' : 'transparent',
+                  transition: 'all 0.2s ease',
+                  border: selectedCategory === category ? '1px solid rgba(16, 185, 129, 0.3)' : '1px solid transparent'
+                }}
+                onClick={() => onCategoryFilter?.(selectedCategory === category ? null : category)}
+              >
+                <div 
+                  style={{ 
+                    width: '16px', 
+                    height: '16px', 
+                    borderRadius: '50%', 
+                    backgroundColor: categoryColors[category] || '#10B981',
+                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)'
+                  }} 
+                />
+                <Text variant="body-default-s" style={{ 
+                  color: '#ffffff',
+                  fontWeight: selectedCategory === category ? '600' : '400'
+                }}>
+                  {category}
+                </Text>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        {/* Connection Types */}
+        <div style={{ 
+          backgroundColor: 'rgba(16, 185, 129, 0.1)', 
+          backdropFilter: 'blur(10px)',
+          borderRadius: '12px',
+          border: '1px solid rgba(16, 185, 129, 0.2)',
+          padding: '20px'
+        }}>
+          <Text variant="body-default-s" style={{ 
+            color: '#ffffff', 
+            fontWeight: '600', 
+            marginBottom: '16px',
+            display: 'block'
+          }}>
+            Connection Types
+          </Text>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {Object.entries(connectionColors).map(([type, color]) => (
+              <div key={type} style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '12px',
+                padding: '4px 0'
+              }}>
+                <div style={{ 
+                  width: '24px', 
+                  height: '3px', 
+                  backgroundColor: color,
+                  borderRadius: '2px',
+                  boxShadow: '0 1px 4px rgba(0, 0, 0, 0.2)'
+                }} />
+                <Text variant="body-default-xs" style={{ 
+                  color: '#ffffff',
+                  textTransform: 'capitalize',
+                  fontWeight: '500'
+                }}>
+                  {type}
+                </Text>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Hover Info */}
       {hoveredNode && (
         <div style={{
           position: 'absolute',
           top: '20px',
-          right: '20px',
-          backgroundColor: 'rgba(255, 255, 255, 0.95)',
-          backdropFilter: 'blur(10px)',
-          padding: '16px',
-          borderRadius: '12px',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12)',
-          border: '1px solid rgba(255, 255, 255, 0.2)',
-          maxWidth: '320px',
+          left: '20px',
+          backgroundColor: 'rgba(16, 185, 129, 0.15)',
+          backdropFilter: 'blur(15px)',
+          padding: '20px',
+          borderRadius: '16px',
+          boxShadow: '0 12px 40px rgba(16, 185, 129, 0.2)',
+          border: '1px solid rgba(16, 185, 129, 0.3)',
+          maxWidth: '350px',
           zIndex: 1000,
-          animation: 'fadeIn 0.2s ease-out'
+          animation: 'fadeIn 0.3s ease-out'
         }}>
           {(() => {
             const activity = activities.find(a => a.id === hoveredNode);
@@ -406,66 +457,66 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
                   </div>
                 )}
                 
-                {/* Content */}
-                <Text variant="body-default-s" style={{ 
-                  fontWeight: '600',
-                  color: '#1f2937',
-                  lineHeight: '1.4'
-                }}>
-                  {activity.title}
-                </Text>
-                
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  marginBottom: '4px'
-                }}>
-                  <div style={{
-                    width: '8px',
-                    height: '8px',
-                    borderRadius: '50%',
-                    backgroundColor: categoryColors[activity.category] || '#6B7280'
-                  }} />
-                  <Text variant="body-default-xs" style={{ 
-                    color: '#6B7280',
-                    textTransform: 'uppercase',
-                    fontWeight: '500'
-                  }}>
-                    {activity.category}
-                  </Text>
-                </div>
-                
-                <Text variant="body-default-xs" style={{ 
-                  color: '#6B7280',
-                  marginBottom: '8px'
-                }}>
-                  {activity.date}
-                </Text>
-                
-                <Text variant="body-default-xs" style={{ 
-                  color: '#4B5563',
-                  lineHeight: '1.4'
-                }}>
-                  {activity.summary.length > 120 
-                    ? activity.summary.substring(0, 120) + '...' 
-                    : activity.summary
-                  }
-                </Text>
-                
-                <Text variant="body-default-xs" style={{ 
-                  color: '#3B82F6',
-                  fontWeight: '500',
-                  marginTop: '4px'
-                }}>
-                  Click to explore →
-                </Text>
+                 {/* Content */}
+                 <Text variant="body-default-s" style={{ 
+                   fontWeight: '600',
+                   color: '#ffffff',
+                   lineHeight: '1.4'
+                 }}>
+                   {activity.title}
+                 </Text>
+                 
+                 <div style={{
+                   display: 'flex',
+                   alignItems: 'center',
+                   gap: '8px',
+                   marginBottom: '4px'
+                 }}>
+                   <div style={{
+                     width: '8px',
+                     height: '8px',
+                     borderRadius: '50%',
+                     backgroundColor: categoryColors[activity.category] || '#10B981'
+                   }} />
+                   <Text variant="body-default-xs" style={{ 
+                     color: '#a7f3d0',
+                     textTransform: 'uppercase',
+                     fontWeight: '500'
+                   }}>
+                     {activity.category}
+                   </Text>
+                 </div>
+                 
+                 <Text variant="body-default-xs" style={{ 
+                   color: '#a7f3d0',
+                   marginBottom: '8px'
+                 }}>
+                   {activity.date}
+                 </Text>
+                 
+                 <Text variant="body-default-xs" style={{ 
+                   color: '#d1fae5',
+                   lineHeight: '1.4'
+                 }}>
+                   {activity.summary.length > 120 
+                     ? activity.summary.substring(0, 120) + '...' 
+                     : activity.summary
+                   }
+                 </Text>
+                 
+                 <Text variant="body-default-xs" style={{ 
+                   color: '#10B981',
+                   fontWeight: '500',
+                   marginTop: '4px'
+                 }}>
+                   Click to explore →
+                 </Text>
               </Column>
             ) : null;
           })()}
         </div>
       )}
-    </Column>
+    </div>
   );
 };
 
