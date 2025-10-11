@@ -239,7 +239,8 @@ export default function BeyondTheLab() {
               position: "relative",
               width: "100%",
               height: "250px",
-              backgroundColor: "#f5f5f5"
+              backgroundColor: "#f5f5f5",
+              overflow: "hidden"
             }}>
               {item.id === "tedx-ashesi-speaker" && (
                 <Image
@@ -254,7 +255,11 @@ export default function BeyondTheLab() {
                   src="/images/projects/arm-y.jpg"
                   alt={item.title}
                   fill
-                  style={{ objectFit: "cover" }}
+                  style={{ 
+                    objectFit: "cover",
+                    zIndex: 10,
+                    position: "relative"
+                  }}
                 />
               )}
               {item.id === "aftgonosia-service-learning" && (
@@ -310,7 +315,11 @@ export default function BeyondTheLab() {
                   src="/images/beyond-the-lab/pan-africanism.png"
                   alt={item.title}
                   fill
-                  style={{ objectFit: "cover" }}
+                  style={{ 
+                    objectFit: "cover",
+                    zIndex: 10,
+                    position: "relative"
+                  }}
                 />
               )}
               {!["tedx-ashesi-speaker", "army-students-club-curator", "aftgonosia-service-learning", "msmiles-stem-curriculum", "ashesi-research-club-president", "assistive-technology-makerspace", "7ma-show-podcast", "flir-c5-video-manual"].includes(item.id) && (
