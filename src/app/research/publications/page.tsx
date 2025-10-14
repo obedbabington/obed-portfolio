@@ -55,11 +55,8 @@ export default function Publications() {
 
       {/* Coming Soon Message */}
       <Column align="center" padding="xl" style={{ minHeight: "400px", justifyContent: "center" }}>
-        <Text variant="heading-strong-l" align="center" style={{ marginBottom: "1rem" }}>
+        <Text variant="heading-strong-l" align="center">
           Coming Soon
-        </Text>
-        <Text variant="body-default-m" align="center" onBackground="neutral-weak">
-          Publications and research papers will be available here soon.
         </Text>
       </Column>
 
