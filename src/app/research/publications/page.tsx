@@ -1,44 +1,47 @@
 "use client";
 
-import { Card, Column, Heading, Text, Row } from "@once-ui-system/core";
+import { Column, Heading, Text } from "@once-ui-system/core";
 import { BackButton } from "@/components";
-import { useState } from "react";
+
+// Commented out the original publications code
+// import { Card, Row } from "@once-ui-system/core";
+// import { useState } from "react";
 
 // Simple dummy publication data - 2 tiles only
-const publications = [
-  {
-    id: 1,
-    title: "Sample Publication Title",
-    authors: ["Obed Allotey Babington", "Co-Author Name"],
-    journal: "Journal Name",
-    year: 2024,
-    status: "Published",
-    abstract: "This is a sample abstract that describes the research work. It provides a brief overview of the methodology, findings, and contributions of the study.",
-    keywords: ["Keyword1", "Keyword2", "Keyword3"]
-  },
-  {
-    id: 2,
-    title: "Another Sample Publication",
-    authors: ["Obed Allotey Babington", "Another Co-Author"],
-    journal: "Another Journal",
-    year: 2023,
-    status: "Under Review",
-    abstract: "This is another sample abstract that demonstrates the structure. It shows how the publication tiles will look with different content.",
-    keywords: ["Research", "Technology", "Innovation"]
-  }
-];
+// const publications = [
+//   {
+//     id: 1,
+//     title: "Sample Publication Title",
+//     authors: ["Obed Allotey Babington", "Co-Author Name"],
+//     journal: "Journal Name",
+//     year: 2024,
+//     status: "Published",
+//     abstract: "This is a sample abstract that describes the research work. It provides a brief overview of the methodology, findings, and contributions of the study.",
+//     keywords: ["Keyword1", "Keyword2", "Keyword3"]
+//   },
+//   {
+//     id: 2,
+//     title: "Another Sample Publication",
+//     authors: ["Obed Allotey Babington", "Another Co-Author"],
+//     journal: "Another Journal",
+//     year: 2023,
+//     status: "Under Review",
+//     abstract: "This is another sample abstract that demonstrates the structure. It shows how the publication tiles will look with different content.",
+//     keywords: ["Research", "Technology", "Innovation"]
+//   }
+// ];
 
 export default function Publications() {
-  const [selectedPublication, setSelectedPublication] = useState<typeof publications[0] | null>(null);
+  // const [selectedPublication, setSelectedPublication] = useState<typeof publications[0] | null>(null);
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case "Published": return "#10b981";
-      case "Under Review": return "#f59e0b";
-      case "Submitted": return "#3b82f6";
-      default: return "#6b7280";
-    }
-  };
+  // const getStatusColor = (status: string) => {
+  //   switch (status) {
+  //     case "Published": return "#10b981";
+  //     case "Under Review": return "#f59e0b";
+  //     case "Submitted": return "#3b82f6";
+  //     default: return "#6b7280";
+  //   }
+  // };
 
   return (
     <Column maxWidth="m" paddingTop="24" className="fixed-header-spacing page-fade-in" style={{ position: "relative" }}>
@@ -50,9 +53,19 @@ export default function Publications() {
         <Heading variant="heading-strong-xl" align="center">Publications</Heading>
       </Column>
 
+      {/* Coming Soon Message */}
+      <Column align="center" padding="xl" style={{ minHeight: "400px", justifyContent: "center" }}>
+        <Text variant="heading-strong-l" align="center" style={{ marginBottom: "1rem" }}>
+          Coming Soon
+        </Text>
+        <Text variant="body-default-m" align="center" onBackground="neutral-weak">
+          Publications and research papers will be available here soon.
+        </Text>
+      </Column>
 
+      {/* Commented out the original publications grid and modal code */}
       {/* Publications Grid - 2 tiles side by side */}
-      <div className="grid-container mobile-grid" style={{
+      {/* <div className="grid-container mobile-grid" style={{
         display: "grid",
         gridTemplateColumns: "repeat(2, 1fr)",
         gap: "1.5rem",
@@ -108,7 +121,6 @@ export default function Publications() {
                 {publication.abstract}
               </Text>
 
-
               <Row horizontal="end" align="center">
                 <Text variant="body-default-xs" style={{ color: "var(--brand-medium)" }}>
                   View Details →
@@ -117,10 +129,10 @@ export default function Publications() {
             </Column>
           </Card>
         ))}
-      </div>
+      </div> */}
 
       {/* Publication Detail Modal */}
-      {selectedPublication && (
+      {/* {selectedPublication && (
         <div 
           onClick={() => setSelectedPublication(null)}
           style={{
@@ -149,7 +161,6 @@ export default function Publications() {
             }}
           >
             <div style={{ display: "flex", flexDirection: "column", gap: "2rem", width: "100%" }}>
-              {/* Modal Header */}
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
                 <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                   <h2 style={{ 
@@ -183,7 +194,6 @@ export default function Publications() {
                 </button>
               </div>
 
-              {/* Publication Details */}
               <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap" }}>
                 <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", minWidth: "200px" }}>
                   <h4 style={{ fontSize: "0.9rem", fontWeight: "600", margin: 0, color: "#374151" }}>Journal</h4>
@@ -195,14 +205,11 @@ export default function Publications() {
                 </div>
               </div>
 
-              {/* Abstract */}
               <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                 <h4 style={{ fontSize: "0.9rem", fontWeight: "600", margin: 0, color: "#374151" }}>Abstract</h4>
                 <p style={{ fontSize: "0.9rem", margin: 0, color: "#1f2937", lineHeight: "1.6" }}>{selectedPublication.abstract}</p>
               </div>
 
-
-              {/* Action Buttons */}
               <div style={{ display: "flex", gap: "1rem", justifyContent: "flex-end" }}>
                 <button style={{
                   padding: "0.75rem 1.5rem",
@@ -232,9 +239,7 @@ export default function Publications() {
             </div>
           </div>
         </div>
-      )}
+      )} */}
     </Column>
   );
 }
-
-
