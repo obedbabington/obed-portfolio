@@ -115,6 +115,41 @@ export default function CSProjects() {
       {/* Back Button */}
       <BackButton href="/projects" label="Back to Projects" />
 
+      {/* Research Quote */}
+      <Column paddingX="l" gap="l" marginBottom="l" align="center" style={{ marginTop: "10px" }}>
+        <Row gap="l" vertical="center" align="center" maxWidth="l">
+          <div
+            style={{
+              position: "relative",
+              animation: "fadeInPop 1.5s ease-out forwards",
+              transformOrigin: "center center",
+              opacity: 0,
+              transform: "scale(0.8)",
+            }}
+          >
+            <Image
+              src="/images/obedabout2.jpg"
+              alt="Obed Allotey Babington"
+              width={140}
+              height={140}
+              style={{ 
+                objectFit: "cover",
+                boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+                borderRadius: "50%"
+              }}
+            />
+          </div>
+          <Column gap="s" align="center" flex={1}>
+            <Text variant="body-default-l" align="center" style={{ fontStyle: "italic", lineHeight: "1.6" }}>
+              "We voluntarily articulate our ignorance and deliberately throw it into the world, reaching for a catch. 'We' are researchers and that is what we do."
+            </Text>
+            <Text variant="body-default-s" align="center" onBackground="neutral-weak" style={{ fontStyle: "italic" }}>
+              — Me
+            </Text>
+          </Column>
+        </Row>
+      </Column>
+
       {/* Page Header */}
       <Column marginBottom="xl" paddingX="l" align="center">
         <Heading marginBottom="l" variant="heading-strong-xl" align="center">
@@ -122,16 +157,6 @@ export default function CSProjects() {
         </Heading>
         <Text variant="body-default-l" align="center">
           Computer Science and Deep Learning projects exploring AI, machine learning, and natural language processing.
-        </Text>
-      </Column>
-
-      {/* Quote Section */}
-      <Column marginBottom="l" paddingX="l" align="center">
-        <Text variant="body-default-l" align="center" style={{ fontStyle: "italic", fontSize: "1.1em", lineHeight: "1.6" }}>
-          "We voluntarily articulate our ignorance and deliberately throw it into the world, reaching for a catch. 'We' are researchers and that is what we do."
-        </Text>
-        <Text variant="body-default-s" align="center" onBackground="neutral-weak" marginTop="s">
-          — Me
         </Text>
       </Column>
 

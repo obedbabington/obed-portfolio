@@ -131,6 +131,40 @@ export default function EngineeringProjects() {
       {/* Back Button */}
       <BackButton href="/projects" label="Back to Projects" />
 
+      {/* Alfred Whitehead Quote */}
+      <Column paddingX="l" gap="l" marginBottom="l" align="center" style={{ marginTop: "10px" }}>
+        <Row gap="l" vertical="center" align="center" maxWidth="l">
+          <div
+            style={{
+              position: "relative",
+              animation: "fadeInPop 1.5s ease-out forwards",
+              transformOrigin: "center center",
+              opacity: 0,
+              transform: "scale(0.8)",
+            }}
+          >
+            <Image
+              src="/images/whitehead.png"
+              alt="Alfred Whitehead"
+              width={140}
+              height={140}
+              style={{ 
+                objectFit: "cover",
+                boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+              }}
+            />
+          </div>
+          <Column gap="s" align="center" flex={1}>
+            <Text variant="body-default-l" align="center" style={{ fontStyle: "italic", lineHeight: "1.6" }}>
+              "Civilization advances by extending the number of important operations which we can perform without thinking about them."
+            </Text>
+            <Text variant="body-default-s" align="center" onBackground="neutral-weak" style={{ fontStyle: "italic" }}>
+              — Alfred Whitehead, Creator of Process Philosophy
+            </Text>
+          </Column>
+        </Row>
+      </Column>
+
       {/* Page Header */}
       <Column marginBottom="xl" paddingX="l" align="center">
         <Heading marginBottom="l" variant="heading-strong-xl" align="center">
@@ -138,16 +172,6 @@ export default function EngineeringProjects() {
         </Heading>
         <Text variant="body-default-l" align="center">
           Hardware, embedded systems, and engineering projects showcasing practical applications of technology.
-        </Text>
-      </Column>
-
-      {/* Quote Section */}
-      <Column marginBottom="l" paddingX="l" align="center">
-        <Text variant="body-default-l" align="center" style={{ fontStyle: "italic", fontSize: "1.1em", lineHeight: "1.6" }}>
-          "Civilization advances by extending the number of important operations which we can perform without thinking about them."
-        </Text>
-        <Text variant="body-default-s" align="center" onBackground="neutral-weak" marginTop="s">
-          — Alfred Whitehead, Creator of Process Philosophy
         </Text>
       </Column>
 

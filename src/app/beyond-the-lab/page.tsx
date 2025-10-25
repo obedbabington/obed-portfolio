@@ -173,19 +173,44 @@ export default function BeyondTheLab() {
       {/* Back Button */}
       <BackButton href="/" label="Back to Home" />
 
+      {/* Ernest Hemingway Quote */}
+      <Column paddingX="l" gap="l" marginBottom="l" align="center" style={{ marginTop: "10px" }}>
+        <Row gap="l" vertical="center" align="center" maxWidth="l">
+          <div
+            style={{
+              position: "relative",
+              animation: "fadeInPop 1.5s ease-out forwards",
+              transformOrigin: "center center",
+              opacity: 0,
+              transform: "scale(0.8)",
+            }}
+          >
+            <Image
+              src="/images/obedabout2.jpg"
+              alt="Ernest Hemingway"
+              width={140}
+              height={140}
+              style={{ 
+                objectFit: "cover",
+                boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+                borderRadius: "50%"
+              }}
+            />
+          </div>
+          <Column gap="s" align="center" flex={1}>
+            <Text variant="body-default-l" align="center" style={{ fontStyle: "italic", lineHeight: "1.6" }}>
+              "The best way to find out if you can trust somebody is to trust them."
+            </Text>
+            <Text variant="body-default-s" align="center" onBackground="neutral-weak" style={{ fontStyle: "italic" }}>
+              — Ernest Hemingway
+            </Text>
+          </Column>
+        </Row>
+      </Column>
+
       {/* Beyond the Lab Heading */}
       <Column marginBottom="l" paddingX="l" align="center" style={{ marginTop: "30px" }}>
         <Heading variant="heading-strong-xl" align="center">Beyond the Lab</Heading>
-      </Column>
-
-      {/* Quote Section */}
-      <Column marginBottom="l" paddingX="l" align="center">
-        <Text variant="body-default-l" align="center" style={{ fontStyle: "italic", fontSize: "1.1em", lineHeight: "1.6" }}>
-          "The best way to find out if you can trust somebody is to trust them."
-        </Text>
-        <Text variant="body-default-s" align="center" onBackground="neutral-weak" marginTop="s">
-          — Ernest Hemingway
-        </Text>
       </Column>
 
       {/* Page Header */}
