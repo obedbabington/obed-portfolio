@@ -191,7 +191,7 @@ export default function About() {
               <Column fillWidth gap="l" marginBottom="40">
                 {about.studies.institutions.map((institution, index) => (
                   <Column key={`${institution.name}-${index}`} fillWidth gap="4">
-                    <Row align="center" gap="m">
+                    <Row align="start" gap="m">
                       {institution.logo && (
                         <img 
                           src={institution.logo} 
@@ -203,7 +203,13 @@ export default function About() {
                           }}
                         />
                       )}
-                      <Text id={institution.name} variant="heading-strong-l">
+                      <Text 
+                        id={institution.name} 
+                        variant="heading-strong-l"
+                        style={{ 
+                          marginTop: '8px' // Adjust this value to align with the icon center
+                        }}
+                      >
                         {institution.name}
                       </Text>
                     </Row>
