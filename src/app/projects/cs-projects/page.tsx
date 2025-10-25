@@ -126,6 +126,16 @@ export default function CSProjects() {
       {/* Back Button */}
       <BackButton href="/projects" label="Back to Projects" />
 
+      {/* Page Header */}
+      <Column marginBottom="xl" paddingX="l" align="center">
+        <Heading marginBottom="l" variant="heading-strong-xl" align="center">
+          CS Projects
+        </Heading>
+        <Text variant="body-default-l" align="center">
+          Computer Science and Deep Learning projects exploring AI, machine learning, and natural language processing.
+        </Text>
+      </Column>
+
       {/* Alfred Whitehead Quote */}
       <Column paddingX="l" gap="l" marginBottom="l" align="center" style={{ marginTop: "10px" }}>
         <Row gap="l" vertical="center" align="center" maxWidth="l">
@@ -158,16 +168,6 @@ export default function CSProjects() {
             </Text>
           </Column>
         </Row>
-      </Column>
-
-      {/* Page Header */}
-      <Column marginBottom="xl" paddingX="l" align="center">
-        <Heading marginBottom="l" variant="heading-strong-xl" align="center">
-          CS Projects
-        </Heading>
-        <Text variant="body-default-l" align="center">
-          Computer Science and Deep Learning projects exploring AI, machine learning, and natural language processing.
-        </Text>
       </Column>
 
       {/* CS Projects - Grid Layout */}
