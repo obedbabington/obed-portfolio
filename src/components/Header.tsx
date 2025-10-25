@@ -58,7 +58,7 @@ export const Header = () => {
           <Row 
             gap="16" 
             vertical="center" 
-            textVariant="body-strong-xl" 
+            textVariant="display-strong-xl" 
             suppressHydrationWarning
             horizontal="center"
           >
