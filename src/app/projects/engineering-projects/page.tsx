@@ -249,5 +249,27 @@ export default function EngineeringProjects() {
         })}
       </div>
     </Column>
+    
+    <style dangerouslySetInnerHTML={{
+      __html: `
+        @keyframes fadeInPop {
+          0% {
+            opacity: 0;
+            transform: scale(0.8);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        
+        @media (max-width: 768px) {
+          .grid-container {
+            grid-template-columns: 1fr !important;
+            gap: 1rem !important;
+          }
+        }
+      `
+    }} />
   );
 }
