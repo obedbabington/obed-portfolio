@@ -115,7 +115,7 @@ export default function CSProjects() {
       {/* Back Button */}
       <BackButton href="/projects" label="Back to Projects" />
 
-      {/* Research Quote */}
+      {/* Alfred Whitehead Quote */}
       <Column paddingX="l" gap="l" marginBottom="l" align="center" style={{ marginTop: "10px" }}>
         <Row gap="l" vertical="center" align="center" maxWidth="l">
           <div
@@ -128,23 +128,22 @@ export default function CSProjects() {
             }}
           >
             <Image
-              src="/images/obedabout2.jpg"
-              alt="Obed Allotey Babington"
+              src="/images/whitehead.png"
+              alt="Alfred Whitehead"
               width={140}
               height={140}
               style={{ 
                 objectFit: "cover",
                 boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
-                borderRadius: "50%"
               }}
             />
           </div>
           <Column gap="s" align="center" flex={1}>
             <Text variant="body-default-l" align="center" style={{ fontStyle: "italic", lineHeight: "1.6" }}>
-              "We voluntarily articulate our ignorance and deliberately throw it into the world, reaching for a catch. 'We' are researchers and that is what we do."
+              "Civilization advances by extending the number of important operations which we can perform without thinking about them."
             </Text>
             <Text variant="body-default-s" align="center" onBackground="neutral-weak" style={{ fontStyle: "italic" }}>
-              — Me
+              — Alfred Whitehead, Creator of Process Philosophy
             </Text>
           </Column>
         </Row>
