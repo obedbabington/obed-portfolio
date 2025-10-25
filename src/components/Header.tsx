@@ -56,9 +56,9 @@ export const Header = () => {
 
           {/* Center - Main Navigation */}
           <Row 
-            gap="12" 
+            gap="16" 
             vertical="center" 
-            textVariant="body-default-m" 
+            textVariant="body-default-l" 
             suppressHydrationWarning
             horizontal="center"
           >
