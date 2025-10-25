@@ -178,6 +178,16 @@ export default function BeyondTheLab() {
         <Heading variant="heading-strong-xl" align="center">Beyond the Lab</Heading>
       </Column>
 
+      {/* Quote Section */}
+      <Column marginBottom="l" paddingX="l" align="center">
+        <Text variant="body-default-l" align="center" style={{ fontStyle: "italic", fontSize: "1.1em", lineHeight: "1.6" }}>
+          "The best way to find out if you can trust somebody is to trust them."
+        </Text>
+        <Text variant="body-default-s" align="center" onBackground="neutral-weak" marginTop="s">
+          — Ernest Hemingway
+        </Text>
+      </Column>
+
       {/* Page Header */}
       <Column marginBottom="l" paddingX="l" align="center">
         <Text variant="body-default-l" align="center" marginTop="m">

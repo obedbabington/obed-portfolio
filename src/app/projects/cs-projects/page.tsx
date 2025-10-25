@@ -125,6 +125,16 @@ export default function CSProjects() {
         </Text>
       </Column>
 
+      {/* Quote Section */}
+      <Column marginBottom="l" paddingX="l" align="center">
+        <Text variant="body-default-l" align="center" style={{ fontStyle: "italic", fontSize: "1.1em", lineHeight: "1.6" }}>
+          "We voluntarily articulate our ignorance and deliberately throw it into the world, reaching for a catch. 'We' are researchers and that is what we do."
+        </Text>
+        <Text variant="body-default-s" align="center" onBackground="neutral-weak" marginTop="s">
+          — Me
+        </Text>
+      </Column>
+
       {/* CS Projects - Grid Layout */}
       <div className="grid-container mobile-grid" style={{
         display: "grid",

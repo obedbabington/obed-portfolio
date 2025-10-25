@@ -141,6 +141,16 @@ export default function EngineeringProjects() {
         </Text>
       </Column>
 
+      {/* Quote Section */}
+      <Column marginBottom="l" paddingX="l" align="center">
+        <Text variant="body-default-l" align="center" style={{ fontStyle: "italic", fontSize: "1.1em", lineHeight: "1.6" }}>
+          "Civilization advances by extending the number of important operations which we can perform without thinking about them."
+        </Text>
+        <Text variant="body-default-s" align="center" onBackground="neutral-weak" marginTop="s">
+          — Alfred Whitehead, Creator of Process Philosophy
+        </Text>
+      </Column>
+
       {/* Engineering Projects - Grid Layout */}
       <div className="grid-container" style={{
         display: "grid",
