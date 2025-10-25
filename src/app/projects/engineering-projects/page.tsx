@@ -142,14 +142,11 @@ export default function EngineeringProjects() {
       {/* Back Button */}
       <BackButton href="/projects" label="Back to Projects" />
 
-      {/* Page Header */}
+      {/* Page Heading */}
       <Column marginBottom="xl" paddingX="l" align="center">
         <Heading marginBottom="l" variant="heading-strong-xl" align="center">
           Engineering Projects
         </Heading>
-        <Text variant="body-default-l" align="center">
-          Hardware, embedded systems, and engineering projects showcasing practical applications of technology.
-        </Text>
       </Column>
 
       {/* Alfred Whitehead Quote */}
@@ -184,6 +181,13 @@ export default function EngineeringProjects() {
             </Text>
           </Column>
         </Row>
+      </Column>
+
+      {/* Page Description */}
+      <Column marginBottom="xl" paddingX="l" align="center">
+        <Text variant="body-default-l" align="center">
+          Hardware, embedded systems, and engineering projects showcasing practical applications of technology.
+        </Text>
       </Column>
 
       {/* Engineering Projects - Grid Layout */}

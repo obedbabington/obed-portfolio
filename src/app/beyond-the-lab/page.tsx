@@ -173,20 +173,9 @@ export default function BeyondTheLab() {
       {/* Back Button */}
       <BackButton href="/" label="Back to Home" />
 
-      {/* Beyond the Lab Heading */}
+      {/* Page Heading */}
       <Column marginBottom="l" paddingX="l" align="center" style={{ marginTop: "30px" }}>
         <Heading variant="heading-strong-xl" align="center">Beyond the Lab</Heading>
-      </Column>
-
-      {/* Page Header */}
-      <Column marginBottom="l" paddingX="l" align="center">
-        <Text variant="body-default-l" align="center" marginTop="m">
-          When I am not tackling research or engineering projects, you will find me engaged in a plethora of other endeavors. Leadership, public speaking, community service, writing, you name it.
-        </Text>
-        <Text variant="body-default-l" align="center" marginTop="m">
-          Here lies a more holistic representation of my world. Take a dive.
-        </Text>
-        
       </Column>
 
       {/* Alfred Whitehead Quote */}
@@ -221,6 +210,17 @@ export default function BeyondTheLab() {
             </Text>
           </Column>
         </Row>
+      </Column>
+
+      {/* Page Description */}
+      <Column marginBottom="l" paddingX="l" align="center">
+        <Text variant="body-default-l" align="center" marginTop="m">
+          When I am not tackling research or engineering projects, you will find me engaged in a plethora of other endeavors. Leadership, public speaking, community service, writing, you name it.
+        </Text>
+        <Text variant="body-default-l" align="center" marginTop="m">
+          Here lies a more holistic representation of my world. Take a dive.
+        </Text>
+        
       </Column>
 
       <style dangerouslySetInnerHTML={{

@@ -82,41 +82,28 @@ main, [role="main"], .main-content {
 
 /* Back button styling */
 .back-button {
-  position: fixed !important;
-  top: 100px !important;
-  left: 24px !important;
-  z-index: 1000 !important;
-  width: 40px !important;
-  height: 40px !important;
-  padding: 8px !important;
-  background-color: rgba(0, 0, 0, 0.8) !important;
-  backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  border-radius: 8px !important;
+  cursor: pointer !important;
   transition: all 0.2s ease !important;
+  width: fit-content !important;
+  display: flex !important;
+  align-items: center !important;
+  text-decoration: none !important;
+  color: inherit !important;
 }
 
 .back-button:hover {
-  background-color: rgba(0, 0, 0, 0.9) !important;
-  transform: scale(1.05) !important;
+  transform: translateX(-4px) !important;
+  opacity: 0.8 !important;
 }
 
 @media (max-width: 768px) {
   .back-button {
-    top: 90px !important;
-    left: 16px !important;
-    width: 36px !important;
-    height: 36px !important;
-    padding: 6px !important;
+    padding: 8px !important;
   }
 }
 
 @media (max-width: 480px) {
   .back-button {
-    top: 85px !important;
-    left: 12px !important;
-    width: 32px !important;
-    height: 32px !important;
     padding: 4px !important;
   }
 }
