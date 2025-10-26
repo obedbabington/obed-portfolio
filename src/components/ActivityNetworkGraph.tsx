@@ -121,11 +121,11 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
       const angle = (index / activities.length) * 2 * Math.PI;
       // Calculate radius to ensure nodes are well-spaced in a circle
       const nodeSize = isMobile ? 60 : 80;
-      const minDistance = nodeSize * (isMobile ? 1.3 : 1.5); // Tighter spacing on mobile
+      const minDistance = nodeSize * (isMobile ? 2.0 : 2.5); // Much more spacing to prevent clustering
       const circumference = activities.length * minDistance;
       const radius = circumference / (2 * Math.PI);
       // Ensure radius doesn't exceed container bounds - more conservative on mobile
-      const maxRadius = Math.min(width, height) * (isMobile ? 0.3 : 0.35);
+      const maxRadius = Math.min(width, height) * (isMobile ? 0.4 : 0.45);
       const finalRadius = Math.min(radius, maxRadius);
       
       return {
@@ -188,6 +188,10 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
       imageEl.setAttribute('x', '2');
       imageEl.setAttribute('y', '2');
       imageEl.setAttribute('href', node.imagePath || '/images/beyond-the-lab/default.jpg');
+      // Add error handling for missing images
+      imageEl.addEventListener('error', () => {
+        imageEl.setAttribute('href', '/images/beyond-the-lab/default.jpg');
+      });
       imageEl.setAttribute('preserveAspectRatio', 'xMidYMid slice');
       
       groupEl.appendChild(squareEl);
@@ -195,6 +199,7 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
       
       // Add hover effects and click handling
       groupEl.addEventListener('mouseenter', () => {
+        console.log('Hovering over:', node.id, node.title); // Debug log
         setHoveredNode(node.id);
         // Add visual feedback on hover
         squareEl.setAttribute('stroke-width', '3');
@@ -202,6 +207,7 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
         squareEl.setAttribute('filter', 'drop-shadow(0 6px 20px rgba(16, 185, 129, 0.4))');
       });
       groupEl.addEventListener('mouseleave', () => {
+        console.log('Leaving hover:', node.id); // Debug log
         setHoveredNode(null);
         // Remove visual feedback
         squareEl.setAttribute('stroke-width', '2');
@@ -275,9 +281,9 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
           
           // Calculate target radius (same for all nodes to maintain circle)
           const nodeSize = isMobile ? 60 : 80;
-          const minDistance = nodeSize * (isMobile ? 1.3 : 1.5);
+          const minDistance = nodeSize * (isMobile ? 2.0 : 2.5);
           const circumference = activities.length * minDistance;
-          const targetRadius = Math.min(circumference / (2 * Math.PI), Math.min(width, height) * (isMobile ? 0.3 : 0.35));
+          const targetRadius = Math.min(circumference / (2 * Math.PI), Math.min(width, height) * (isMobile ? 0.4 : 0.45));
           
           // Apply centripetal force to maintain circular formation
           const centripetalForce = 0.1;
@@ -295,9 +301,9 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
               const dy = node.y! - other.y!;
               const distance = Math.sqrt(dx * dx + dy * dy);
               const nodeSize = isMobile ? 60 : 80;
-              const minDistance = nodeSize * 1.2; // Minimum distance between nodes
-              const repulsionRange = nodeSize * 2; // Range of repulsion
-              const repulsionForce = isMobile ? 800 : 1200; // Strong repulsion force
+              const minDistance = nodeSize * 2.0; // Increased minimum distance between nodes
+              const repulsionRange = nodeSize * 3; // Increased range of repulsion
+              const repulsionForce = isMobile ? 1200 : 1800; // Stronger repulsion force
               
               if (distance > 0 && distance < repulsionRange) {
                 const force = repulsionForce / (distance * distance);
@@ -307,7 +313,7 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
               
               // Extra strong force if nodes are too close
               if (distance > 0 && distance < minDistance) {
-                const emergencyForce = 2000;
+                const emergencyForce = 3000; // Increased emergency force
                 node.vx! += (dx / distance) * emergencyForce;
                 node.vy! += (dy / distance) * emergencyForce;
               }
@@ -425,6 +431,7 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
         }}>
           {(() => {
             const activity = activities.find(a => a.id === hoveredNode);
+            console.log('Hovered node:', hoveredNode, 'Found activity:', activity); // Debug log
             return activity ? (
               <Column gap="s">
                 {/* Thumbnail */}
