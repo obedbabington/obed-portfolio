@@ -318,8 +318,8 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
   return (
     <div style={{ 
       display: 'flex', 
-      flexDirection: isMobile ? 'column' : 'row',
-      gap: isMobile ? '16px' : '24px', 
+      flexDirection: 'column',
+      gap: '16px', 
       width: '100%',
       minHeight: isMobile ? 'auto' : '700px'
     }}>
@@ -338,15 +338,15 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
         `
       }} />
       
-      {/* Graph - Takes most of the space */}
+      {/* Graph - Full width */}
       <div style={{ 
-        flex: isMobile ? 'none' : '1',
+        flex: '1',
         height: isMobile ? '500px' : '700px', 
         borderRadius: '12px',
         overflow: 'hidden',
         background: 'transparent',
         position: 'relative',
-        width: isMobile ? '100%' : 'auto'
+        width: '100%'
       }}>
         <svg
           ref={svgRef}
@@ -354,68 +354,6 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
           height="100%"
           style={{ display: 'block' }}
         />
-      </div>
-
-      {/* Legend - Right side column */}
-      <div style={{ 
-        width: isMobile ? '100%' : '280px',
-        display: 'flex',
-        flexDirection: isMobile ? 'row' : 'column',
-        gap: isMobile ? '12px' : '16px',
-        flexWrap: isMobile ? 'wrap' : 'nowrap'
-      }}>
-        {/* Activity Categories */}
-        <div style={{ 
-          backgroundColor: 'rgba(16, 185, 129, 0.1)', 
-          backdropFilter: 'blur(10px)',
-          borderRadius: '12px',
-          border: '1px solid rgba(16, 185, 129, 0.2)',
-          padding: isMobile ? '16px' : '20px',
-          flex: isMobile ? '1' : 'none',
-          minWidth: isMobile ? '200px' : 'auto'
-        }}>
-          <div style={{ 
-            display: 'flex', 
-            flexDirection: isMobile ? 'row' : 'column', 
-            gap: isMobile ? '8px' : '12px',
-            flexWrap: isMobile ? 'wrap' : 'nowrap'
-          }}>
-            {categories.map(category => (
-              <div 
-                key={category}
-                style={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  gap: '12px',
-                  cursor: 'pointer',
-                  padding: '8px 12px',
-                  borderRadius: '8px',
-                  backgroundColor: selectedCategory === category ? 'rgba(16, 185, 129, 0.2)' : 'transparent',
-                  transition: 'all 0.2s ease',
-                  border: selectedCategory === category ? '1px solid rgba(16, 185, 129, 0.3)' : '1px solid transparent'
-                }}
-                onClick={() => onCategoryFilter?.(selectedCategory === category ? null : category)}
-              >
-                <div 
-                  style={{ 
-                    width: '16px', 
-                    height: '16px', 
-                    borderRadius: '50%', 
-                    backgroundColor: categoryColors[category] || '#10B981',
-                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)'
-                  }} 
-                />
-                <Text variant="body-default-s" style={{ 
-                  color: '#ffffff',
-                  fontWeight: selectedCategory === category ? '600' : '400'
-                }}>
-                  {category}
-                </Text>
-              </div>
-            ))}
-          </div>
-        </div>
-        
       </div>
 
       {/* Hover Info - Desktop only */}
