@@ -19,6 +19,7 @@ export default function NonMajorResearch() {
       id: "betterhiring-ai-hiring-management",
       title: "BetterHiring: Automating Your Hiring Management",
       date: "Jan - May 2024",
+      technologies: "Mixed-methods research, stakeholder interviews, HTML/CSS/Bootstrap, Python/Flask, PostgreSQL, Google Calendar API, AI integration",
       summary: "Designed and evaluated an AI-driven hiring management solution for Ashesi University's Computer Science and Information Systems (CSIS) department, specifically targeting the recruitment of National Service Personnel (NSP).",
       image: "betterhiring-cover.png"
     },
@@ -26,6 +27,7 @@ export default function NonMajorResearch() {
       id: "solar-panel-soiling",
       title: "Estimating the Impact of Soiling on Solar Panels",
       date: "Jan 2023 - May 2023",
+      technologies: "Embedded Systems, IoT, Arduino, Sensors, Data Collection, Mathematical Modeling",
       summary: "Collaborated with a team of research assistants on an embedded systems and IoT project aimed at generating mathematical models to estimate the impact of soiling on solar panels.",
       image: "20230706_112627.jpg"
     },
@@ -33,6 +35,7 @@ export default function NonMajorResearch() {
       id: "depression-mathematical-model",
       title: "Developing a Novel Mathematical Model for Depression",
       date: "Nov 2023 - Dec 2023",
+      technologies: "Mathematical Modeling, Differential Equations, MATLAB, Population Dynamics, Statistical Analysis",
       summary: "Developed a novel mathematical model of depression using differential equations to explore how populations transition between depression, remission, and recovery.",
       image: "Image 25-08-2025 at 7.45 PM.jpeg"
     },
@@ -40,6 +43,7 @@ export default function NonMajorResearch() {
       id: "hydrogel-irrigation-study",
       title: "A Comparative Study: The Effects of Different Hydrogel Shapes on Irrigation in Varying Soil Types",
       date: "Nov 2023 - Dec 2023",
+      technologies: "Materials Science, Hydrogel Research, PVA-borate, Soil Analysis, Irrigation Systems, Agricultural Technology",
       summary: "Investigated the use of superabsorbent PVA-borate hydrogels as a sustainable irrigation solution for urban agriculture.",
       image: "20230331_161915.jpg"
     },
@@ -47,6 +51,7 @@ export default function NonMajorResearch() {
       id: "prey-predator-mathematical-model",
       title: "Developing a Mathematical Model for Stage-Structured Prey-Predator Relationships",
       date: "Nov 2022 - Dec 2022",
+      technologies: "Mathematical Modeling, Stage-structured Systems, Population Dynamics, Differential Equations, Ecological Modeling",
       summary: "Collaborated on a project exploring stage-structured predator–prey systems using mathematical modeling techniques.",
       image: "Image 25-08-2025 at 10.33 PM.jpeg"
     }
@@ -212,6 +217,9 @@ export default function NonMajorResearch() {
                 <Heading variant="heading-strong-m">{project.title}</Heading>
                 <Text variant="body-default-xs" onBackground="neutral-weak">
                   <strong>Date:</strong> {project.date}
+                </Text>
+                <Text variant="body-default-xs" onBackground="neutral-weak">
+                  <strong>Tools & Technologies:</strong> {project.technologies}
                 </Text>
                 <Text variant="body-default-s" marginTop="s">
                   {project.summary}
