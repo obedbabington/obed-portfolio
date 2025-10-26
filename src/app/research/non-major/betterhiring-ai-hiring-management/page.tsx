@@ -38,8 +38,11 @@ export default function BetterHiringAIHiringManagement() {
         <Heading marginBottom="l" variant="heading-strong-xl" align="center">
           BetterHiring: Automating Your Hiring Management
         </Heading>
-        <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="l">
+        <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="m">
           <strong>Date:</strong> Jan - May 2024
+        </Text>
+        <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="l">
+          <strong>Link:</strong> <SmartLink href="https://www.pdffiller.com/s/d-KK4dM-" target="_blank" rel="noopener noreferrer">View Project Proposal</SmartLink>
         </Text>
         <Text variant="body-default-l" align="center">
           As part of a voluntary research project, I designed and evaluated an AI-driven hiring management solution for Ashesi University's Computer Science and Information Systems (CSIS) department, specifically targeting the recruitment of National Service Personnel (NSP).
