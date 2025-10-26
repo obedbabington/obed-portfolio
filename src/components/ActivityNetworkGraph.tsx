@@ -310,13 +310,13 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
         // Calculate base angle for perfect circle
         const baseAngle = (index / activities.length) * 2 * Math.PI;
         
-        // Add subtle orbital movement (slow rotation)
-        const orbitalSpeed = 0.0003; // Very slow orbital movement
+        // Add subtle orbital movement (very slow rotation)
+        const orbitalSpeed = 0.00005; // Much slower orbital movement
         const orbitalAngle = baseAngle + (animationTime * orbitalSpeed);
         
         // Add gentle floating motion
-        const floatAmplitude = 8; // Small floating movement
-        const floatSpeed = 0.002;
+        const floatAmplitude = 6; // Smaller floating movement
+        const floatSpeed = 0.0005; // Much slower floating
         const floatOffset = Math.sin(animationTime * floatSpeed + index * 0.5) * floatAmplitude;
         
         // Calculate final position
