@@ -28,6 +28,10 @@ export const ResearchDropdown = ({ onMobileMenuClose }: ResearchDropdownProps) =
     }, 150); // 150ms delay before closing
   };
 
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div
       style={{ position: "relative" }}
@@ -40,6 +44,7 @@ export const ResearchDropdown = ({ onMobileMenuClose }: ResearchDropdownProps) =
         label={research.label}
         selected={pathname.startsWith("/research")}
         style={{ cursor: "pointer" }}
+        onClick={handleClick}
       />
       
       {/* Dropdown Menu */}

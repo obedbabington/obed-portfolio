@@ -28,6 +28,10 @@ export const ProjectsDropdown = ({ onMobileMenuClose }: ProjectsDropdownProps) =
     }, 150); // 150ms delay before closing
   };
 
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div
       style={{ position: "relative" }}
@@ -40,6 +44,7 @@ export const ProjectsDropdown = ({ onMobileMenuClose }: ProjectsDropdownProps) =
         label={projects.label}
         selected={pathname.startsWith("/projects")}
         style={{ cursor: "pointer" }}
+        onClick={handleClick}
       />
       
       {/* Dropdown Menu */}

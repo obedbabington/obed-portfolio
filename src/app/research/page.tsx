@@ -36,6 +36,12 @@ export default function Research() {
             }
           }
           
+          @media (min-width: 769px) and (max-width: 1024px) {
+            .grid-container {
+              grid-template-columns: repeat(2, 1fr) !important;
+            }
+          }
+          
           @media (max-width: 480px) {
             .grid-container {
               padding: 0 1rem !important;
@@ -78,7 +84,7 @@ export default function Research() {
       {/* Research Cards - Grid Layout */}
       <div className="grid-container mobile-grid" style={{
         display: "grid",
-        gridTemplateColumns: "repeat(2, 1fr)",
+        gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
         gap: "1.5rem",
         padding: "0 1.5rem",
         marginBottom: "2rem"
@@ -143,6 +149,38 @@ export default function Research() {
             <Heading variant="heading-strong-m">Non-Major Research</Heading>
             <Text variant="body-default-s" onBackground="neutral-weak">
               A mix of research experiences gathered through academic coursework and extra-curricular activity. While not tightly connected to my core research areas, I built some of my research foundations through them.
+            </Text>
+          </Column>
+        </Card>
+
+        {/* Publications Card */}
+        <Card
+          as="a"
+          href="/research/publications"
+          padding="0"
+          radius="m"
+          shadow="m"
+          style={{ 
+            display: "flex",
+            flexDirection: "column",
+            cursor: "pointer",
+            transition: "all 0.3s ease",
+            textDecoration: "none",
+            overflow: "hidden"
+          }}
+        >
+          <div style={{ position: "relative", width: "100%", height: "250px" }}>
+            <Image
+              src="/images/research/capstone_award.png"
+              alt="Publications"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+          <Column gap="s" padding="l">
+            <Heading variant="heading-strong-m">Publications</Heading>
+            <Text variant="body-default-s" onBackground="neutral-weak">
+              Research contributions and academic publications showcasing my work in FPGA acceleration, neural networks, and embedded systems.
             </Text>
           </Column>
         </Card>
