@@ -32,11 +32,6 @@ export default function GenderRecognitionAudioSignals() {
         }}
       />
 
-      {/* Back Button */}
-      <Row marginBottom="l" align="center" gap="s">
-        <Icon name="arrowRight" style={{ transform: "rotate(180deg)" }} />
-      </Row>
-
       {/* Page Title */}
       <Column marginBottom="l" paddingX="l" align="center">
         <Heading variant="heading-strong-xl">Gender Recognition from Audio Signals</Heading>
@@ -50,7 +45,7 @@ export default function GenderRecognitionAudioSignals() {
       </Column>
 
       {/* Project Image */}
-      <Column marginBottom="xl" align="center">
+      <Column marginBottom="xl" paddingX="l" align="center">
         <div style={{ 
           position: "relative", 
           width: "100%", 
@@ -58,7 +53,8 @@ export default function GenderRecognitionAudioSignals() {
           height: "400px",
           borderRadius: "12px",
           overflow: "hidden",
-          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)"
+          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+          margin: "0 auto"
         }}>
           <Image
             src="/images/projects/image-recognition.png"
