@@ -1,4 +1,4 @@
-import { Column, Heading, Meta, Schema, Text, Card, Media } from "@once-ui-system/core";
+import { Column, Heading, Meta, Schema, Text, Card, Media, SmartLink } from "@once-ui-system/core";
 import { baseURL, about, person } from "@/resources";
 import { BackButton } from "@/components";
 
@@ -40,27 +40,17 @@ export default function FPGAAccelerationComparison() {
         <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="m">
           <strong>Date:</strong> Sep 2024 - May 2025
         </Text>
-        <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="l">
+        <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="m">
           <strong>Tools & Technologies:</strong> STM32 (Cortex-M), Artix-7 FPGA, Xilinx MicroBlaze, Vivado, Vitis IDE, STM32CubeIDE, C/C++, VHDL
-        </Text>
-        <Text variant="body-default-l" align="center">
-          Conducted systematic comparison of on-chip vs off-chip FPGA acceleration strategies for embedded machine learning. Benchmarked four distinct hardware configurations to isolate the impact of communication overhead on inference latency.
         </Text>
         
         {/* Video Link */}
-        <Text variant="body-default-m" align="center" marginTop="m">
-          <a 
-            href="https://youtu.be/J5wRpPMIeQA" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            style={{ 
-              color: "var(--primary-medium)", 
-              textDecoration: "underline",
-              fontWeight: "500"
-            }}
-          >
-            Watch the project demonstration video on YouTube
-          </a>
+        <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="l">
+          <strong>Link:</strong> <SmartLink href="https://youtu.be/J5wRpPMIeQA" target="_blank" rel="noopener noreferrer">Watch the project demonstration video on YouTube</SmartLink>
+        </Text>
+        
+        <Text variant="body-default-l" align="center">
+          Conducted systematic comparison of on-chip vs off-chip FPGA acceleration strategies for embedded machine learning. Benchmarked four distinct hardware configurations to isolate the impact of communication overhead on inference latency.
         </Text>
       </Column>
 
