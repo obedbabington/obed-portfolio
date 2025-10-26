@@ -208,9 +208,6 @@ export default function MajorResearch() {
                 <Text variant="body-default-xs" onBackground="neutral-weak">
                   <strong>Date:</strong> {project.date}
                 </Text>
-                <Text variant="body-default-xs" onBackground="neutral-weak">
-                  <strong>Tools & Technologies:</strong> {project.technologies}
-                </Text>
                 {project.link && (
                   <Text variant="body-default-xs" onBackground="neutral-weak">
                     <strong>Link:</strong> <SmartLink href={project.link.url} target="_blank" rel="noopener noreferrer">{project.link.text}</SmartLink>
