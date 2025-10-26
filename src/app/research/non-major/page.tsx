@@ -215,12 +215,12 @@ export default function NonMajorResearch() {
               {/* Content below image */}
               <Column gap="s" padding="l">
                 <Heading variant="heading-strong-m">{project.title}</Heading>
-                <Text variant="body-default-xs" onBackground="neutral-weak">
-                  <strong>Date:</strong> {project.date}
-                </Text>
-                <Text variant="body-default-xs" onBackground="neutral-weak">
-                  <strong>Skills:</strong> {project.technologies}
-                </Text>
+                 <Text variant="body-default-xs" onBackground="neutral-weak">
+                   <strong>Date:</strong> {project.date}
+                 </Text>
+                 <Text variant="body-default-xs" onBackground="neutral-weak">
+                   <strong>{project.id === "prey-predator-mathematical-model" || project.id === "solar-panel-soiling" || project.id === "hydrogel-irrigation-study" ? "Skills:" : "Tools & Technologies:"}</strong> {project.technologies}
+                 </Text>
                 <Text variant="body-default-s" marginTop="s">
                   {project.summary}
                 </Text>
