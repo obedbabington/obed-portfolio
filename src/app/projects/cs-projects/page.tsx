@@ -94,6 +94,15 @@ export default function CSProjects() {
             }
           }
           
+          @keyframes pulse {
+            0%, 100% {
+              opacity: 0.3;
+            }
+            50% {
+              opacity: 0.6;
+            }
+          }
+          
           @media (max-width: 768px) {
             .grid-container {
               grid-template-columns: 1fr !important;
@@ -126,11 +135,52 @@ export default function CSProjects() {
       {/* Back Button */}
       <BackButton href="/projects" label="Back to Projects" />
 
-      {/* Page Heading */}
+      {/* Enhanced Page Heading */}
       <Column marginBottom="xl" paddingX="l" align="center">
-        <Heading marginBottom="l" variant="heading-strong-xl" align="center">
-          CS Projects
-        </Heading>
+        <div style={{
+          position: 'relative',
+          display: 'inline-block',
+          padding: '20px 35px',
+          borderRadius: '18px',
+          background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%)',
+          border: '2px solid rgba(16, 185, 129, 0.3)',
+          boxShadow: '0 6px 28px rgba(16, 185, 129, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+          backdropFilter: 'blur(10px)',
+          animation: 'fadeInPop 1s ease-out',
+          transform: 'translateZ(0)',
+          willChange: 'transform, opacity'
+        }}>
+          <Heading 
+            marginBottom="l" 
+            variant="heading-strong-xl" 
+            align="center"
+            style={{
+              fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+              fontWeight: '700',
+              background: 'linear-gradient(135deg, #ffffff 0%, #10B981 50%, #ffffff 100%)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              textShadow: '0 2px 8px rgba(16, 185, 129, 0.3)',
+              letterSpacing: '-0.02em',
+              lineHeight: '1.1'
+            }}
+          >
+            CS Projects
+          </Heading>
+          {/* Decorative elements */}
+          <div style={{
+            position: 'absolute',
+            top: '-2px',
+            left: '-2px',
+            right: '-2px',
+            bottom: '-2px',
+            borderRadius: '20px',
+            background: 'linear-gradient(45deg, rgba(16, 185, 129, 0.4), rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.4))',
+            zIndex: -1,
+            animation: 'pulse 3s ease-in-out infinite'
+          }} />
+        </div>
       </Column>
 
       {/* Alfred Whitehead Quote */}
