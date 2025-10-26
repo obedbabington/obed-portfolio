@@ -5,7 +5,11 @@ import { usePathname } from "next/navigation";
 import { Row, ToggleButton, Column, Text, SmartLink } from "@once-ui-system/core";
 import { blog } from "@/resources";
 
-export const BlogDropdown = () => {
+interface BlogDropdownProps {
+  onMobileMenuClose?: () => void;
+}
+
+export const BlogDropdown = ({ onMobileMenuClose }: BlogDropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname() ?? "";
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -72,6 +76,7 @@ export const BlogDropdown = () => {
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = "transparent";
                 }}
+                onClick={onMobileMenuClose}
               >
                 <Text variant="body-default-s">News & Achievements</Text>
               </div>
@@ -91,6 +96,7 @@ export const BlogDropdown = () => {
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = "transparent";
                 }}
+                onClick={onMobileMenuClose}
               >
                 <Text variant="body-default-s">Blog Posts</Text>
               </div>

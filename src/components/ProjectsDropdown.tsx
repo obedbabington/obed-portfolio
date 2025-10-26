@@ -5,7 +5,11 @@ import { usePathname } from "next/navigation";
 import { Row, ToggleButton, Column, Text, SmartLink } from "@once-ui-system/core";
 import { projects } from "@/resources";
 
-export const ProjectsDropdown = () => {
+interface ProjectsDropdownProps {
+  onMobileMenuClose?: () => void;
+}
+
+export const ProjectsDropdown = ({ onMobileMenuClose }: ProjectsDropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname() ?? "";
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -72,6 +76,7 @@ export const ProjectsDropdown = () => {
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = "transparent";
                 }}
+                onClick={onMobileMenuClose}
               >
                 <Text variant="body-default-s">Engineering Projects</Text>
               </div>
@@ -91,6 +96,7 @@ export const ProjectsDropdown = () => {
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = "transparent";
                 }}
+                onClick={onMobileMenuClose}
               >
                 <Text variant="body-default-s">CS Projects</Text>
               </div>

@@ -5,7 +5,11 @@ import { usePathname } from "next/navigation";
 import { Row, ToggleButton, Column, Text, SmartLink } from "@once-ui-system/core";
 import { research } from "@/resources";
 
-export const ResearchDropdown = () => {
+interface ResearchDropdownProps {
+  onMobileMenuClose?: () => void;
+}
+
+export const ResearchDropdown = ({ onMobileMenuClose }: ResearchDropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname() ?? "";
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -72,6 +76,7 @@ export const ResearchDropdown = () => {
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = "transparent";
                 }}
+                onClick={onMobileMenuClose}
               >
                 <Text variant="body-default-s">Major Research</Text>
               </div>
@@ -91,6 +96,7 @@ export const ResearchDropdown = () => {
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = "transparent";
                 }}
+                onClick={onMobileMenuClose}
               >
                 <Text variant="body-default-s">Non-Major Research</Text>
               </div>
@@ -110,6 +116,7 @@ export const ResearchDropdown = () => {
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = "transparent";
                 }}
+                onClick={onMobileMenuClose}
               >
                 <Text variant="body-default-s">Publications</Text>
               </div>

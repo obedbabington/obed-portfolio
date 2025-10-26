@@ -98,6 +98,17 @@
   max-width: 100%;
 }
 
+/* Mobile-specific timeframe fixes */
+@media (max-width: 768px) {
+  .timeframe {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    word-wrap: break-word !important;
+    line-height: 1.4 !important;
+  }
+}
+
 .roleContainer {
   cursor: pointer;
   padding: 0.5rem;
@@ -202,6 +213,11 @@
 
   .timeframe {
     font-size: 0.85rem;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    word-wrap: break-word !important;
+    line-height: 1.4 !important;
   }
 }
 
@@ -228,5 +244,10 @@
 
   .timeframe {
     font-size: 0.75rem;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    word-wrap: break-word !important;
+    line-height: 1.4 !important;
   }
 }
