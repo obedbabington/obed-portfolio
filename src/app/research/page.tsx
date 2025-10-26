@@ -153,7 +153,10 @@ export default function Research() {
           </Column>
         </Card>
 
-        {/* Publications Card */}
+      </div>
+
+      {/* Publications Card - Below the grid as a rectangle */}
+      <div style={{ padding: "0 1.5rem", marginBottom: "2rem" }}>
         <Card
           as="a"
           href="/research/publications"
@@ -167,14 +170,13 @@ export default function Research() {
             transition: "all 0.3s ease",
             textDecoration: "none",
             overflow: "hidden",
-            minHeight: "200px",
-            gridColumn: "span 2"
+            minHeight: "200px"
           }}
         >
-          {/* Image on the right side */}
+          {/* Image on the left side */}
           <div style={{ 
             position: "relative",
-            width: "200px",
+            width: "300px",
             height: "100%",
             minHeight: "200px",
             flexShrink: 0

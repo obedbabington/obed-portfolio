@@ -125,13 +125,21 @@ export default function Publications() {
                     <strong>Year:</strong> {publication.year}
                   </Text>
                   <Text variant="body-default-xs" onBackground="neutral-weak">
-                    <strong>Status:</strong> {publication.status}
+                    <strong>Status:</strong> <span style={{ color: "#10b981" }}>{publication.status}</span>
                   </Text>
                 </Column>
 
-                <Text variant="body-default-s" onBackground="neutral-weak" style={{ lineHeight: "1.5" }}>
-                  {publication.abstract}
-                </Text>
+                <a 
+                  href="/research/major/fpga-acceleration-comparison" 
+                  style={{ 
+                    color: "#10b981", 
+                    textDecoration: "none",
+                    fontSize: "0.875rem",
+                    fontWeight: "500"
+                  }}
+                >
+                  Learn more about this project →
+                </a>
               </Column>
 
               <Row gap="xs" wrap>
