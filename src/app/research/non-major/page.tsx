@@ -219,7 +219,7 @@ export default function NonMajorResearch() {
                   <strong>Date:</strong> {project.date}
                 </Text>
                 <Text variant="body-default-xs" onBackground="neutral-weak">
-                  <strong>Tools & Technologies:</strong> {project.technologies}
+                  <strong>Skills:</strong> {project.technologies}
                 </Text>
                 <Text variant="body-default-s" marginTop="s">
                   {project.summary}
