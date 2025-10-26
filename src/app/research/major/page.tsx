@@ -209,7 +209,7 @@ export default function MajorResearch() {
                   <strong>Date:</strong> {project.date}
                 </Text>
                 <Text variant="body-default-xs" onBackground="neutral-weak">
-                  <strong>Tools & Technologies:</strong> {project.technologies}
+                  <strong>{project.id === "wearable-technology-study" ? "Skills:" : "Tools & Technologies:"}</strong> {project.technologies}
                 </Text>
                 {project.link && (
                   <Text variant="body-default-xs" onBackground="neutral-weak">

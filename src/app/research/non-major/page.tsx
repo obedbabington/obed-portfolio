@@ -219,7 +219,7 @@ export default function NonMajorResearch() {
                    <strong>Date:</strong> {project.date}
                  </Text>
                  <Text variant="body-default-xs" onBackground="neutral-weak">
-                   <strong>{project.id === "prey-predator-mathematical-model" || project.id === "solar-panel-soiling" || project.id === "hydrogel-irrigation-study" ? "Skills:" : "Tools & Technologies:"}</strong> {project.technologies}
+                   <strong>{project.id === "prey-predator-mathematical-model" || project.id === "solar-panel-soiling" || project.id === "hydrogel-irrigation-study" || project.id === "depression-mathematical-model" ? "Skills:" : "Tools & Technologies:"}</strong> {project.technologies}
                  </Text>
                 <Text variant="body-default-s" marginTop="s">
                   {project.summary}
