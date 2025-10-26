@@ -1,4 +1,4 @@
-import { Column, Heading, Meta, Schema, Text, Row, Icon, Card } from "@once-ui-system/core";
+import { Column, Heading, Meta, Schema, Text, Row, Icon, Card, Button } from "@once-ui-system/core";
 import { baseURL, person } from "@/resources";
 import { BackButton } from "@/components";
 import Image from "next/image";
@@ -42,6 +42,21 @@ export default function GenderRecognitionAudioSignals() {
         <Text variant="body-default-xs" onBackground="neutral-weak" style={{ textTransform: "uppercase", fontWeight: "600" }}>
           Signals and Systems Project • Mar 2024 - Apr 2024
         </Text>
+      </Column>
+
+      {/* Project Report Link */}
+      <Column align="center" gap="m" marginBottom="xl" paddingX="l">
+        <Button
+          href="https://www.pdffiller.com/s/t2Xg63DbB5"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="primary"
+          size="m"
+          prefixIcon="openLink"
+          style={{ margin: "0 auto" }}
+        >
+          View Project Report
+        </Button>
       </Column>
 
       {/* Project Image */}
@@ -132,12 +147,6 @@ export default function GenderRecognitionAudioSignals() {
             </Text>
             <Text variant="body-default-m" style={{ maxWidth: "100%", lineHeight: "1.6" }}>
               This division of work allowed each team member to contribute across DSP implementation, GUI design, and testing, while reinforcing our understanding of concepts like filtering, sampling, and feature extraction.
-            </Text>
-            <Text variant="body-default-m">
-              <strong>Link to Report:</strong>{" "}
-              <Text as="a" href="https://www.pdffiller.com/s/t2Xg63DbB5" target="_blank" style={{ color: "var(--brand-medium)", textDecoration: "underline" }}>
-                https://www.pdffiller.com/s/t2Xg63DbB5
-              </Text>
             </Text>
           </Column>
         </Card>
