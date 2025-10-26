@@ -42,6 +42,9 @@ export default function AutomaticSpeechRecognitionAsanteTwi() {
         <Text variant="body-default-xs" onBackground="neutral-weak" style={{ textTransform: "uppercase", fontWeight: "600" }}>
           Deep Learning Project • Nov 2024 - Dec 2024
         </Text>
+        <Text variant="body-default-l" align="center" onBackground="neutral-weak" marginTop="s">
+          <strong>Tools & Technologies:</strong> Python, TensorFlow/Keras, MFCCs, LSTMs, Sequence-to-Sequence Models, Adam Optimizer, Hugging Face Spaces
+        </Text>
       </Column>
 
       {/* Project Links */}
@@ -133,12 +136,12 @@ export default function AutomaticSpeechRecognitionAsanteTwi() {
           </Column>
         </Card>
 
-        {/* Technologies & Deployment */}
+        {/* Deployment */}
         <Card padding="l" radius="m" shadow="m">
           <Column gap="m">
-            <Heading variant="heading-strong-l">Technologies & Deployment</Heading>
+            <Heading variant="heading-strong-l">Deployment</Heading>
             <Text variant="body-default-m">
-              <strong>Tools & Technologies:</strong> Python, TensorFlow/Keras, MFCCs, LSTMs, Sequence-to-Sequence Models, Adam Optimizer, Hugging Face Spaces
+              The model was successfully deployed on Hugging Face Spaces, making it accessible for public interaction and testing. This deployment demonstrates the practical application of our ASR system and provides a platform for users to experience the capabilities of our Asante Twi speech recognition model.
             </Text>
           </Column>
         </Card>

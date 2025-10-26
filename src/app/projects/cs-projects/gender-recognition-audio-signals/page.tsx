@@ -42,6 +42,9 @@ export default function GenderRecognitionAudioSignals() {
         <Text variant="body-default-xs" onBackground="neutral-weak" style={{ textTransform: "uppercase", fontWeight: "600" }}>
           Signals and Systems Project • Mar 2024 - Apr 2024
         </Text>
+        <Text variant="body-default-l" align="center" onBackground="neutral-weak" marginTop="s">
+          <strong>Tools & Technologies:</strong> MATLAB, App Designer, FFT, Butterworth Filter, Signal Processing, GUI Development
+        </Text>
       </Column>
 
       {/* Project Report Link */}
@@ -151,12 +154,18 @@ export default function GenderRecognitionAudioSignals() {
           </Column>
         </Card>
 
-        {/* Technologies & Report */}
+        {/* Project Report */}
         <Card padding="l" radius="m" shadow="m">
           <Column gap="m" maxWidth="l" style={{ margin: "0 auto" }}>
-            <Heading variant="heading-strong-l">Technologies & Report</Heading>
+            <Heading variant="heading-strong-l">Project Report</Heading>
             <Text variant="body-default-m" style={{ maxWidth: "100%", lineHeight: "1.6" }}>
-              <strong>Tools & Technologies:</strong> MATLAB, App Designer, FFT, Butterworth Filter, Signal Processing, GUI Development
+              A comprehensive project report documenting the technical implementation, methodology, and results of our gender recognition system is available for review.
+            </Text>
+            <Text variant="body-default-m" style={{ maxWidth: "100%", lineHeight: "1.6" }}>
+              <strong>Link to Report:</strong>{" "}
+              <Text as="a" href="https://www.pdffiller.com/s/t2Xg63DbB5" target="_blank" style={{ color: "var(--brand-medium)", textDecoration: "underline" }}>
+                https://www.pdffiller.com/s/t2Xg63DbB5
+              </Text>
             </Text>
           </Column>
         </Card>

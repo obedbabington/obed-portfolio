@@ -37,20 +37,21 @@ export default function PythonPathfinder() {
         <Icon name="arrowRight" style={{ transform: "rotate(180deg)" }} />
       </Row>
 
-      {/* Page Title */}
-      <Column marginBottom="l" paddingX="l" align="center">
-        <Heading variant="heading-strong-xl">Python Pathfinder</Heading>
-      </Column>
 
-      {/* Project Info */}
-      <Column marginBottom="l" paddingX="l" align="center">
-        <Text variant="body-default-xs" onBackground="neutral-weak" style={{ textTransform: "uppercase", fontWeight: "600" }}>
-          Algorithm Implementation Project • Nov 2022
+      <Column marginBottom="xl" paddingX="l" align="center">
+        <Heading marginBottom="l" variant="heading-strong-xl" align="center">
+          Python Pathfinder
+        </Heading>
+        <Text variant="body-default-l" align="center" onBackground="neutral-weak">
+          <strong>Date:</strong> Nov 2022
+        </Text>
+        <Text variant="body-default-l" align="center" onBackground="neutral-weak">
+          <strong>Tools & Technologies:</strong> Python, Object-Oriented Programming, Data Structures
         </Text>
       </Column>
 
       {/* Project Image */}
-      <Column marginBottom="xl" align="center">
+      <Column marginBottom="xl" paddingX="l" align="center">
         <div style={{ 
           position: "relative", 
           width: "100%", 
@@ -58,7 +59,8 @@ export default function PythonPathfinder() {
           height: "400px",
           borderRadius: "12px",
           overflow: "hidden",
-          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)"
+          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+          margin: "0 auto"
         }}>
           <Image
             src="/images/projects/pathfinding.png"
@@ -146,12 +148,18 @@ export default function PythonPathfinder() {
           </Column>
         </Card>
 
-        {/* Technologies & Report */}
+        {/* Project Report */}
         <Card padding="l" radius="m" shadow="m">
           <Column gap="m">
-            <Heading variant="heading-strong-l">Technologies & Report</Heading>
+            <Heading variant="heading-strong-l">Project Report</Heading>
             <Text variant="body-default-m">
-              <strong>Tools & Technologies:</strong> Python, Object-Oriented Programming, Data Structures
+              A detailed project report documenting the algorithm implementation, technical approach, and results is available for review.
+            </Text>
+            <Text variant="body-default-m">
+              <strong>Link to Report:</strong>{" "}
+              <Text as="a" href="https://www.pdffiller.com/s/6E715pN9l" target="_blank" style={{ color: "var(--brand-medium)", textDecoration: "underline" }}>
+                https://www.pdffiller.com/s/6E715pN9l
+              </Text>
             </Text>
           </Column>
         </Card>
