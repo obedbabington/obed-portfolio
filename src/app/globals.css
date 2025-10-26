@@ -43,7 +43,6 @@ main, [role="main"], .main-content {
   width: 100vw;
   z-index: 0;
   pointer-events: none;
-  background-image: url('/images/public/images/hero/openslide.png');
   /* show the whole image without cropping and tile horizontally */
   background-size: auto 100%;
   background-repeat: repeat-x;
@@ -59,6 +58,14 @@ main, [role="main"], .main-content {
   /* slow, continuous horizontal scroll */
   animation: heroSlide 45s linear infinite;
   will-change: background-position;
+  /* Load background image asynchronously */
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Loaded state for hero background */
+.hero-slider-bg.loaded {
+  opacity: 1;
 }
 
 .hero-foreground {
@@ -228,6 +235,47 @@ h1, h2, h3, h4, h5, h6,
   
   h1, h2, h3, h4, h5, h6 {
     font-size: 0.95em;
+  }
+
+  /* Ensure dates display fully on mobile */
+  .date-text, 
+  [class*="date"],
+  .project-date,
+  .publication-date {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    word-wrap: break-word !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Allow text wrapping for date-related elements */
+  .project-card .date-text,
+  .publication-card .date-text,
+  .research-card .date-text {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+  }
+
+  /* Fix for any text containing dates */
+  .project-card,
+  .publication-card,
+  .research-card {
+    .text-single-line {
+      white-space: normal !important;
+      overflow: visible !important;
+      text-overflow: unset !important;
+    }
+  }
+
+  /* General fix for date display in cards */
+  [class*="card"] {
+    .text-single-line {
+      white-space: normal !important;
+      overflow: visible !important;
+      text-overflow: unset !important;
+    }
   }
 }
 

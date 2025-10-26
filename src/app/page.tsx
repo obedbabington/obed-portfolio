@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Heading,
   Text,
@@ -13,6 +15,7 @@ import {
 import { home, about, person, baseURL, routes } from "@/resources";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
+import { useEffect } from "react";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -25,6 +28,19 @@ export async function generateMetadata() {
 }
 
 export default function Home() {
+  useEffect(() => {
+    // Load background image asynchronously
+    const heroBg = document.querySelector('.hero-slider-bg') as HTMLElement;
+    if (heroBg) {
+      const img = new Image();
+      img.onload = () => {
+        heroBg.style.backgroundImage = "url('/images/public/images/hero/openslide.png')";
+        heroBg.classList.add('loaded');
+      };
+      img.src = '/images/public/images/hero/openslide.png';
+    }
+  }, []);
+
   return (
     <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center" className="mobile-padding fixed-header-spacing ai-gradient page-fade-in">
       <Schema

@@ -1,47 +1,32 @@
 "use client";
 
-import { Column, Heading, Text } from "@once-ui-system/core";
+import { Column, Heading, Text, Card, Row } from "@once-ui-system/core";
 import { BackButton } from "@/components";
 
-// Commented out the original publications code
-// import { Card, Row } from "@once-ui-system/core";
-// import { useState } from "react";
-
-// Simple dummy publication data - 2 tiles only
-// const publications = [
-//   {
-//     id: 1,
-//     title: "Sample Publication Title",
-//     authors: ["Obed Allotey Babington", "Co-Author Name"],
-//     journal: "Journal Name",
-//     year: 2024,
-//     status: "Published",
-//     abstract: "This is a sample abstract that describes the research work. It provides a brief overview of the methodology, findings, and contributions of the study.",
-//     keywords: ["Keyword1", "Keyword2", "Keyword3"]
-//   },
-//   {
-//     id: 2,
-//     title: "Another Sample Publication",
-//     authors: ["Obed Allotey Babington", "Another Co-Author"],
-//     journal: "Another Journal",
-//     year: 2023,
-//     status: "Under Review",
-//     abstract: "This is another sample abstract that demonstrates the structure. It shows how the publication tiles will look with different content.",
-//     keywords: ["Research", "Technology", "Innovation"]
-//   }
-// ];
+const publications = [
+  {
+    id: 1,
+    title: "On-Chip vs. Off-Chip FPGA Acceleration for Embedded Neural Networks",
+    authors: ["O. Babington", "N. Amanquah"],
+    conference: "13th International Conference on Intelligent Embedded, MicroElectronics, Communication and Optical Networks (IEMECON)",
+    location: "Jaipur, India",
+    year: 2025,
+    status: "Accepted",
+    abstract: "This paper presents a systematic comparison of on-chip versus off-chip FPGA acceleration strategies for embedded neural network inference. We evaluate the performance trade-offs between integrated FPGA softcore processors and external FPGA acceleration units, analyzing factors such as communication overhead, latency, and power consumption in resource-constrained environments.",
+    keywords: ["FPGA", "Neural Networks", "Embedded Systems", "Hardware Acceleration", "On-Chip Processing"]
+  }
+];
 
 export default function Publications() {
-  // const [selectedPublication, setSelectedPublication] = useState<typeof publications[0] | null>(null);
-
-  // const getStatusColor = (status: string) => {
-  //   switch (status) {
-  //     case "Published": return "#10b981";
-  //     case "Under Review": return "#f59e0b";
-  //     case "Submitted": return "#3b82f6";
-  //     default: return "#6b7280";
-  //   }
-  // };
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case "Published": return "#10b981";
+      case "Accepted": return "#10b981";
+      case "Under Review": return "#f59e0b";
+      case "Submitted": return "#3b82f6";
+      default: return "#6b7280";
+    }
+  };
 
   return (
     <Column maxWidth="m" paddingTop="24" className="fixed-header-spacing page-fade-in" style={{ position: "relative" }}>
@@ -51,20 +36,15 @@ export default function Publications() {
       {/* Publications Heading */}
       <Column marginBottom="l" paddingX="l" align="center" style={{ marginTop: "20px" }}>
         <Heading variant="heading-strong-xl" align="center">Publications</Heading>
-      </Column>
-
-      {/* Coming Soon Message */}
-      <Column align="center" padding="xl" style={{ minHeight: "400px", justifyContent: "center" }}>
-        <Text variant="heading-strong-l" align="center">
-          Coming Soon
+        <Text variant="body-default-l" align="center" marginTop="s" onBackground="neutral-weak">
+          Research contributions and academic publications
         </Text>
       </Column>
 
-      {/* Commented out the original publications grid and modal code */}
-      {/* Publications Grid - 2 tiles side by side */}
-      {/* <div className="grid-container mobile-grid" style={{
+      {/* Publications Grid */}
+      <div className="grid-container mobile-grid" style={{
         display: "grid",
-        gridTemplateColumns: "repeat(2, 1fr)",
+        gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))",
         gap: "1.5rem",
         padding: "0 1.5rem",
         marginBottom: "2rem"
@@ -72,23 +52,24 @@ export default function Publications() {
         {publications.map((publication) => (
           <Card
             key={publication.id}
-            padding="0"
+            padding="l"
             radius="m"
             shadow="m"
             style={{ 
               display: "flex",
               flexDirection: "column",
-              cursor: "pointer",
               transition: "all 0.3s ease",
-              textDecoration: "none",
-              overflow: "hidden"
+              border: "1px solid rgba(16, 185, 129, 0.1)",
+              background: "rgba(255, 255, 255, 0.02)",
+              backdropFilter: "blur(10px)"
             }}
-            onClick={() => setSelectedPublication(publication)}
           >
-            <Column gap="s" padding="l">
+            <Column gap="m">
               <Row horizontal="between" align="start" gap="m">
                 <Column flex={1} gap="s">
-                  <Heading variant="heading-strong-m">{publication.title}</Heading>
+                  <Heading variant="heading-strong-m" style={{ lineHeight: "1.3" }}>
+                    {publication.title}
+                  </Heading>
                   <Text variant="body-default-s" onBackground="neutral-weak">
                     {publication.authors.join(", ")}
                   </Text>
@@ -105,138 +86,53 @@ export default function Publications() {
                 />
               </Row>
 
-              <Row horizontal="between" align="center">
+              <Column gap="xs">
                 <Text variant="body-default-xs" onBackground="neutral-weak">
-                  {publication.journal}
+                  <strong>Conference:</strong> {publication.conference}
                 </Text>
-                <Text variant="body-strong-xs">
-                  {publication.year}
+                <Text variant="body-default-xs" onBackground="neutral-weak">
+                  <strong>Location:</strong> {publication.location}
                 </Text>
-              </Row>
+                <Text variant="body-default-xs" onBackground="neutral-weak">
+                  <strong>Year:</strong> {publication.year}
+                </Text>
+                <Text variant="body-default-xs" onBackground="neutral-weak">
+                  <strong>Status:</strong> {publication.status}
+                </Text>
+              </Column>
 
-              <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="s">
+              <Text variant="body-default-s" onBackground="neutral-weak" style={{ lineHeight: "1.5" }}>
                 {publication.abstract}
               </Text>
 
-              <Row horizontal="end" align="center">
-                <Text variant="body-default-xs" style={{ color: "var(--brand-medium)" }}>
-                  View Details →
-                </Text>
+              <Row gap="xs" wrap>
+                {publication.keywords.map((keyword, index) => (
+                  <Text 
+                    key={index}
+                    variant="body-default-xs" 
+                    style={{ 
+                      background: "rgba(16, 185, 129, 0.1)",
+                      color: "var(--brand-medium)",
+                      padding: "4px 8px",
+                      borderRadius: "4px",
+                      fontSize: "0.75rem"
+                    }}
+                  >
+                    {keyword}
+                  </Text>
+                ))}
               </Row>
             </Column>
           </Card>
         ))}
-      </div> */}
+      </div>
 
-      {/* Publication Detail Modal */}
-      {/* {selectedPublication && (
-        <div 
-          onClick={() => setSelectedPublication(null)}
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: "rgba(0,0,0,0.5)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 1000
-          }}
-        >
-          <div 
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              background: "white",
-              borderRadius: "0.75rem",
-              padding: "2rem",
-              maxWidth: "800px",
-              maxHeight: "90vh",
-              overflow: "auto",
-              margin: "1rem"
-            }}
-          >
-            <div style={{ display: "flex", flexDirection: "column", gap: "2rem", width: "100%" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-                <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                  <h2 style={{ 
-                    fontSize: "2rem", 
-                    fontWeight: "700", 
-                    margin: 0,
-                    color: "#1f2937"
-                  }}>
-                    {selectedPublication.title}
-                  </h2>
-                  <p style={{ 
-                    color: "#6b7280", 
-                    fontSize: "1.1rem",
-                    margin: 0
-                  }}>
-                    {selectedPublication.authors.join(", ")}
-                  </p>
-                </div>
-                <button
-                  onClick={() => setSelectedPublication(null)}
-                  style={{
-                    background: "transparent",
-                    border: "none",
-                    fontSize: "1.5rem",
-                    cursor: "pointer",
-                    color: "#6b7280",
-                    padding: "0.5rem"
-                  }}
-                >
-                  ×
-                </button>
-              </div>
-
-              <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap" }}>
-                <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", minWidth: "200px" }}>
-                  <h4 style={{ fontSize: "0.9rem", fontWeight: "600", margin: 0, color: "#374151" }}>Journal</h4>
-                  <p style={{ fontSize: "0.9rem", margin: 0, color: "#1f2937" }}>{selectedPublication.journal}</p>
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", minWidth: "200px" }}>
-                  <h4 style={{ fontSize: "0.9rem", fontWeight: "600", margin: 0, color: "#374151" }}>Year</h4>
-                  <p style={{ fontSize: "0.9rem", margin: 0, color: "#1f2937" }}>{selectedPublication.year}</p>
-                </div>
-              </div>
-
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                <h4 style={{ fontSize: "0.9rem", fontWeight: "600", margin: 0, color: "#374151" }}>Abstract</h4>
-                <p style={{ fontSize: "0.9rem", margin: 0, color: "#1f2937", lineHeight: "1.6" }}>{selectedPublication.abstract}</p>
-              </div>
-
-              <div style={{ display: "flex", gap: "1rem", justifyContent: "flex-end" }}>
-                <button style={{
-                  padding: "0.75rem 1.5rem",
-                  borderRadius: "0.5rem",
-                  border: "1px solid #d1d5db",
-                  background: "white",
-                  color: "#374151",
-                  cursor: "pointer",
-                  fontSize: "0.9rem",
-                  fontWeight: "500"
-                }}>
-                  Download PDF
-                </button>
-                <button style={{
-                  padding: "0.75rem 1.5rem",
-                  borderRadius: "0.5rem",
-                  border: "none",
-                  background: "#10b981",
-                  color: "white",
-                  cursor: "pointer",
-                  fontSize: "0.9rem",
-                  fontWeight: "500"
-                }}>
-                  View Online
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )} */}
+      {/* Additional Information */}
+      <Column paddingX="l" align="center" marginTop="xl">
+        <Text variant="body-default-s" align="center" onBackground="neutral-weak" style={{ fontStyle: "italic" }}>
+          More publications and research contributions coming soon.
+        </Text>
+      </Column>
     </Column>
   );
 }
