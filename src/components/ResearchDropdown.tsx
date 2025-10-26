@@ -28,12 +28,6 @@ export const ResearchDropdown = ({ onMobileMenuClose }: ResearchDropdownProps) =
     }, 150); // 150ms delay before closing
   };
 
-  const handleLinkClick = () => {
-    if (onMobileMenuClose) {
-      onMobileMenuClose();
-    }
-  };
-
   return (
     <div
       style={{ position: "relative" }}
@@ -46,7 +40,6 @@ export const ResearchDropdown = ({ onMobileMenuClose }: ResearchDropdownProps) =
         label={research.label}
         selected={pathname.startsWith("/research")}
         style={{ cursor: "pointer" }}
-        onClick={handleLinkClick}
       />
       
       {/* Dropdown Menu */}
@@ -68,7 +61,7 @@ export const ResearchDropdown = ({ onMobileMenuClose }: ResearchDropdownProps) =
           onMouseLeave={handleMouseLeave}
         >
           <Column padding="s" gap="xs">
-            <SmartLink href="/research/major" onClick={handleLinkClick}>
+            <SmartLink href="/research/major">
               <div
                 style={{
                   padding: "8px",
@@ -82,12 +75,16 @@ export const ResearchDropdown = ({ onMobileMenuClose }: ResearchDropdownProps) =
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = "transparent";
+                }}
+                onClick={() => {
+                  setIsOpen(false);
+                  onMobileMenuClose?.();
                 }}
               >
                 <Text variant="body-default-s">Major Research</Text>
               </div>
             </SmartLink>
-            <SmartLink href="/research/non-major" onClick={handleLinkClick}>
+            <SmartLink href="/research/non-major">
               <div
                 style={{
                   padding: "8px",
@@ -101,12 +98,16 @@ export const ResearchDropdown = ({ onMobileMenuClose }: ResearchDropdownProps) =
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = "transparent";
+                }}
+                onClick={() => {
+                  setIsOpen(false);
+                  onMobileMenuClose?.();
                 }}
               >
                 <Text variant="body-default-s">Non-Major Research</Text>
               </div>
             </SmartLink>
-            <SmartLink href="/research/publications" onClick={handleLinkClick}>
+            <SmartLink href="/research/publications">
               <div
                 style={{
                   padding: "8px",
@@ -120,6 +121,10 @@ export const ResearchDropdown = ({ onMobileMenuClose }: ResearchDropdownProps) =
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = "transparent";
+                }}
+                onClick={() => {
+                  setIsOpen(false);
+                  onMobileMenuClose?.();
                 }}
               >
                 <Text variant="body-default-s">Publications</Text>

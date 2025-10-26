@@ -116,14 +116,14 @@ export const MobileHeader = () => {
             {/* Research */}
             {routes["/research"] && (
               <div style={{ position: "relative" }}>
-                <ResearchDropdown onMobileMenuClose={toggleMenu} />
+                <ResearchDropdown onMobileMenuClose={() => setIsMenuOpen(false)} />
               </div>
             )}
 
             {/* Projects */}
             {routes["/projects"] && (
               <div style={{ position: "relative" }}>
-                <ProjectsDropdown onMobileMenuClose={toggleMenu} />
+                <ProjectsDropdown onMobileMenuClose={() => setIsMenuOpen(false)} />
               </div>
             )}
 
@@ -140,7 +140,7 @@ export const MobileHeader = () => {
             {/* Blog */}
             {routes["/blog"] && (
               <div style={{ position: "relative" }}>
-                <BlogDropdown onMobileMenuClose={toggleMenu} />
+                <BlogDropdown onMobileMenuClose={() => setIsMenuOpen(false)} />
               </div>
             )}
 

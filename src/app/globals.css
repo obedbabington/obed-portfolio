@@ -216,20 +216,6 @@ main, [role="main"], .main-content {
       padding-top: 1rem !important;
     }
   }
-
-  /* Mobile text justification for about page */
-  .about-page-text {
-    text-align: justify !important;
-    text-justify: inter-word !important;
-    line-height: 1.6 !important;
-  }
-
-  /* Apply justification to about page content */
-  [data-page="about"] .about-page-text,
-  .about-page .about-page-text {
-    text-align: justify !important;
-    text-justify: inter-word !important;
-  }
 }
 
 @media (min-width: 769px) {

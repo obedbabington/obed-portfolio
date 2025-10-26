@@ -28,12 +28,6 @@ export const BlogDropdown = ({ onMobileMenuClose }: BlogDropdownProps) => {
     }, 150); // 150ms delay before closing
   };
 
-  const handleLinkClick = () => {
-    if (onMobileMenuClose) {
-      onMobileMenuClose();
-    }
-  };
-
   return (
     <div
       style={{ position: "relative" }}
@@ -46,7 +40,6 @@ export const BlogDropdown = ({ onMobileMenuClose }: BlogDropdownProps) => {
         label={blog.label}
         selected={pathname.startsWith("/blog")}
         style={{ cursor: "pointer" }}
-        onClick={handleLinkClick}
       />
       
       {/* Dropdown Menu */}
@@ -68,7 +61,7 @@ export const BlogDropdown = ({ onMobileMenuClose }: BlogDropdownProps) => {
           onMouseLeave={handleMouseLeave}
         >
           <Column padding="s" gap="xs">
-            <SmartLink href="/blog/news" onClick={handleLinkClick}>
+            <SmartLink href="/blog/news">
               <div
                 style={{
                   padding: "8px",
@@ -82,12 +75,16 @@ export const BlogDropdown = ({ onMobileMenuClose }: BlogDropdownProps) => {
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = "transparent";
+                }}
+                onClick={() => {
+                  setIsOpen(false);
+                  onMobileMenuClose?.();
                 }}
               >
                 <Text variant="body-default-s">News & Achievements</Text>
               </div>
             </SmartLink>
-            <SmartLink href="/blog" onClick={handleLinkClick}>
+            <SmartLink href="/blog">
               <div
                 style={{
                   padding: "8px",
@@ -101,6 +98,10 @@ export const BlogDropdown = ({ onMobileMenuClose }: BlogDropdownProps) => {
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = "transparent";
+                }}
+                onClick={() => {
+                  setIsOpen(false);
+                  onMobileMenuClose?.();
                 }}
               >
                 <Text variant="body-default-s">Blog Posts</Text>
