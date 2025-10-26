@@ -26,7 +26,7 @@ export function HomeClient() {
   }, []);
 
   return (
-    <Column fillWidth horizontal="center" gap="m">
+    <Column fillWidth horizontal="center" gap="m" className="hero-container">
       <Column maxWidth="s" horizontal="center" align="center" style={{ position: "relative", marginTop: "-16px" }}>
         {/* Sliding background image behind the main headline */}
         <div className="hero-slider-bg" aria-hidden="true" />
