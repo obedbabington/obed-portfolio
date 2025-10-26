@@ -2,6 +2,7 @@
 
 import { Column, Heading, Text, Card, Row } from "@once-ui-system/core";
 import { BackButton } from "@/components";
+import Image from "next/image";
 
 const publications = [
   {
@@ -44,7 +45,7 @@ export default function Publications() {
       {/* Publications Grid */}
       <div className="grid-container mobile-grid" style={{
         display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))",
+        gridTemplateColumns: "1fr",
         gap: "1.5rem",
         padding: "0 1.5rem",
         marginBottom: "2rem"
@@ -52,58 +53,86 @@ export default function Publications() {
         {publications.map((publication) => (
           <Card
             key={publication.id}
-            padding="l"
+            padding="0"
             radius="m"
             shadow="m"
             style={{ 
               display: "flex",
-              flexDirection: "column",
+              flexDirection: "row",
               transition: "all 0.3s ease",
               border: "1px solid rgba(16, 185, 129, 0.1)",
               background: "rgba(255, 255, 255, 0.02)",
-              backdropFilter: "blur(10px)"
+              backdropFilter: "blur(10px)",
+              overflow: "hidden",
+              minHeight: "300px"
             }}
           >
-            <Column gap="m">
-              <Row horizontal="between" align="start" gap="m">
-                <Column flex={1} gap="s">
-                  <Heading variant="heading-strong-m" style={{ lineHeight: "1.3" }}>
-                    {publication.title}
-                  </Heading>
-                  <Text variant="body-default-s" onBackground="neutral-weak">
-                    {publication.authors.join(", ")}
+            {/* Image on the right side */}
+            <div style={{ 
+              position: "relative",
+              width: "300px",
+              height: "100%",
+              minHeight: "300px",
+              flexShrink: 0
+            }}>
+              <Image
+                src="/images/research/fpga-acceleration-comparison_cover.png"
+                alt={publication.title}
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+            
+            {/* Content in rectangular box */}
+            <Column 
+              gap="m" 
+              padding="l" 
+              style={{ 
+                flex: 1,
+                justifyContent: "space-between"
+              }}
+            >
+              <Column gap="m">
+                <Row horizontal="between" align="start" gap="m">
+                  <Column flex={1} gap="s">
+                    <Heading variant="heading-strong-m" style={{ lineHeight: "1.3" }}>
+                      {publication.title}
+                    </Heading>
+                    <Text variant="body-default-s" onBackground="neutral-weak">
+                      {publication.authors.join(", ")}
+                    </Text>
+                  </Column>
+                  <div 
+                    style={{ 
+                      width: "12px",
+                      height: "12px",
+                      borderRadius: "50%",
+                      background: getStatusColor(publication.status),
+                      flexShrink: 0
+                    }}
+                    title={publication.status}
+                  />
+                </Row>
+
+                <Column gap="xs">
+                  <Text variant="body-default-xs" onBackground="neutral-weak">
+                    <strong>Conference:</strong> {publication.conference}
+                  </Text>
+                  <Text variant="body-default-xs" onBackground="neutral-weak">
+                    <strong>Location:</strong> {publication.location}
+                  </Text>
+                  <Text variant="body-default-xs" onBackground="neutral-weak">
+                    <strong>Year:</strong> {publication.year}
+                  </Text>
+                  <Text variant="body-default-xs" onBackground="neutral-weak">
+                    <strong>Status:</strong> {publication.status}
                   </Text>
                 </Column>
-                <div 
-                  style={{ 
-                    width: "12px",
-                    height: "12px",
-                    borderRadius: "50%",
-                    background: getStatusColor(publication.status),
-                    flexShrink: 0
-                  }}
-                  title={publication.status}
-                />
-              </Row>
 
-              <Column gap="xs">
-                <Text variant="body-default-xs" onBackground="neutral-weak">
-                  <strong>Conference:</strong> {publication.conference}
-                </Text>
-                <Text variant="body-default-xs" onBackground="neutral-weak">
-                  <strong>Location:</strong> {publication.location}
-                </Text>
-                <Text variant="body-default-xs" onBackground="neutral-weak">
-                  <strong>Year:</strong> {publication.year}
-                </Text>
-                <Text variant="body-default-xs" onBackground="neutral-weak">
-                  <strong>Status:</strong> {publication.status}
+                <Text variant="body-default-s" onBackground="neutral-weak" style={{ lineHeight: "1.5" }}>
+                  {publication.abstract}
                 </Text>
               </Column>
-
-              <Text variant="body-default-s" onBackground="neutral-weak" style={{ lineHeight: "1.5" }}>
-                {publication.abstract}
-              </Text>
 
               <Row gap="xs" wrap>
                 {publication.keywords.map((keyword, index) => (

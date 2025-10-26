@@ -28,7 +28,15 @@ export const ProjectsDropdown = ({ onMobileMenuClose }: ProjectsDropdownProps) =
     }, 150); // 150ms delay before closing
   };
 
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent) => {
+    // On mobile, close the mobile menu and allow navigation
+    if (onMobileMenuClose) {
+      onMobileMenuClose();
+      // Don't prevent default - let the href navigation work
+      return;
+    }
+    // On desktop, toggle dropdown
+    e.preventDefault();
     setIsOpen(!isOpen);
   };
 

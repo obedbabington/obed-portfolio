@@ -18,6 +18,11 @@ export const MobileHeader = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleHomeClick = () => {
+    setIsMenuOpen(false);
+    // Let the href navigation work normally
+  };
+
   return (
     <>
       {/* Mobile Header */}
@@ -41,7 +46,12 @@ export const MobileHeader = () => {
         {/* Logo/Home Button */}
         <Row vertical="center" gap="12">
           {routes["/"] && (
-            <ToggleButton prefixIcon="home" href="/" selected={pathname === "/"} />
+            <ToggleButton 
+              prefixIcon="home" 
+              href="/" 
+              selected={pathname === "/"}
+              onClick={handleHomeClick}
+            />
           )}
         </Row>
 

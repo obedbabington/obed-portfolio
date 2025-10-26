@@ -162,22 +162,40 @@ export default function Research() {
           shadow="m"
           style={{ 
             display: "flex",
-            flexDirection: "column",
+            flexDirection: "row",
             cursor: "pointer",
             transition: "all 0.3s ease",
             textDecoration: "none",
-            overflow: "hidden"
+            overflow: "hidden",
+            minHeight: "200px",
+            gridColumn: "span 2"
           }}
         >
-          <div style={{ position: "relative", width: "100%", height: "250px" }}>
+          {/* Image on the right side */}
+          <div style={{ 
+            position: "relative",
+            width: "200px",
+            height: "100%",
+            minHeight: "200px",
+            flexShrink: 0
+          }}>
             <Image
-              src="/images/research/capstone_award.png"
+              src="/images/research/fpga-acceleration-comparison_cover.png"
               alt="Publications"
               fill
               style={{ objectFit: "cover" }}
             />
           </div>
-          <Column gap="s" padding="l">
+          
+          {/* Content in rectangular box */}
+          <Column 
+            gap="s" 
+            padding="l" 
+            style={{ 
+              flex: 1,
+              justifyContent: "center"
+            }}
+          >
             <Heading variant="heading-strong-m">Publications</Heading>
             <Text variant="body-default-s" onBackground="neutral-weak">
               Research contributions and academic publications showcasing my work in FPGA acceleration, neural networks, and embedded systems.
