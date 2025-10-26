@@ -252,7 +252,7 @@ export default function EngineeringProjects() {
                   <strong>Date:</strong> {project.date}
                 </Text>
                 <Text variant="body-default-xs" onBackground="neutral-weak">
-                  <strong>Technologies:</strong> {project.technologies}
+                  <strong>{project.id === "traffic-flow-analysis" || project.id === "calculus-data-collection" ? "Skills:" : "Tools & Technologies:"}</strong> {project.technologies}
                 </Text>
                 <Text variant="body-default-s" marginTop="s">{project.summary}</Text>
                 <Text variant="body-default-xs" onBackground="neutral-weak" marginTop="s" style={{ fontStyle: "italic" }}>
