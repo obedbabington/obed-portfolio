@@ -110,7 +110,10 @@ export default function Research() {
               src="/images/research/majorresearch3.png"
               alt="Major Research"
               fill
+              priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               style={{ objectFit: "cover" }}
+              quality={85}
             />
           </div>
           <Column gap="s" padding="l">
@@ -142,7 +145,10 @@ export default function Research() {
               src="/images/research/nonmajor1.png"
               alt="Non-Major Research"
               fill
+              priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               style={{ objectFit: "cover" }}
+              quality={85}
             />
           </div>
           <Column gap="s" padding="l">
@@ -185,7 +191,10 @@ export default function Research() {
               src="/images/research/fpga-acceleration-comparison_cover.png"
               alt="Publications"
               fill
+              priority
+              sizes="300px"
               style={{ objectFit: "cover" }}
+              quality={85}
             />
           </div>
           

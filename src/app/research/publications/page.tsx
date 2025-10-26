@@ -79,7 +79,10 @@ export default function Publications() {
                 src="/images/research/fpga-acceleration-comparison_cover.png"
                 alt={publication.title}
                 fill
+                priority
+                sizes="300px"
                 style={{ objectFit: "cover" }}
+                quality={85}
               />
             </div>
             

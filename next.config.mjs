@@ -21,6 +21,10 @@ const nextConfig = {
         pathname: "**",
       },
     ],
+    formats: ['image/webp', 'image/avif'],
+    minimumCacheTTL: 60,
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   sassOptions: {
     compiler: "modern",
