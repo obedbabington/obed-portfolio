@@ -125,14 +125,14 @@ export default function Publications() {
                     <strong>Year:</strong> {publication.year}
                   </Text>
                   <Text variant="body-default-xs" onBackground="neutral-weak">
-                    <strong>Status:</strong> <span style={{ color: "#10b981" }}>{publication.status}</span>
+                    <strong>Status:</strong> <span style={{ color: "#77CA75" }}>{publication.status}</span>
                   </Text>
                 </Column>
 
                 <a 
                   href="/research/major/fpga-acceleration-comparison" 
                   style={{ 
-                    color: "#10b981", 
+                    color: "#77CA75", 
                     textDecoration: "none",
                     fontSize: "0.875rem",
                     fontWeight: "500"
@@ -142,34 +142,11 @@ export default function Publications() {
                 </a>
               </Column>
 
-              <Row gap="xs" wrap>
-                {publication.keywords.map((keyword, index) => (
-                  <Text 
-                    key={index}
-                    variant="body-default-xs" 
-                    style={{ 
-                      background: "rgba(16, 185, 129, 0.1)",
-                      color: "var(--brand-medium)",
-                      padding: "4px 8px",
-                      borderRadius: "4px",
-                      fontSize: "0.75rem"
-                    }}
-                  >
-                    {keyword}
-                  </Text>
-                ))}
-              </Row>
             </Column>
           </Card>
         ))}
       </div>
 
-      {/* Additional Information */}
-      <Column paddingX="l" align="center" marginTop="xl">
-        <Text variant="body-default-s" align="center" onBackground="neutral-weak" style={{ fontStyle: "italic" }}>
-          More publications and research contributions coming soon.
-        </Text>
-      </Column>
     </Column>
   );
 }
