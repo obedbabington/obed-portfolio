@@ -50,7 +50,8 @@ export default function Publications() {
         padding: "0 1.5rem",
         marginBottom: "2rem"
       }}>
-        {publications.map((publication) => (
+        {publications.length > 0 ? (
+          publications.map((publication) => (
           <Card
             key={publication.id}
             padding="0"
@@ -147,7 +148,14 @@ export default function Publications() {
 
             </Column>
           </Card>
-        ))}
+        ))
+        ) : (
+          <div style={{ padding: "2rem", textAlign: "center" }}>
+            <Text variant="body-default-m" onBackground="neutral-weak">
+              No publications found.
+            </Text>
+          </div>
+        )}
       </div>
 
     </Column>

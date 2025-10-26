@@ -152,48 +152,68 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
       return { element: linkEl, data: link };
     });
 
-    // Create nodes
+    // Create nodes as square images
     const nodeElements = nodes.map(node => {
-      const nodeEl = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      const radius = 18 + (node.title.length / 6);
-      nodeEl.setAttribute('r', radius.toString());
+      const size = isMobile ? 60 : 80; // Larger squares
       
-      // Use solid colors - no patterns
-      nodeEl.setAttribute('fill', categoryColors[node.category] || '#10B981');
+      // Create a group for the square and image
+      const groupEl = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      groupEl.setAttribute('class', 'node-group');
+      groupEl.setAttribute('data-id', node.id);
+      groupEl.setAttribute('cursor', 'pointer');
       
-      // All nodes have white stroke for consistency
-      nodeEl.setAttribute('stroke', '#ffffff');
-      nodeEl.setAttribute('stroke-width', '3');
-      nodeEl.setAttribute('class', 'node');
-      nodeEl.setAttribute('cursor', 'pointer');
-      nodeEl.setAttribute('data-id', node.id);
-      nodeEl.setAttribute('filter', 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25))');
+      // Create square background
+      const squareEl = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      squareEl.setAttribute('width', size.toString());
+      squareEl.setAttribute('height', size.toString());
+      squareEl.setAttribute('rx', '8'); // Rounded corners
+      squareEl.setAttribute('ry', '8');
+      squareEl.setAttribute('fill', categoryColors[node.category] || '#10B981');
+      squareEl.setAttribute('stroke', '#ffffff');
+      squareEl.setAttribute('stroke-width', '2');
+      squareEl.setAttribute('filter', 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3))');
       
-              // Add hover effects (desktop only) and click handling
-              if (!isMobile) {
-                nodeEl.addEventListener('mouseenter', () => setHoveredNode(node.id));
-                nodeEl.addEventListener('mouseleave', () => setHoveredNode(null));
-              }
-              nodeEl.addEventListener('click', () => onNodeClick?.(node.id));
+      // Create image element
+      const imageEl = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+      imageEl.setAttribute('width', (size - 4).toString());
+      imageEl.setAttribute('height', (size - 4).toString());
+      imageEl.setAttribute('x', '2');
+      imageEl.setAttribute('y', '2');
+      imageEl.setAttribute('href', node.imagePath || '/images/beyond-the-lab/default.jpg');
+      imageEl.setAttribute('preserveAspectRatio', 'xMidYMid slice');
       
-      g.appendChild(nodeEl);
-      return { element: nodeEl, data: node };
+      groupEl.appendChild(squareEl);
+      groupEl.appendChild(imageEl);
+      
+      // Add hover effects (desktop only) and click handling
+      if (!isMobile) {
+        groupEl.addEventListener('mouseenter', () => setHoveredNode(node.id));
+        groupEl.addEventListener('mouseleave', () => setHoveredNode(null));
+      }
+      groupEl.addEventListener('click', () => onNodeClick?.(node.id));
+      
+      g.appendChild(groupEl);
+      return { element: groupEl, data: node };
     });
 
-    // Create labels
+    // Create labels with better readability
     const labelElements = nodes.map(node => {
       const labelEl = document.createElementNS('http://www.w3.org/2000/svg', 'text');
       labelEl.setAttribute('class', 'label');
       labelEl.setAttribute('data-id', node.id);
       labelEl.setAttribute('text-anchor', 'middle');
       labelEl.setAttribute('dy', '0.35em');
-      labelEl.setAttribute('font-size', '12');
+      labelEl.setAttribute('font-size', isMobile ? '14' : '16'); // Larger font size
       
-      // All text is white for consistency
+      // Better text styling for readability
       labelEl.setAttribute('fill', '#ffffff');
-      labelEl.setAttribute('font-weight', '700');
-      labelEl.setAttribute('filter', 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8))');
-      labelEl.textContent = node.title.length > 20 ? node.title.substring(0, 20) + '...' : node.title;
+      labelEl.setAttribute('font-weight', '600');
+      labelEl.setAttribute('font-family', 'system-ui, -apple-system, sans-serif');
+      labelEl.setAttribute('filter', 'drop-shadow(0 2px 6px rgba(0, 0, 0, 0.9))');
+      
+      // Show more text - allow longer titles
+      const maxLength = isMobile ? 25 : 30;
+      labelEl.textContent = node.title.length > maxLength ? node.title.substring(0, maxLength) + '...' : node.title;
       g.appendChild(labelEl);
       return { element: labelEl, data: node };
     });
@@ -214,16 +234,17 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
         }
       });
 
-      // Update node positions
+      // Update node positions (for square groups)
       nodeElements.forEach(({ element, data }) => {
-        element.setAttribute('cx', data.x!.toString());
-        element.setAttribute('cy', data.y!.toString());
+        const size = isMobile ? 60 : 80;
+        element.setAttribute('transform', `translate(${data.x! - size/2}, ${data.y! - size/2})`);
       });
 
-      // Update label positions
+      // Update label positions (adjusted for larger squares)
       labelElements.forEach(({ element, data }) => {
         element.setAttribute('x', data.x!.toString());
-        element.setAttribute('y', (data.y! + 20).toString());
+        const labelOffset = isMobile ? 45 : 55; // Position labels below the squares
+        element.setAttribute('y', (data.y! + labelOffset).toString());
       });
 
       // Continuous force simulation with responsive spacing
@@ -235,8 +256,8 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
               const dx = node.x! - other.x!;
               const dy = node.y! - other.y!;
               const distance = Math.sqrt(dx * dx + dy * dy);
-              const repulsionRange = isMobile ? 120 : 200; // Smaller range on mobile
-              const repulsionForce = isMobile ? 300 : 500; // Adjusted force for mobile
+              const repulsionRange = isMobile ? 150 : 250; // Larger range for square nodes
+              const repulsionForce = isMobile ? 400 : 600; // Adjusted force for larger nodes
               if (distance > 0 && distance < repulsionRange) {
                 const force = repulsionForce / (distance * distance);
                 node.vx! += (dx / distance) * force;
