@@ -116,14 +116,22 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
     const centerX = width / 2;
     const centerY = height / 2;
 
-    // Create nodes with initial positions - responsive spacing
+    // Create nodes with initial positions - perfect circular formation
     const nodes: ActivityNode[] = activities.map((activity, index) => {
       const angle = (index / activities.length) * 2 * Math.PI;
-      const radius = Math.min(width, height) * (isMobile ? 0.35 : 0.4); // Responsive radius
+      // Calculate radius to ensure nodes are well-spaced in a circle
+      const nodeSize = isMobile ? 60 : 80;
+      const minDistance = nodeSize * (isMobile ? 1.3 : 1.5); // Tighter spacing on mobile
+      const circumference = activities.length * minDistance;
+      const radius = circumference / (2 * Math.PI);
+      // Ensure radius doesn't exceed container bounds - more conservative on mobile
+      const maxRadius = Math.min(width, height) * (isMobile ? 0.3 : 0.35);
+      const finalRadius = Math.min(radius, maxRadius);
+      
       return {
         ...activity,
-        x: centerX + Math.cos(angle) * radius,
-        y: centerY + Math.sin(angle) * radius,
+        x: centerX + Math.cos(angle) * finalRadius,
+        y: centerY + Math.sin(angle) * finalRadius,
         vx: 0,
         vy: 0,
         fx: null,
@@ -185,11 +193,21 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
       groupEl.appendChild(squareEl);
       groupEl.appendChild(imageEl);
       
-      // Add hover effects (desktop only) and click handling
-      if (!isMobile) {
-        groupEl.addEventListener('mouseenter', () => setHoveredNode(node.id));
-        groupEl.addEventListener('mouseleave', () => setHoveredNode(null));
-      }
+      // Add hover effects and click handling
+      groupEl.addEventListener('mouseenter', () => {
+        setHoveredNode(node.id);
+        // Add visual feedback on hover
+        squareEl.setAttribute('stroke-width', '3');
+        squareEl.setAttribute('stroke', '#10B981');
+        squareEl.setAttribute('filter', 'drop-shadow(0 6px 20px rgba(16, 185, 129, 0.4))');
+      });
+      groupEl.addEventListener('mouseleave', () => {
+        setHoveredNode(null);
+        // Remove visual feedback
+        squareEl.setAttribute('stroke-width', '2');
+        squareEl.setAttribute('stroke', '#ffffff');
+        squareEl.setAttribute('filter', 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3))');
+      });
       groupEl.addEventListener('click', () => onNodeClick?.(node.id));
       
       g.appendChild(groupEl);
@@ -247,26 +265,56 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
         element.setAttribute('y', (data.y! + labelOffset).toString());
       });
 
-      // Continuous force simulation with responsive spacing
+      // Force simulation to maintain circular formation with strong spacing
       nodes.forEach(node => {
         if (node.fx === null && node.fy === null) {
-          // Apply strong repulsion from other nodes for better spacing
+          // Calculate current distance from center
+          const dxFromCenter = node.x! - centerX;
+          const dyFromCenter = node.y! - centerY;
+          const distanceFromCenter = Math.sqrt(dxFromCenter * dxFromCenter + dyFromCenter * dyFromCenter);
+          
+          // Calculate target radius (same for all nodes to maintain circle)
+          const nodeSize = isMobile ? 60 : 80;
+          const minDistance = nodeSize * (isMobile ? 1.3 : 1.5);
+          const circumference = activities.length * minDistance;
+          const targetRadius = Math.min(circumference / (2 * Math.PI), Math.min(width, height) * (isMobile ? 0.3 : 0.35));
+          
+          // Apply centripetal force to maintain circular formation
+          const centripetalForce = 0.1;
+          if (distanceFromCenter > 0) {
+            const targetX = centerX + (dxFromCenter / distanceFromCenter) * targetRadius;
+            const targetY = centerY + (dyFromCenter / distanceFromCenter) * targetRadius;
+            node.vx! += (targetX - node.x!) * centripetalForce;
+            node.vy! += (targetY - node.y!) * centripetalForce;
+          }
+          
+          // Apply strong repulsion from other nodes to prevent clustering
           nodes.forEach(other => {
             if (other !== node) {
               const dx = node.x! - other.x!;
               const dy = node.y! - other.y!;
               const distance = Math.sqrt(dx * dx + dy * dy);
-              const repulsionRange = isMobile ? 150 : 250; // Larger range for square nodes
-              const repulsionForce = isMobile ? 400 : 600; // Adjusted force for larger nodes
+              const nodeSize = isMobile ? 60 : 80;
+              const minDistance = nodeSize * 1.2; // Minimum distance between nodes
+              const repulsionRange = nodeSize * 2; // Range of repulsion
+              const repulsionForce = isMobile ? 800 : 1200; // Strong repulsion force
+              
               if (distance > 0 && distance < repulsionRange) {
                 const force = repulsionForce / (distance * distance);
                 node.vx! += (dx / distance) * force;
                 node.vy! += (dy / distance) * force;
               }
+              
+              // Extra strong force if nodes are too close
+              if (distance > 0 && distance < minDistance) {
+                const emergencyForce = 2000;
+                node.vx! += (dx / distance) * emergencyForce;
+                node.vy! += (dy / distance) * emergencyForce;
+              }
             }
           });
 
-          // Apply attraction from connected nodes (weaker than repulsion)
+          // Apply gentle attraction from connected nodes (much weaker than repulsion)
           validLinks.forEach(link => {
             if (link.source === node.id) {
               const target = nodes.find(n => n.id === link.target);
@@ -275,7 +323,7 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
                 const dy = target.y! - node.y!;
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 if (distance > 0) {
-                  const force = link.strength * (isMobile ? 0.03 : 0.05); // Reduced attraction on mobile
+                  const force = link.strength * (isMobile ? 0.01 : 0.02); // Very weak attraction
                   node.vx! += (dx / distance) * force;
                   node.vy! += (dy / distance) * force;
                 }
@@ -283,8 +331,8 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
             }
           });
 
-          // Apply damping - more damping on mobile for stability
-          const damping = isMobile ? 0.9 : 0.85;
+          // Apply damping for stability
+          const damping = isMobile ? 0.92 : 0.88;
           node.vx! *= damping;
           node.vy! *= damping;
 
@@ -338,15 +386,16 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
         `
       }} />
       
-      {/* Graph - Full width */}
+      {/* Graph - Full width with improved mobile handling */}
       <div style={{ 
         flex: '1',
-        height: isMobile ? '500px' : '700px', 
+        height: isMobile ? '600px' : '700px', 
         borderRadius: '12px',
         overflow: 'hidden',
         background: 'transparent',
         position: 'relative',
-        width: '100%'
+        width: '100%',
+        minHeight: isMobile ? '500px' : '600px'
       }}>
         <svg
           ref={svgRef}
@@ -356,21 +405,23 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
         />
       </div>
 
-      {/* Hover Info - Desktop only */}
-      {hoveredNode && !isMobile && (
+      {/* Hover Info - Enhanced display */}
+      {hoveredNode && (
         <div style={{
           position: 'absolute',
           top: '20px',
           left: '20px',
-          backgroundColor: 'rgba(16, 185, 129, 0.15)',
-          backdropFilter: 'blur(15px)',
-          padding: '20px',
-          borderRadius: '16px',
-          boxShadow: '0 12px 40px rgba(16, 185, 129, 0.2)',
-          border: '1px solid rgba(16, 185, 129, 0.3)',
-          maxWidth: '350px',
+          backgroundColor: 'rgba(16, 185, 129, 0.2)',
+          backdropFilter: 'blur(20px)',
+          padding: '24px',
+          borderRadius: '20px',
+          boxShadow: '0 16px 50px rgba(16, 185, 129, 0.3)',
+          border: '2px solid rgba(16, 185, 129, 0.4)',
+          maxWidth: '380px',
           zIndex: 1000,
-          animation: 'fadeIn 0.3s ease-out'
+          animation: 'fadeIn 0.3s ease-out',
+          transform: 'translateZ(0)', // Hardware acceleration
+          willChange: 'transform, opacity'
         }}>
           {(() => {
             const activity = activities.find(a => a.id === hoveredNode);
