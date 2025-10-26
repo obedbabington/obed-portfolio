@@ -55,10 +55,12 @@ export default function MIPSProcessor() {
       </Column>
 
       {/* Project Description */}
-      <Column maxWidth="s" paddingX="l" gap="l" marginBottom="xl">
-        <Text variant="body-default-l">
-          Extended the design of a single-cycle CPU by implementing a 32-bit MIPS processor in VHDL, incorporating key modules including the ALU, register file, instruction memory, data memory, and control unit, each verified with dedicated testbenches and simulation waveforms. Implemented a subset of MIPS instructions (arithmetic, logical, branching, memory access, and jump operations) while ensuring correct datapath and control signal coordination.
-        </Text>
+      <Column paddingX="l" gap="l" marginBottom="xl">
+        <Card padding="l" radius="m" shadow="m">
+          <Text variant="body-default-l">
+            Extended the design of a single-cycle CPU by implementing a 32-bit MIPS processor in VHDL, incorporating key modules including the ALU, register file, instruction memory, data memory, and control unit, each verified with dedicated testbenches and simulation waveforms. Implemented a subset of MIPS instructions (arithmetic, logical, branching, memory access, and jump operations) while ensuring correct datapath and control signal coordination.
+          </Text>
+        </Card>
       </Column>
 
       <style dangerouslySetInnerHTML={{

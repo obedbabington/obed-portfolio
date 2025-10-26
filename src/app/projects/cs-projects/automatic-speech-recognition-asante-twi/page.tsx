@@ -1,4 +1,4 @@
-import { Column, Heading, Meta, Schema, Text, Row, Icon, Card } from "@once-ui-system/core";
+import { Column, Heading, Meta, Schema, Text, Row, Icon, Card, Button } from "@once-ui-system/core";
 import { baseURL, person } from "@/resources";
 import { BackButton } from "@/components";
 import Image from "next/image";
@@ -32,11 +32,6 @@ export default function AutomaticSpeechRecognitionAsanteTwi() {
         }}
       />
 
-      {/* Back Button */}
-      <Row marginBottom="l" align="center" gap="s">
-        <Icon name="arrowRight" style={{ transform: "rotate(180deg)" }} />
-      </Row>
-
       {/* Page Title */}
       <Column marginBottom="l" paddingX="l" align="center">
         <Heading variant="heading-strong-xl">Automatic Speech Recognition System for Asante Twi</Heading>
@@ -49,8 +44,23 @@ export default function AutomaticSpeechRecognitionAsanteTwi() {
         </Text>
       </Column>
 
+      {/* Project Links */}
+      <Column align="center" gap="m" marginBottom="xl" paddingX="l">
+        <Button
+          href="https://huggingface.co/spaces/sedemkofi/twi-transcription"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="primary"
+          size="m"
+          prefixIcon="openLink"
+          style={{ margin: "0 auto" }}
+        >
+          Try the Live Demo on Hugging Face Spaces
+        </Button>
+      </Column>
+
       {/* Project Image */}
-      <Column marginBottom="xl" align="center">
+      <Column marginBottom="xl" paddingX="l" align="center">
         <div style={{ 
           position: "relative", 
           width: "100%", 
@@ -58,7 +68,8 @@ export default function AutomaticSpeechRecognitionAsanteTwi() {
           height: "400px",
           borderRadius: "12px",
           overflow: "hidden",
-          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)"
+          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+          margin: "0 auto"
         }}>
           <Image
             src="/images/projects/speech-recognition.jpg"
@@ -119,12 +130,6 @@ export default function AutomaticSpeechRecognitionAsanteTwi() {
             <Text variant="body-default-m">
               Despite these challenges, the project proved that low-resource languages like Asante Twi can be modeled with deep learning, setting a foundation for future improvements through larger datasets or transfer learning.
             </Text>
-            <Text variant="body-default-m">
-              <strong>Deployed Model Link:</strong>{" "}
-              <Text as="a" href="https://huggingface.co/spaces/sedemkofi/twi-transcription" target="_blank" style={{ color: "var(--brand-medium)", textDecoration: "underline" }}>
-                https://huggingface.co/spaces/sedemkofi/twi-transcription
-              </Text>
-            </Text>
           </Column>
         </Card>
 
@@ -134,12 +139,6 @@ export default function AutomaticSpeechRecognitionAsanteTwi() {
             <Heading variant="heading-strong-l">Technologies & Deployment</Heading>
             <Text variant="body-default-m">
               <strong>Tools & Technologies:</strong> Python, TensorFlow/Keras, MFCCs, LSTMs, Sequence-to-Sequence Models, Adam Optimizer, Hugging Face Spaces
-            </Text>
-            <Text variant="body-default-m">
-              <strong>Deployed Model:</strong>{" "}
-              <Text as="a" href="https://huggingface.co/spaces/sedemkofi/twi-transcription" target="_blank" style={{ color: "var(--brand-medium)", textDecoration: "underline" }}>
-                Try the Live Demo on Hugging Face Spaces
-              </Text>
             </Text>
           </Column>
         </Card>
