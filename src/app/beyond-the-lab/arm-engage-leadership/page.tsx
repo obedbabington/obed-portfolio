@@ -23,7 +23,7 @@ export default function ArmEngageLeadership() {
         baseURL={baseURL}
         path="/beyond-the-lab/arm-engage-leadership"
         title="Research & Innovation Lead, Arm (E³)NGAGE Ashesi Student Club - Beyond The Lab"
-        description="Research & Innovation Lead at Arm (E³)NGAGE Ashesi Student Club (2023-2024), leading engineering projects, fostering research culture, and curating student research articles."
+        description="Led innovation and research initiatives for the Arm(E³)NGAGE Ashesi Student Club (2023–2024), advancing student engagement in embedded systems, IoT, and applied research."
         image={`/api/og/generate?title=${encodeURIComponent("ARM E(3)NGAGE Leadership")}`}
         author={{
           name: person.name,
@@ -35,12 +35,8 @@ export default function ArmEngageLeadership() {
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes fadeIn {
-            0% {
-              opacity: 0;
-            }
-            100% {
-              opacity: 1;
-            }
+            0% { opacity: 0; }
+            100% { opacity: 1; }
           }
         `
       }} />
@@ -50,7 +46,12 @@ export default function ArmEngageLeadership() {
         <Heading variant="heading-strong-xl" align="center" marginBottom="s">
           Research & Innovation Lead, Arm (E³)NGAGE Ashesi Student Club
         </Heading>
-        <Text variant="body-default-xs" onBackground="neutral-weak" style={{ textTransform: "uppercase", fontWeight: "600" }} marginBottom="s">
+        <Text
+          variant="body-default-xs"
+          onBackground="neutral-weak"
+          style={{ textTransform: "uppercase", fontWeight: "600" }}
+          marginBottom="s"
+        >
           Leadership • 2023 - 2024
         </Text>
       </Column>
@@ -64,37 +65,32 @@ export default function ArmEngageLeadership() {
           src="/images/projects/arm-y.jpg" 
         />
         <Text variant="body-default-s" onBackground="neutral-weak" align="center" marginTop="s" style={{ fontStyle: "italic" }}>
-          Group photo of ARM (E³)NGAGE Ashesi Student Club members
+          Members of the ARM (E³)NGAGE Ashesi Student Club
         </Text>
       </Column>
 
       {/* Description */}
       <Column paddingX="l" marginBottom="xl">
         <Text variant="body-default-l" marginBottom="l">
-          The Arm(E³)NGAGE Ashesi Student Club, a collaboration between ARM and Ashesi University, is responsible for educating Ashesi students on the world of IoT, Embedded systems, and their uses on ARM technology. In doing so, it hopes to foster innovation, entrepreneurship, and research using ARM products.
+          The Arm(E³)NGAGE Ashesi Student Club, a partnership between ARM and Ashesi University, empowers students to explore embedded systems, IoT, and innovation through hands-on engineering projects and research initiatives.
         </Text>
-        <Text variant="body-default-l" marginBottom="l">
-          As part of this role, I also took on the responsibility of curating and managing a network of student-developed research articles, developing editorial skills and content management strategies to support the academic research community within the university.
+        <Text variant="body-default-l">
+          As Research & Innovation Lead, I guided the club’s technical direction, spearheaded collaborative projects, and established a system for curating and publishing student-led research articles, nurturing a vibrant research culture within the club.
         </Text>
       </Column>
 
       {/* Key Achievements */}
       <Column paddingX="l" marginBottom="xl">
         <Text variant="body-default-l" marginBottom="m">
-          Led club engineering projects, notably an automated parking system. Responsibilities included conducting Arduino C coding workshops, introducing participants to GitHub for collaborative project development, and fostering algorithmic problem-solving skills. Additionally, I authored project documentation and problem design outlines.
+          • Led the development of an automated parking system, organizing Arduino C workshops and introducing members to GitHub-based collaboration and algorithmic problem-solving.
         </Text>
         <Text variant="body-default-l" marginBottom="m">
-          Crafted a vibrant network of student researchers in engineering and computer science, leading to the production of five diverse research articles, and pioneering a research culture within the ARM E(3)NGAGE student club.
+          • Built and managed a network of student researchers, resulting in the creation and publication of five research articles that expanded the club’s technical visibility on campus.
         </Text>
         <Text variant="body-default-l" marginBottom="m">
-          Reviewed and selected high-quality student research articles for publication, ensuring academic rigor and relevance while developing strong editorial and content management skills. Developed content strategies and presentation approaches to enhance research dissemination within the university community.
+          • Designed and implemented editorial and content strategies for research dissemination, enhancing the quality and impact of student publications within the Ashesi community.
         </Text>
       </Column>
-
-
-
-
-
     </Column>
   );
 }
