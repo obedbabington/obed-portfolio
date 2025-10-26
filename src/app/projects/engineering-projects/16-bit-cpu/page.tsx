@@ -31,18 +31,6 @@ export default function SixteenBitCPU() {
         }}
       />
 
-      {/* Back Button */}
-      <Column marginBottom="l" paddingX="l">
-        <Text 
-          as="a" 
-          href="/projects/engineering-projects" 
-          variant="body-default-s"
-          style={{ textDecoration: "none", color: "var(--neutral-weak)" }}
-        >
-          ← Back to Engineering Projects
-        </Text>
-      </Column>
-
       {/* Page Title */}
       <Column marginBottom="l" paddingX="l" align="center">
         <Heading variant="heading-strong-xl">16-bit CPU in Logisim-Evolution</Heading>
