@@ -197,20 +197,51 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
       groupEl.appendChild(squareEl);
       groupEl.appendChild(imageEl);
       
-      // Add hover effects and click handling
+      // Add enhanced hover effects and click handling
       groupEl.addEventListener('mouseenter', () => {
         setHoveredNode(node.id);
-        // Add visual feedback on hover
-        squareEl.setAttribute('stroke-width', '3');
+        // Enhanced visual feedback on hover with smooth transitions
+        squareEl.setAttribute('stroke-width', '4');
         squareEl.setAttribute('stroke', '#10B981');
-        squareEl.setAttribute('filter', 'drop-shadow(0 6px 20px rgba(16, 185, 129, 0.4))');
+        squareEl.setAttribute('filter', 'drop-shadow(0 8px 25px rgba(16, 185, 129, 0.6)) brightness(1.1)');
+        
+        // Scale up the entire group slightly
+        groupEl.setAttribute('transform', `translate(${node.x! - nodeSize/2}, ${node.y! - nodeSize/2}) scale(1.1)`);
+        
+        // Add glow effect to connected links
+        validLinks.forEach(link => {
+          if (link.source === node.id || link.target === node.id) {
+            const linkElement = linkElements.find(le => le.data === link)?.element;
+            if (linkElement) {
+              linkElement.setAttribute('stroke-opacity', '1');
+              linkElement.setAttribute('stroke-width', (link.strength * 8 + 4).toString());
+              linkElement.setAttribute('filter', 'drop-shadow(0 0 8px rgba(16, 185, 129, 0.8))');
+            }
+          }
+        });
       });
+      
       groupEl.addEventListener('mouseleave', () => {
         setHoveredNode(null);
-        // Remove visual feedback
+        // Remove visual feedback with smooth transition
         squareEl.setAttribute('stroke-width', '2');
         squareEl.setAttribute('stroke', '#ffffff');
         squareEl.setAttribute('filter', 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3))');
+        
+        // Reset scale
+        groupEl.setAttribute('transform', `translate(${node.x! - nodeSize/2}, ${node.y! - nodeSize/2}) scale(1)`);
+        
+        // Reset link effects
+        validLinks.forEach(link => {
+          if (link.source === node.id || link.target === node.id) {
+            const linkElement = linkElements.find(le => le.data === link)?.element;
+            if (linkElement) {
+              linkElement.setAttribute('stroke-opacity', '0.6');
+              linkElement.setAttribute('stroke-width', (link.strength * 5 + 2).toString());
+              linkElement.setAttribute('filter', 'none');
+            }
+          }
+        });
       });
       groupEl.addEventListener('click', () => onNodeClick?.(node.id));
       
@@ -240,11 +271,18 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
       return { element: labelEl, data: node };
     });
 
-    // Continuous force simulation with strong spacing
+    // Smooth orbital animation with perfect circle formation
     let animationId: number;
     let lastTime = 0;
-    const targetFPS = 30; // Limit to 30 FPS for smoother animation
+    const targetFPS = 60; // Higher FPS for smoother animation
     const frameInterval = 1000 / targetFPS;
+    let animationTime = 0;
+    
+    // Calculate perfect circle parameters
+    const nodeSize = isMobile ? 60 : 80;
+    const minDistance = nodeSize * (isMobile ? 2.2 : 2.8);
+    const circumference = activities.length * minDistance;
+    const targetRadius = Math.min(circumference / (2 * Math.PI), Math.min(width, height) * (isMobile ? 0.35 : 0.4));
     
     const tick = (currentTime: number = 0) => {
       // Frame rate limiting
@@ -253,7 +291,9 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
         return;
       }
       lastTime = currentTime;
-      // Update link positions
+      animationTime += frameInterval;
+      
+      // Update link positions with smooth interpolation
       linkElements.forEach(({ element, data }) => {
         const sourceNode = nodes.find(n => n.id === data.source);
         const targetNode = nodes.find(n => n.id === data.target);
@@ -265,100 +305,39 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
         }
       });
 
-      // Update node positions (for square groups)
-      nodeElements.forEach(({ element, data }) => {
-        const size = isMobile ? 60 : 80;
-        element.setAttribute('transform', `translate(${data.x! - size/2}, ${data.y! - size/2})`);
-      });
-
-      // Update label positions (adjusted for larger squares)
-      labelElements.forEach(({ element, data }) => {
-        element.setAttribute('x', data.x!.toString());
-        const labelOffset = isMobile ? 45 : 55; // Position labels below the squares
-        element.setAttribute('y', (data.y! + labelOffset).toString());
-      });
-
-      // Force simulation to maintain circular formation with strong spacing
-      nodes.forEach(node => {
-        if (node.fx === null && node.fy === null) {
-          // Calculate current distance from center
-          const dxFromCenter = node.x! - centerX;
-          const dyFromCenter = node.y! - centerY;
-          const distanceFromCenter = Math.sqrt(dxFromCenter * dxFromCenter + dyFromCenter * dyFromCenter);
-          
-          // Calculate target radius (same for all nodes to maintain circle)
-          const nodeSize = isMobile ? 60 : 80;
-          const minDistance = nodeSize * (isMobile ? 2.0 : 2.5);
-          const circumference = activities.length * minDistance;
-          const targetRadius = Math.min(circumference / (2 * Math.PI), Math.min(width, height) * (isMobile ? 0.4 : 0.45));
-          
-          // Apply centripetal force to maintain circular formation
-          const centripetalForce = 0.05; // Reduced force for smoother animation
-          if (distanceFromCenter > 0) {
-            const targetX = centerX + (dxFromCenter / distanceFromCenter) * targetRadius;
-            const targetY = centerY + (dyFromCenter / distanceFromCenter) * targetRadius;
-            node.vx! += (targetX - node.x!) * centripetalForce;
-            node.vy! += (targetY - node.y!) * centripetalForce;
-          }
-          
-          // Apply strong repulsion from other nodes to prevent clustering
-          nodes.forEach(other => {
-            if (other !== node) {
-              const dx = node.x! - other.x!;
-              const dy = node.y! - other.y!;
-              const distance = Math.sqrt(dx * dx + dy * dy);
-              const nodeSize = isMobile ? 60 : 80;
-              const minDistance = nodeSize * 2.0; // Increased minimum distance between nodes
-              const repulsionRange = nodeSize * 3; // Increased range of repulsion
-              const repulsionForce = isMobile ? 800 : 1000; // Reduced force for smoother animation
-              
-              if (distance > 0 && distance < repulsionRange) {
-                const force = repulsionForce / (distance * distance);
-                node.vx! += (dx / distance) * force;
-                node.vy! += (dy / distance) * force;
-              }
-              
-              // Extra strong force if nodes are too close
-              if (distance > 0 && distance < minDistance) {
-                const emergencyForce = 1500; // Reduced emergency force for smoother animation
-                node.vx! += (dx / distance) * emergencyForce;
-                node.vy! += (dy / distance) * emergencyForce;
-              }
-            }
-          });
-
-          // Apply gentle attraction from connected nodes (much weaker than repulsion)
-          validLinks.forEach(link => {
-            if (link.source === node.id) {
-              const target = nodes.find(n => n.id === link.target);
-              if (target) {
-                const dx = target.x! - node.x!;
-                const dy = target.y! - node.y!;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                if (distance > 0) {
-                  const force = link.strength * (isMobile ? 0.01 : 0.02); // Very weak attraction
-                  node.vx! += (dx / distance) * force;
-                  node.vy! += (dy / distance) * force;
-                }
-              }
-            }
-          });
-
-          // Apply damping for stability - increased for smoother animation
-          const damping = isMobile ? 0.95 : 0.92;
-          node.vx! *= damping;
-          node.vy! *= damping;
-
-          // Update position
-          node.x! += node.vx!;
-          node.y! += node.vy!;
-
-          // Keep nodes within bounds with responsive margins
-          const margin = isMobile ? 60 : 80;
-          if (node.x! < margin) { node.x = margin; node.vx = 0; }
-          if (node.x! > width - margin) { node.x = width - margin; node.vx = 0; }
-          if (node.y! < margin) { node.y = margin; node.vy = 0; }
-          if (node.y! > height - margin) { node.y = height - margin; node.vy = 0; }
+      // Update node positions with smooth orbital movement
+      nodes.forEach((node, index) => {
+        // Calculate base angle for perfect circle
+        const baseAngle = (index / activities.length) * 2 * Math.PI;
+        
+        // Add subtle orbital movement (slow rotation)
+        const orbitalSpeed = 0.0003; // Very slow orbital movement
+        const orbitalAngle = baseAngle + (animationTime * orbitalSpeed);
+        
+        // Add gentle floating motion
+        const floatAmplitude = 8; // Small floating movement
+        const floatSpeed = 0.002;
+        const floatOffset = Math.sin(animationTime * floatSpeed + index * 0.5) * floatAmplitude;
+        
+        // Calculate final position
+        const finalRadius = targetRadius + floatOffset;
+        node.x = centerX + Math.cos(orbitalAngle) * finalRadius;
+        node.y = centerY + Math.sin(orbitalAngle) * finalRadius;
+        
+        // Update node element position (preserve hover scale if active)
+        const nodeElement = nodeElements.find(ne => ne.data.id === node.id);
+        if (nodeElement) {
+          const isHovered = hoveredNode === node.id;
+          const scale = isHovered ? 1.1 : 1;
+          nodeElement.element.setAttribute('transform', `translate(${node.x - nodeSize/2}, ${node.y - nodeSize/2}) scale(${scale})`);
+        }
+        
+        // Update label position
+        const labelElement = labelElements.find(le => le.data.id === node.id);
+        if (labelElement) {
+          labelElement.element.setAttribute('x', node.x.toString());
+          const labelOffset = isMobile ? 45 : 55;
+          labelElement.element.setAttribute('y', (node.y + labelOffset).toString());
         }
       });
 
@@ -395,6 +374,29 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
               opacity: 1;
               transform: translateY(0);
             }
+          }
+          
+          /* Smooth transitions for SVG elements */
+          .node-group {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+          
+          .node-group rect {
+            transition: stroke-width 0.3s ease, filter 0.3s ease, stroke 0.3s ease;
+          }
+          
+          .link {
+            transition: stroke-opacity 0.3s ease, stroke-width 0.3s ease, filter 0.3s ease;
+          }
+          
+          /* Enhanced hover states */
+          .node-group:hover {
+            cursor: pointer;
+          }
+          
+          /* Smooth label transitions */
+          .label {
+            transition: opacity 0.3s ease;
           }
         `
       }} />
