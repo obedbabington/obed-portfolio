@@ -178,7 +178,7 @@ export default function About() {
 
           {/* About content without fork visuals */}
           {about.intro.display && (
-            <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
+            <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl" className="about-page-text">
               {about.intro.description}
             </Column>
           )}
@@ -213,7 +213,7 @@ export default function About() {
                         {institution.name}
                       </Text>
                     </Row>
-                    <Text variant="heading-default-xs" onBackground="neutral-weak">
+                    <Text variant="heading-default-xs" onBackground="neutral-weak" className="about-page-text">
                       {institution.description}
                     </Text>
                   </Column>

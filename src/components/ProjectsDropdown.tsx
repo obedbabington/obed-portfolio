@@ -28,6 +28,12 @@ export const ProjectsDropdown = ({ onMobileMenuClose }: ProjectsDropdownProps) =
     }, 150); // 150ms delay before closing
   };
 
+  const handleLinkClick = () => {
+    if (onMobileMenuClose) {
+      onMobileMenuClose();
+    }
+  };
+
   return (
     <div
       style={{ position: "relative" }}
@@ -40,6 +46,7 @@ export const ProjectsDropdown = ({ onMobileMenuClose }: ProjectsDropdownProps) =
         label={projects.label}
         selected={pathname.startsWith("/projects")}
         style={{ cursor: "pointer" }}
+        onClick={handleLinkClick}
       />
       
       {/* Dropdown Menu */}
@@ -61,7 +68,7 @@ export const ProjectsDropdown = ({ onMobileMenuClose }: ProjectsDropdownProps) =
           onMouseLeave={handleMouseLeave}
         >
           <Column padding="s" gap="xs">
-            <SmartLink href="/projects/engineering-projects">
+            <SmartLink href="/projects/engineering-projects" onClick={handleLinkClick}>
               <div
                 style={{
                   padding: "8px",
@@ -76,12 +83,11 @@ export const ProjectsDropdown = ({ onMobileMenuClose }: ProjectsDropdownProps) =
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = "transparent";
                 }}
-                onClick={onMobileMenuClose}
               >
                 <Text variant="body-default-s">Engineering Projects</Text>
               </div>
             </SmartLink>
-            <SmartLink href="/projects/cs-projects">
+            <SmartLink href="/projects/cs-projects" onClick={handleLinkClick}>
               <div
                 style={{
                   padding: "8px",
@@ -96,7 +102,6 @@ export const ProjectsDropdown = ({ onMobileMenuClose }: ProjectsDropdownProps) =
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = "transparent";
                 }}
-                onClick={onMobileMenuClose}
               >
                 <Text variant="body-default-s">CS Projects</Text>
               </div>
