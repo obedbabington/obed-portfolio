@@ -199,7 +199,6 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
       
       // Add hover effects and click handling
       groupEl.addEventListener('mouseenter', () => {
-        console.log('Hovering over:', node.id, node.title); // Debug log
         setHoveredNode(node.id);
         // Add visual feedback on hover
         squareEl.setAttribute('stroke-width', '3');
@@ -207,7 +206,6 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
         squareEl.setAttribute('filter', 'drop-shadow(0 6px 20px rgba(16, 185, 129, 0.4))');
       });
       groupEl.addEventListener('mouseleave', () => {
-        console.log('Leaving hover:', node.id); // Debug log
         setHoveredNode(null);
         // Remove visual feedback
         squareEl.setAttribute('stroke-width', '2');
@@ -244,8 +242,17 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
 
     // Continuous force simulation with strong spacing
     let animationId: number;
+    let lastTime = 0;
+    const targetFPS = 30; // Limit to 30 FPS for smoother animation
+    const frameInterval = 1000 / targetFPS;
     
-    const tick = () => {
+    const tick = (currentTime: number = 0) => {
+      // Frame rate limiting
+      if (currentTime - lastTime < frameInterval) {
+        animationId = requestAnimationFrame(tick);
+        return;
+      }
+      lastTime = currentTime;
       // Update link positions
       linkElements.forEach(({ element, data }) => {
         const sourceNode = nodes.find(n => n.id === data.source);
@@ -286,7 +293,7 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
           const targetRadius = Math.min(circumference / (2 * Math.PI), Math.min(width, height) * (isMobile ? 0.4 : 0.45));
           
           // Apply centripetal force to maintain circular formation
-          const centripetalForce = 0.1;
+          const centripetalForce = 0.05; // Reduced force for smoother animation
           if (distanceFromCenter > 0) {
             const targetX = centerX + (dxFromCenter / distanceFromCenter) * targetRadius;
             const targetY = centerY + (dyFromCenter / distanceFromCenter) * targetRadius;
@@ -303,7 +310,7 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
               const nodeSize = isMobile ? 60 : 80;
               const minDistance = nodeSize * 2.0; // Increased minimum distance between nodes
               const repulsionRange = nodeSize * 3; // Increased range of repulsion
-              const repulsionForce = isMobile ? 1200 : 1800; // Stronger repulsion force
+              const repulsionForce = isMobile ? 800 : 1000; // Reduced force for smoother animation
               
               if (distance > 0 && distance < repulsionRange) {
                 const force = repulsionForce / (distance * distance);
@@ -313,7 +320,7 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
               
               // Extra strong force if nodes are too close
               if (distance > 0 && distance < minDistance) {
-                const emergencyForce = 3000; // Increased emergency force
+                const emergencyForce = 1500; // Reduced emergency force for smoother animation
                 node.vx! += (dx / distance) * emergencyForce;
                 node.vy! += (dy / distance) * emergencyForce;
               }
@@ -337,8 +344,8 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
             }
           });
 
-          // Apply damping for stability
-          const damping = isMobile ? 0.92 : 0.88;
+          // Apply damping for stability - increased for smoother animation
+          const damping = isMobile ? 0.95 : 0.92;
           node.vx! *= damping;
           node.vy! *= damping;
 
@@ -431,7 +438,6 @@ const ActivityNetworkGraph: React.FC<ActivityNetworkGraphProps> = ({
         }}>
           {(() => {
             const activity = activities.find(a => a.id === hoveredNode);
-            console.log('Hovered node:', hoveredNode, 'Found activity:', activity); // Debug log
             return activity ? (
               <Column gap="s">
                 {/* Thumbnail */}

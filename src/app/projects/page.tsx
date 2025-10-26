@@ -87,7 +87,7 @@ export default function Projects() {
   ];
 
   return (
-    <Column maxWidth="m" paddingTop="24" className="fixed-header-spacing page-fade-in" style={{ position: "relative" }}>
+    <Column maxWidth="m" paddingTop="8" className="fixed-header-spacing page-fade-in" style={{ position: "relative" }}>
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -106,7 +106,7 @@ export default function Projects() {
       <BackButton href="/" label="Back to Home" />
 
       {/* Enhanced Projects Heading */}
-      <Column marginBottom="l" paddingX="l" align="center" style={{ marginTop: "20px" }}>
+      <Column marginBottom="l" paddingX="l" align="center" style={{ marginTop: "5px" }}>
         <div style={{
           position: 'relative',
           display: 'inline-block',

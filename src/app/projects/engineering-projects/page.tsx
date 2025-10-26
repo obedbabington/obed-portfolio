@@ -87,7 +87,7 @@ export default function EngineeringProjects() {
   ];
 
   return (
-    <Column maxWidth="m" paddingTop="24" style={{ animation: "fadeIn 1s ease-out", position: "relative" }}>
+    <Column maxWidth="m" paddingTop="8" style={{ animation: "fadeIn 1s ease-out", position: "relative" }}>
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes fadeIn {
@@ -152,7 +152,7 @@ export default function EngineeringProjects() {
       <BackButton href="/projects" label="Back to Projects" />
 
       {/* Enhanced Page Heading */}
-      <Column marginBottom="xl" paddingX="l" align="center">
+      <Column marginBottom="xl" paddingX="l" align="center" style={{ marginTop: "5px" }}>
         <div style={{
           position: 'relative',
           display: 'inline-block',

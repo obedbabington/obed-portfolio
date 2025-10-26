@@ -155,7 +155,7 @@ export default function BeyondTheLab() {
   ];
 
   return (
-    <Column maxWidth="m" paddingTop="24" className="fixed-header-spacing page-fade-in" style={{ position: "relative" }}>
+    <Column maxWidth="m" paddingTop="8" className="fixed-header-spacing page-fade-in" style={{ position: "relative" }}>
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -174,7 +174,7 @@ export default function BeyondTheLab() {
       <BackButton href="/" label="Back to Home" />
 
       {/* Enhanced Page Heading */}
-      <Column marginBottom="l" paddingX="l" align="center" style={{ marginTop: "30px" }}>
+      <Column marginBottom="l" paddingX="l" align="center" style={{ marginTop: "10px" }}>
         <div style={{
           position: 'relative',
           display: 'inline-block',

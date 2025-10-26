@@ -197,7 +197,7 @@ main, [role="main"], .main-content {
 
   /* Reduce top margin on mobile for better positioning */
   .fixed-header-spacing {
-    padding-top: 60px !important;
+    padding-top: 20px !important;
   }
 
   /* Better mobile hero positioning */

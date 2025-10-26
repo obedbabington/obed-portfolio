@@ -50,7 +50,7 @@ export default function MajorResearch() {
   ];
 
   return (
-    <Column maxWidth="m" paddingTop="24" className="page-fade-in" style={{ position: "relative" }}>
+    <Column maxWidth="m" paddingTop="8" className="page-fade-in" style={{ position: "relative" }}>
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes fadeInPop {
