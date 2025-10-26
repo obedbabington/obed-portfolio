@@ -1,4 +1,4 @@
-import { Column, Heading, Meta, Schema, Text, Card, Media } from "@once-ui-system/core";
+import { Column, Heading, Meta, Schema, Text, Card, Media, Button } from "@once-ui-system/core";
 import { baseURL, about, person } from "@/resources";
 import { BackButton } from "@/components";
 
@@ -31,18 +31,6 @@ export default function FourDOFRoboticArm() {
         }}
       />
 
-      {/* Back Button */}
-      <Column marginBottom="l" paddingX="l">
-        <Text 
-          as="a" 
-          href="/projects/engineering-projects" 
-          variant="body-default-s"
-          style={{ textDecoration: "none", color: "var(--neutral-weak)" }}
-        >
-          ← Back to Engineering Projects
-        </Text>
-      </Column>
-
       <Column marginBottom="xl" paddingX="l" align="center">
         <Heading marginBottom="l" variant="heading-strong-xl" align="center">
           Arduino-Controlled 4DOF Robotic Arm
@@ -53,6 +41,21 @@ export default function FourDOFRoboticArm() {
         <Text variant="body-default-l" align="center" onBackground="neutral-weak">
           <strong>Tools & Technologies:</strong> Arduino, C/C++, SolidWorks, Proteus, 3D printing, Laser Cutting, Breadboarding
         </Text>
+      </Column>
+
+      {/* Project Video Link */}
+      <Column align="center" gap="m" marginBottom="xl" paddingX="l">
+        <Button
+          href="https://youtu.be/XpJBw8Dp0tI"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="primary"
+          size="m"
+          prefixIcon="openLink"
+          style={{ margin: "0 auto" }}
+        >
+          Watch Project Summary Video
+        </Button>
       </Column>
 
       {/* Project Image */}
@@ -149,14 +152,12 @@ export default function FourDOFRoboticArm() {
 
         <Card padding="l" radius="m" shadow="m">
           <Column gap="m">
-            <Heading variant="heading-strong-l">Project Summary Video</Heading>
+            <Heading variant="heading-strong-l">Project Summary</Heading>
             <Text variant="body-default-m">
-              Watch the project summary video showcasing the robotic arm in action:
+              This project demonstrates the complete engineering design cycle, from initial concept to final implementation. The robotic arm was successfully showcased at Ashesi University's Engineering Exhibition, highlighting the integration of mechanical design, electronics, and software programming.
             </Text>
-            <Text variant="body-default-s" onBackground="neutral-weak" style={{ fontStyle: "italic" }}>
-              <a href="https://youtu.be/XpJBw8Dp0tI" target="_blank" rel="noopener noreferrer">
-                Project Summary Video (YouTube)
-              </a>
+            <Text variant="body-default-m">
+              The project provided valuable experience in embedded systems programming, hardware-software interfacing, and project management through structured planning with Gantt charts and Notion.
             </Text>
           </Column>
         </Card>

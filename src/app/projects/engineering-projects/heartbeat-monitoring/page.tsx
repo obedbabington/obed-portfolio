@@ -31,18 +31,6 @@ export default function HeartbeatMonitoring() {
         }}
       />
 
-      {/* Back Button */}
-      <Column marginBottom="l" paddingX="l">
-        <Text 
-          as="a" 
-          href="/projects/engineering-projects" 
-          variant="body-default-s"
-          style={{ textDecoration: "none", color: "var(--neutral-weak)" }}
-        >
-          ← Back to Engineering Projects
-        </Text>
-      </Column>
-
       <Column marginBottom="xl" paddingX="l" align="center">
         <Heading marginBottom="l" variant="heading-strong-xl" align="center">
           Heartbeat Monitoring System
