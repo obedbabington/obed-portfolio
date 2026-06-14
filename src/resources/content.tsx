@@ -36,8 +36,8 @@ const home: Home = {
   image: "/api/og/generate?title=Obed Allotey Babington | Official Portfolio",
   label: "Home",
   title: "Obed Allotey Babington | Official Portfolio",
-  description: "Shaping digital and embedded systems for intelligence at the edge",
-  headline: <>Shaping digital and embedded systems for intelligence at the edge</>,
+  description: "Bridging silicon and software for next-generation embedded intelligence",
+  headline: <>Bridging silicon and software for next-generation embedded intelligence</>,
   featured: {
     display: true,
     title: (
@@ -53,7 +53,7 @@ const home: Home = {
   },
   subline: (
     <>
-      Hi, I am Obed, a research assistant at Ashesi University, blending ideas from hardware, software, and artificial intelligence to build future-ready systems.
+      Hi, I am Obed, a systems-focused researcher, specializing in leveraging reconfigurable technology for edge intelligence through advanced hardware-software co-design.
     </>
   ),
 };
@@ -79,9 +79,13 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        At my core, I am marked by an intellectual curiosity, ambition, and a love for social connection.<br /><br />
-        My current research interests lie in the development of embedded machine learning solutions for deploying AI models on edge devices. This includes the design and implementation of hardware acceleration strategies for neural network inference using FPGAs.
-      </>
+        I wear many hats: a researcher, a developer, a mentor, a leader, a problem solver, and a lifelong learner.<br /><br />
+        
+        With a first-class degree in Computer Engineering, multiple peer-reviewed IEEE publications and a growing technical acumen across different levels of the computing stack, I am well-equipped to tackle complex challenges and deliver innovative solutions.
+        
+        Currently, my "researcher hat" consists themes such as <u>Edge AI</u>, <u>heterogenous FPGA/SoC-based hardware acceleration</u>, <u>neuromorphic computing</u>, and <u>AI chip design</u>.
+   
+        </>
     ),
   },
   work: {
